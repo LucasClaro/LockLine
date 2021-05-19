@@ -14,6 +14,7 @@
 		B6F165DE26544272005F9C03 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F165DD26544272005F9C03 /* GameViewController.swift */; };
 		B6F165E126544272005F9C03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6F165DF26544272005F9C03 /* Main.storyboard */; };
 		B6F165E32654427D005F9C03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6F165E22654427D005F9C03 /* Assets.xcassets */; };
+		B6F165EE265591FE005F9C03 /* LabirintoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F165ED265591FD005F9C03 /* LabirintoScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B6F165E026544272005F9C03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6F165E22654427D005F9C03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6F165E42654427D005F9C03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6F165ED265591FD005F9C03 /* LabirintoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabirintoScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				B6F165D726544272005F9C03 /* GameScene.sks */,
 				B6F165D926544272005F9C03 /* Actions.sks */,
 				B6F165DB26544272005F9C03 /* GameScene.swift */,
+				B6F165ED265591FD005F9C03 /* LabirintoScene.swift */,
 				B6F165DD26544272005F9C03 /* GameViewController.swift */,
 				B6F165DF26544272005F9C03 /* Main.storyboard */,
 				B6F165E22654427D005F9C03 /* Assets.xcassets */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6F165DC26544272005F9C03 /* GameScene.swift in Sources */,
+				B6F165EE265591FE005F9C03 /* LabirintoScene.swift in Sources */,
 				B6F165DE26544272005F9C03 /* GameViewController.swift in Sources */,
 				B6F165D626544272005F9C03 /* AppDelegate.swift in Sources */,
 			);
