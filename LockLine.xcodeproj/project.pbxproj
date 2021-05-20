@@ -60,17 +60,25 @@
 		B6F165D426544272005F9C03 /* LockLine */ = {
 			isa = PBXGroup;
 			children = (
+				B6F165F02656D976005F9C03 /* Fases */,
 				B6F165D526544272005F9C03 /* AppDelegate.swift */,
 				B6F165D726544272005F9C03 /* GameScene.sks */,
 				B6F165D926544272005F9C03 /* Actions.sks */,
 				B6F165DB26544272005F9C03 /* GameScene.swift */,
-				B6F165ED265591FD005F9C03 /* LabirintoScene.swift */,
 				B6F165DD26544272005F9C03 /* GameViewController.swift */,
 				B6F165DF26544272005F9C03 /* Main.storyboard */,
 				B6F165E22654427D005F9C03 /* Assets.xcassets */,
 				B6F165E42654427D005F9C03 /* Info.plist */,
 			);
 			path = LockLine;
+			sourceTree = "<group>";
+		};
+		B6F165F02656D976005F9C03 /* Fases */ = {
+			isa = PBXGroup;
+			children = (
+				B6F165ED265591FD005F9C03 /* LabirintoScene.swift */,
+			);
+			path = Fases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
