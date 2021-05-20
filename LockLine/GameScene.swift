@@ -22,17 +22,23 @@ class GameScene: SKScene {
     func atualizarTela() {
         self.removeAllChildren()
         
-        let quadrado = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 250, height: 250))
+        let quadrado = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 250, height: 310))
         quadrado.position = CGPoint(x: 0, y: 0)
         quadrado.name = "Cofre"
 
+        switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
+            case 2:
+                quadrado.texture = SKTexture(imageNamed: "CofreLetras")
+            default:
+                break
+        }
         
         
         if navegação.ModuloAberto {
-            quadrado.size = CGSize(width: 400, height: 400)
+            quadrado.size = CGSize(width: 400, height: 496)
             
             let setaBaixo = SKSpriteNode(color: UIColor.green, size: CGSize(width: 50, height: 50))
-            setaBaixo.position = CGPoint(x: 0, y: -250)
+            setaBaixo.position = CGPoint(x: 0, y: -350)
             setaBaixo.name = "SetaVoltar"
             
             self.addChild(setaBaixo)
@@ -61,6 +67,8 @@ class GameScene: SKScene {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                 case 1:
                     DrawLabirinto()
+                case 2:
+                    DrawLetras()
                 default:
                     break
             }
@@ -158,7 +166,7 @@ struct ControleNavegação {
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [Int]()
+    var modulos = [2]
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
