@@ -15,6 +15,7 @@
 		B6F165E126544272005F9C03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6F165DF26544272005F9C03 /* Main.storyboard */; };
 		B6F165E32654427D005F9C03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6F165E22654427D005F9C03 /* Assets.xcassets */; };
 		B6F165EE265591FE005F9C03 /* LabirintoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F165ED265591FD005F9C03 /* LabirintoScene.swift */; };
+		B6F165F32656D9F9005F9C03 /* Letras.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F165F22656D9F9005F9C03 /* Letras.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B6F165E22654427D005F9C03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6F165E42654427D005F9C03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6F165ED265591FD005F9C03 /* LabirintoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabirintoScene.swift; sourceTree = "<group>"; };
+		B6F165F22656D9F9005F9C03 /* Letras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letras.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				B6F165ED265591FD005F9C03 /* LabirintoScene.swift */,
+				B6F165F22656D9F9005F9C03 /* Letras.swift */,
 			);
 			path = Fases;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6F165F32656D9F9005F9C03 /* Letras.swift in Sources */,
 				B6F165DC26544272005F9C03 /* GameScene.swift in Sources */,
 				B6F165EE265591FE005F9C03 /* LabirintoScene.swift in Sources */,
 				B6F165DE26544272005F9C03 /* GameViewController.swift in Sources */,
