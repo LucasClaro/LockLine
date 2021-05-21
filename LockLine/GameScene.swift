@@ -12,6 +12,7 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    private var tamanhoCofre : CGSize = CGSize(width: 380, height: 472)
     
     var navegação = ControleNavegação()
     
@@ -19,10 +20,11 @@ class GameScene: SKScene {
         atualizarTela()
     }
     
+    //MARK: atualizarTela
     func atualizarTela() {
         self.removeAllChildren()
         
-        let quadrado = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 250, height: 310))
+        let quadrado = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 252, height: 310))
         quadrado.position = CGPoint(x: 0, y: 0)
         quadrado.name = "Cofre"
 
@@ -35,9 +37,8 @@ class GameScene: SKScene {
                 break
         }
         
-        
         if navegação.ModuloAberto {
-            quadrado.size = CGSize(width: 400, height: 496)
+            quadrado.size = tamanhoCofre
             
             let setaBaixo = SKSpriteNode(color: UIColor.green, size: CGSize(width: 50, height: 50))
             setaBaixo.position = CGPoint(x: 0, y: -350)
@@ -56,7 +57,6 @@ class GameScene: SKScene {
             let label = SKLabelNode(text: String(navegação.ModulosEmJogo[navegação.ModuloOlhando]))
             label.fontSize = 62
             label.position = CGPoint(x: 0, y: 0)
-            label.name = "Cofre"
             
             self.addChild(setaDireita)
             self.addChild(setaEsquerda)
@@ -70,7 +70,15 @@ class GameScene: SKScene {
                 case 1:
                     DrawLabirinto()
                 case 2:
-                    DrawLetras()
+                    DrawLetrasAberto()
+                default:
+                    break
+            }
+        }
+        else {
+            switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
+                case 2:
+                    DrawLetrasFechado()
                 default:
                     break
             }
@@ -91,6 +99,8 @@ class GameScene: SKScene {
     
     }
     
+    
+    //MARK: touchesBegan
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let pos = touch.location(in: self)
@@ -117,6 +127,8 @@ class GameScene: SKScene {
                         switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                             case 1:
                                 TouchedLabirinto(pos: pos)
+                            case 2:
+                                TouchedLetras(pos: pos)
                             default:
                                 break
                         }
@@ -142,9 +154,16 @@ class GameScene: SKScene {
         
     }
     
+    func PosProporcional(pos : CGPoint) -> CGPoint{
+        return CGPoint(x: tamanhoCofre.width * pos.x/400, y: tamanhoCofre.height * pos.y/496)
+    }
     
+    func SizeProporcional(size : CGSize) -> CGSize {
+        return CGSize(width: tamanhoCofre.width * size.width/400, height: tamanhoCofre.height * size.height/496)
+    }
 }
 
+//MARK: struct ControleNavegação
 struct ControleNavegação {
     
     init() {
@@ -163,6 +182,7 @@ struct ControleNavegação {
     var ModuloAberto : Bool
     
     var Labirinto : LabirintoControler = LabirintoControler()
+    var Letras : LetrasControler = LetrasControler()
     
     //vars manual
 }
