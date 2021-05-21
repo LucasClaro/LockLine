@@ -12,6 +12,7 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    private var tamanhoCofre : CGSize = CGSize(width: 380, height: 472)
     
     var navegação = ControleNavegação()
     
@@ -34,9 +35,8 @@ class GameScene: SKScene {
                 break
         }
         
-        
         if navegação.ModuloAberto {
-            quadrado.size = CGSize(width: 400, height: 496)
+            quadrado.size = tamanhoCofre
             
             let setaBaixo = SKSpriteNode(color: UIColor.green, size: CGSize(width: 50, height: 50))
             setaBaixo.position = CGPoint(x: 0, y: -350)
@@ -125,6 +125,8 @@ class GameScene: SKScene {
                         switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                             case 1:
                                 TouchedLabirinto(pos: pos)
+                            case 2:
+                                TouchedLetras(pos: pos)
                             default:
                                 break
                         }
@@ -150,7 +152,13 @@ class GameScene: SKScene {
         
     }
     
+    func PosProporcional(pos : CGPoint) -> CGPoint{
+        return CGPoint(x: tamanhoCofre.width * pos.x/400, y: tamanhoCofre.height * pos.y/496)
+    }
     
+    func SizeProporcional(size : CGSize) -> CGSize {
+        return CGSize(width: tamanhoCofre.width * size.width/400, height: tamanhoCofre.height * size.height/496)
+    }
 }
 
 //MARK: struct ControleNavegação
