@@ -19,10 +19,11 @@ class GameScene: SKScene {
         atualizarTela()
     }
     
+    //MARK: atualizarTela
     func atualizarTela() {
         self.removeAllChildren()
         
-        let quadrado = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 250, height: 310))
+        let quadrado = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 252, height: 310))
         quadrado.position = CGPoint(x: 0, y: 0)
         quadrado.name = "Cofre"
 
@@ -54,7 +55,6 @@ class GameScene: SKScene {
             let label = SKLabelNode(text: String(navegação.ModulosEmJogo[navegação.ModuloOlhando]))
             label.fontSize = 62
             label.position = CGPoint(x: 0, y: 0)
-            label.name = "Cofre"
             
             self.addChild(setaDireita)
             self.addChild(setaEsquerda)
@@ -68,7 +68,15 @@ class GameScene: SKScene {
                 case 1:
                     DrawLabirinto()
                 case 2:
-                    DrawLetras()
+                    DrawLetrasAberto()
+                default:
+                    break
+            }
+        }
+        else {
+            switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
+                case 2:
+                    DrawLetrasFechado()
                 default:
                     break
             }
@@ -89,6 +97,8 @@ class GameScene: SKScene {
     
     }
     
+    
+    //MARK: touchesBegan
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let pos = touch.location(in: self)
@@ -143,6 +153,7 @@ class GameScene: SKScene {
     
 }
 
+//MARK: struct ControleNavegação
 struct ControleNavegação {
     
     init() {
@@ -161,6 +172,7 @@ struct ControleNavegação {
     var ModuloAberto : Bool
     
     var Labirinto : LabirintoControler = LabirintoControler()
+    var Letras : LetrasControler = LetrasControler()
     
     //vars manual
 }
