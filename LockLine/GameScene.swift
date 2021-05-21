@@ -27,6 +27,8 @@ class GameScene: SKScene {
         quadrado.name = "Cofre"
 
         switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
+            case 1:
+                quadrado.texture = SKTexture(imageNamed: "CofreLabirinto")
             case 2:
                 quadrado.texture = SKTexture(imageNamed: "CofreLetras")
             default:
@@ -166,7 +168,7 @@ struct ControleNavegação {
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [2]
+    var modulos = [1]
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
