@@ -71,6 +71,8 @@ class GameScene: SKScene {
                     DrawLabirinto()
                 case 2:
                     DrawLetrasAberto()
+                case 3:
+                    DrawRelogioAberto()
                 default:
                     break
             }
@@ -79,6 +81,8 @@ class GameScene: SKScene {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                 case 2:
                     DrawLetrasFechado()
+                case 3:
+                    DrawRelogioFechado()
                 default:
                     break
             }
@@ -183,12 +187,13 @@ struct ControleNavegação {
     
     var Labirinto : LabirintoControler = LabirintoControler()
     var Letras : LetrasControler = LetrasControler()
+    var Relogio : RelogioController = RelogioController()
     
     //vars manual
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [1]
+    var modulos = [1, 3]
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
@@ -203,4 +208,10 @@ enum EnumTela {
     case Menu
     case Manual
     case Jogo
+}
+
+func mod(_ a: Int, _ n: Int) -> Int {
+    precondition(n > 0, "modulus must be positive")
+    let r = a % n
+    return r >= 0 ? r : r + n
 }
