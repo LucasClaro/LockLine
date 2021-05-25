@@ -12,7 +12,8 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
-    private var tamanhoCofre : CGSize = CGSize(width: 380, height: 472)
+    private var tamanhoCofre : CGSize = CGSize(width: 400, height: 496)
+    private var tamanhoCofreFechado : CGSize = CGSize(width: 252, height: 310)
     
     var navegação = ControleNavegação()
     
@@ -24,7 +25,7 @@ class GameScene: SKScene {
     func atualizarTela() {
         self.removeAllChildren()
         
-        let quadrado = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 252, height: 310))
+        let quadrado = SKSpriteNode(color: UIColor.orange, size: tamanhoCofreFechado)
         quadrado.position = CGPoint(x: 0, y: 0)
         quadrado.name = "Cofre"
 
@@ -33,6 +34,8 @@ class GameScene: SKScene {
                 quadrado.texture = SKTexture(imageNamed: "CofreLabirinto")
             case 2:
                 quadrado.texture = SKTexture(imageNamed: "CofreLetras")
+            case 3:
+                quadrado.texture = SKTexture(imageNamed: "CofreRelogio")
             default:
                 break
         }
@@ -193,7 +196,7 @@ struct ControleNavegação {
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [1, 3]
+    var modulos = [3]
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
