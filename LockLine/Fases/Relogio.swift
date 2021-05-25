@@ -9,6 +9,7 @@ import SpriteKit
 
 extension GameScene {
     
+    //MARK: DrawFechado
     func DrawRelogioFechado() {
         let padrao1 = SKSpriteNode(imageNamed: "padrao\(navegação.Relogio.padroes[0])")
         padrao1.position = PosProporcional(pos:CGPoint(x: -70, y: 60))
@@ -53,18 +54,53 @@ extension GameScene {
         addChild(padrao5)
         addChild(padrao6)
         
+        let ponteiroHoras = SKSpriteNode(imageNamed: "ponteiro")
+        ponteiroHoras.position = PosProporcional(pos:CGPoint(x: 3, y: -34))
+        ponteiroHoras.size = SizeProporcional(size: CGSize(width: 7, height: 73))
+        ponteiroHoras.zPosition = 10
+        ponteiroHoras.zRotation = -CGFloat(navegação.Relogio.ponteiroHoras) * CGFloat.pi/6
+        ponteiroHoras.name = "Cofre"
+        
+        let ponteiroMinutos = SKSpriteNode(imageNamed: "ponteiro")
+        ponteiroMinutos.position = PosProporcional(pos:CGPoint(x: 3, y: -34))
+        ponteiroMinutos.size = SizeProporcional(size: CGSize(width: 7, height: 100))
+        ponteiroMinutos.zPosition = 10
+        ponteiroMinutos.zRotation = -CGFloat(navegação.Relogio.ponterioMinutos) * CGFloat.pi/6
+        ponteiroMinutos.name = "Cofre"
+        
+        let ponteiroSegundos = SKSpriteNode(imageNamed: "ponteiroS")
+        ponteiroSegundos.position = PosProporcional(pos:CGPoint(x: 3, y: -34))
+        ponteiroSegundos.size = SizeProporcional(size: CGSize(width: 7, height: 100))
+        ponteiroSegundos.zPosition = 10
+        ponteiroSegundos.zRotation = -CGFloat(navegação.Relogio.ponteiroSegundo) * CGFloat.pi/2 - CGFloat.pi/4
+        ponteiroSegundos.name = "Cofre"
+        
+        addChild(ponteiroHoras)
+        addChild(ponteiroMinutos)
+        addChild(ponteiroSegundos)
+        
+        let botao = SKSpriteNode(imageNamed: "Botao")
+        botao.position = PosProporcional(pos:CGPoint(x: 1, y: -130))
+        botao.size = SizeProporcional(size: CGSize(width: 100, height: 31))
+        botao.zPosition = 10
+        botao.name = "Cofre"
+        
+        addChild(botao)
     }
     
+    //MARK: DrawAberto
     func DrawRelogioAberto() {
         let padrao1 = SKSpriteNode(imageNamed: "padrao\(navegação.Relogio.padroes[0])")
         padrao1.position = PosProporcional(pos: CGPoint(x: -118, y: 95))
         padrao1.size = SizeProporcional(size: CGSize(width: 40, height: 40))
         padrao1.zPosition = 10
+        padrao1.name = "BotaoHoras"
         
         let padrao2 = SKSpriteNode(imageNamed: "padrao\(navegação.Relogio.padroes[1])")
         padrao2.position = PosProporcional(pos: CGPoint(x: -72, y: 95))
         padrao2.size = SizeProporcional(size: CGSize(width: 40, height: 40))
         padrao2.zPosition = 10
+        padrao2.name = "BotaoMinutos"
         
         let padrao3 = SKSpriteNode(imageNamed: "padrao\(navegação.Relogio.padroes[2])")
         padrao3.position = PosProporcional(pos: CGPoint(x: -25, y: 95))
@@ -93,9 +129,69 @@ extension GameScene {
         addChild(padrao5)
         addChild(padrao6)
         
+        let ponteiroHoras = SKSpriteNode(imageNamed: "ponteiro")
+        ponteiroHoras.position = PosProporcional(pos:CGPoint(x: 1, y: -54))
+        ponteiroHoras.size = SizeProporcional(size: CGSize(width: 11, height: 130))
+        ponteiroHoras.zPosition = 10
+        ponteiroHoras.zRotation = -CGFloat(navegação.Relogio.ponteiroHoras) * CGFloat.pi/6
+        
+        let ponteiroMinutos = SKSpriteNode(imageNamed: "ponteiro")
+        ponteiroMinutos.position = PosProporcional(pos:CGPoint(x: 1, y: -54))
+        ponteiroMinutos.size = SizeProporcional(size: CGSize(width: 11, height: 160))
+        ponteiroMinutos.zPosition = 10
+        ponteiroMinutos.zRotation = -CGFloat(navegação.Relogio.ponterioMinutos) * CGFloat.pi/30
+        
+        let ponteiroSegundos = SKSpriteNode(imageNamed: "ponteiroS")
+        ponteiroSegundos.position = PosProporcional(pos:CGPoint(x: 1, y: -54))
+        ponteiroSegundos.size = SizeProporcional(size: CGSize(width: 11, height: 160))
+        ponteiroSegundos.zPosition = 10
+        ponteiroSegundos.zRotation = -CGFloat(navegação.Relogio.ponteiroSegundo) * CGFloat.pi/2 - CGFloat.pi/4
+        
+        addChild(ponteiroHoras)
+        addChild(ponteiroMinutos)
+        addChild(ponteiroSegundos)
+        
+        let botao = SKSpriteNode(imageNamed: "Botao")
+        botao.position = PosProporcional(pos:CGPoint(x: 1, y: -200))
+        botao.size = SizeProporcional(size: CGSize(width: 200, height: 63))
+        botao.zPosition = 10
+        botao.name = "Botao"
+        
+        addChild(botao)
     }
     
+    //MARK: Touched
     func TouchedRelogio(pos : CGPoint) {
+        
+        if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
+            switch atPoint(pos).name {
+                case "Botao":
+                    print(navegação.Relogio.senha)
+                    if navegação.Relogio.senha.0 == mod(navegação.Relogio.ponteiroHoras, 12) && navegação.Relogio.senha.1 == mod(navegação.Relogio.ponterioMinutos, 60){
+                        navegação.ModulosCompletos[navegação.ModuloOlhando] = true
+                    }
+                    else {
+                        navegação.Relogio.ponterioMinutos = 0
+                        navegação.Relogio.ponteiroHoras = 0
+                    }
+                    atualizarTela()
+                case "BotaoHoras":
+                    navegação.Relogio.ponteiroHoras += 3
+                    atualizarTela()
+                case "BotaoMinutos":
+                    navegação.Relogio.ponterioMinutos += 5
+                    atualizarTela()
+                default:
+                    break
+            }
+        }
+        
+        let senhaInputada = navegação.Letras.input.map({ n in
+            navegação.Letras.letras[n]
+        })
+        if navegação.Letras.senha == senhaInputada {
+            navegação.ModulosCompletos[navegação.ModuloOlhando] = true
+        }
         
     }
     
@@ -209,6 +305,5 @@ fileprivate func DefinirSenha(naipe: Int, segundos : Int, padroes : [Int]) -> (I
         minutos += valorPadroes[padrao-1]
     }
     
-    print(mod(minutos, 60))
     return (horas, minutos)
 }
