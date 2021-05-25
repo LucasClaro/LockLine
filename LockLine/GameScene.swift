@@ -36,6 +36,8 @@ class GameScene: SKScene {
                 quadrado.texture = SKTexture(imageNamed: "CofreLetras")
             case 3:
                 quadrado.texture = SKTexture(imageNamed: "CofreRelogio")
+            case 4:
+                quadrado.texture = SKTexture(imageNamed: "CofreEsteira")
             default:
                 break
         }
@@ -76,6 +78,8 @@ class GameScene: SKScene {
                     DrawLetrasAberto()
                 case 3:
                     DrawRelogioAberto()
+                case 4:
+                    DrawEsteiraAberto()
                 default:
                     break
             }
@@ -136,6 +140,8 @@ class GameScene: SKScene {
                                 TouchedLabirinto(pos: pos)
                             case 2:
                                 TouchedLetras(pos: pos)
+                            case 4:
+                                TouchedEsteira(pos: pos)
                             default:
                                 break
                         }
@@ -191,6 +197,7 @@ struct ControleNavegação {
     var Labirinto : LabirintoControler = LabirintoControler()
     var Letras : LetrasControler = LetrasControler()
     var Relogio : RelogioController = RelogioController()
+    var Esteira : EsteiraController = EsteiraController()
     
     //vars manual
 }
