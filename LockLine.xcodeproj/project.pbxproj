@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		977FD89C265C1C73009FCC76 /* Esteira.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977FD89B265C1C73009FCC76 /* Esteira.swift */; };
 		B62C380A265833C900C08E51 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */; };
 		B6F165D626544272005F9C03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F165D526544272005F9C03 /* AppDelegate.swift */; };
 		B6F165D826544272005F9C03 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B6F165D726544272005F9C03 /* GameScene.sks */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		977FD89B265C1C73009FCC76 /* Esteira.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Esteira.swift; sourceTree = "<group>"; };
 		B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-VariableFont_wght.ttf"; path = "Tipografia/Oswald-VariableFont_wght.ttf"; sourceTree = SOURCE_ROOT; };
 		B6F165D226544272005F9C03 /* LockLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LockLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6F165D526544272005F9C03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 		B6F165F02656D976005F9C03 /* Fases */ = {
 			isa = PBXGroup;
 			children = (
+				977FD89B265C1C73009FCC76 /* Esteira.swift */,
 				B6F165ED265591FD005F9C03 /* LabirintoScene.swift */,
 				B6F165F22656D9F9005F9C03 /* Letras.swift */,
 			);
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6F165F32656D9F9005F9C03 /* Letras.swift in Sources */,
+				977FD89C265C1C73009FCC76 /* Esteira.swift in Sources */,
 				B6F165DC26544272005F9C03 /* GameScene.swift in Sources */,
 				B6F165EE265591FE005F9C03 /* LabirintoScene.swift in Sources */,
 				B6F165DE26544272005F9C03 /* GameViewController.swift in Sources */,
@@ -311,7 +315,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ARQY7RCV8V;
+				DEVELOPMENT_TEAM = 9X475P5993;
 				INFOPLIST_FILE = LockLine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -330,7 +334,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ARQY7RCV8V;
+				DEVELOPMENT_TEAM = 9X475P5993;
 				INFOPLIST_FILE = LockLine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
