@@ -19,7 +19,6 @@ extension GameScene {
         palavra1.zPosition = 10
         palavra1.name = "Cofre"
         
-        
         let palavra2 = SKLabelNode(text: String(navegação.Letras.palavrasEmJogo[1]))
         palavra2.fontSize = 12
         palavra2.position = PosProporcional(pos: CGPoint(x: 68, y: -72))

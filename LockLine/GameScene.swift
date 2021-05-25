@@ -12,7 +12,8 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
-    private var tamanhoCofre : CGSize = CGSize(width: 380, height: 472)
+    private var tamanhoCofre : CGSize = CGSize(width: 400, height: 496)
+    private var tamanhoCofreFechado : CGSize = CGSize(width: 252, height: 310)
     
     var navegação = ControleNavegação()
     
@@ -24,7 +25,7 @@ class GameScene: SKScene {
     func atualizarTela() {
         self.removeAllChildren()
         
-        let quadrado = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 252, height: 310))
+        let quadrado = SKSpriteNode(color: UIColor.orange, size: tamanhoCofreFechado)
         quadrado.position = CGPoint(x: 0, y: 0)
         quadrado.name = "Cofre"
 
@@ -34,7 +35,7 @@ class GameScene: SKScene {
             case 2:
                 quadrado.texture = SKTexture(imageNamed: "CofreLetras")
             case 3:
-                quadrado.texture = SKTexture(imageNamed: "CofreEsteira")
+                quadrado.texture = SKTexture(imageNamed: "CofreRelogio")
             default:
                 break
         }
@@ -74,7 +75,7 @@ class GameScene: SKScene {
                 case 2:
                     DrawLetrasAberto()
                 case 3:
-                    DrawEsteiraAberto()
+                    DrawRelogioAberto()
                 default:
                     break
             }
@@ -83,6 +84,8 @@ class GameScene: SKScene {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                 case 2:
                     DrawLetrasFechado()
+                case 3:
+                    DrawRelogioFechado()
                 default:
                     break
             }
@@ -133,8 +136,6 @@ class GameScene: SKScene {
                                 TouchedLabirinto(pos: pos)
                             case 2:
                                 TouchedLetras(pos: pos)
-                            case 3:
-                                TouchedEsteira(pos: pos)
                             default:
                                 break
                         }
@@ -189,13 +190,13 @@ struct ControleNavegação {
     
     var Labirinto : LabirintoControler = LabirintoControler()
     var Letras : LetrasControler = LetrasControler()
-    var Esteira : EsteiraController = EsteiraController()
+    var Relogio : RelogioController = RelogioController()
     
     //vars manual
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [1]
+    var modulos = [3]
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
@@ -210,4 +211,10 @@ enum EnumTela {
     case Menu
     case Manual
     case Jogo
+}
+
+func mod(_ a: Int, _ n: Int) -> Int {
+    precondition(n > 0, "modulus must be positive")
+    let r = a % n
+    return r >= 0 ? r : r + n
 }
