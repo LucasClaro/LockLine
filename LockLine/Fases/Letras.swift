@@ -186,7 +186,7 @@ extension GameScene {
         self.addChild(Letra4)
     }
     
-    //MARK: TouchedLetras
+    //MARK: Touched
     func TouchedLetras(pos : CGPoint) {
         
         if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
