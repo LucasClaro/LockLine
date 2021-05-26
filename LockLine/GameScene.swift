@@ -13,6 +13,7 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     private var tamanhoCofre : CGSize = CGSize(width: 400, height: 496)
+    private var tamanhoCofreFechado : CGSize = CGSize(width: 252, height: 310)
     
     var navegação = ControleNavegação()
     
@@ -24,7 +25,7 @@ class GameScene: SKScene {
     func atualizarTela() {
         self.removeAllChildren()
         
-        let quadrado = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 252, height: 310))
+        let quadrado = SKSpriteNode(color: UIColor.orange, size: tamanhoCofreFechado)
         quadrado.position = CGPoint(x: 0, y: 0)
         quadrado.name = "Cofre"
 
@@ -33,6 +34,8 @@ class GameScene: SKScene {
                 quadrado.texture = SKTexture(imageNamed: "CofreLabirinto")
             case 2:
                 quadrado.texture = SKTexture(imageNamed: "CofreLetras")
+            case 3:
+                quadrado.texture = SKTexture(imageNamed: "CofreRelogio")
             default:
                 break
         }
@@ -71,6 +74,10 @@ class GameScene: SKScene {
                     DrawLabirinto()
                 case 2:
                     DrawLetrasAberto()
+                case 3:
+                    DrawRelogioAberto()
+                case 5:
+                    DrawRodasAberto()
                 default:
                     break
             }
@@ -79,6 +86,8 @@ class GameScene: SKScene {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                 case 2:
                     DrawLetrasFechado()
+                case 3:
+                    DrawRelogioFechado()
                 default:
                     break
             }
@@ -129,6 +138,8 @@ class GameScene: SKScene {
                                 TouchedLabirinto(pos: pos)
                             case 2:
                                 TouchedLetras(pos: pos)
+                            case 3:
+                                TouchedRelogio(pos: pos)
                             default:
                                 break
                         }
@@ -150,7 +161,17 @@ class GameScene: SKScene {
         
     }
     
+    //MARK: Update
     override func update(_ currentTime: TimeInterval) {
+        
+        if navegação.ModuloAberto {
+            switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
+                case 5:
+                    UpdateRodas()
+                default:
+                    break
+            }
+        }
         
     }
     
@@ -183,12 +204,14 @@ struct ControleNavegação {
     
     var Labirinto : LabirintoControler = LabirintoControler()
     var Letras : LetrasControler = LetrasControler()
+    var Relogio : RelogioController = RelogioController()
+    var Rodas : RodasController = RodasController()
     
     //vars manual
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [1,2]
+    var modulos = [3, 5]
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
@@ -203,4 +226,10 @@ enum EnumTela {
     case Menu
     case Manual
     case Jogo
+}
+
+func mod(_ a: Int, _ n: Int) -> Int {
+    precondition(n > 0, "modulus must be positive")
+    let r = a % n
+    return r >= 0 ? r : r + n
 }

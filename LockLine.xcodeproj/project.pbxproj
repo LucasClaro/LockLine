@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B62C380A265833C900C08E51 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */; };
+		B62C3816265C387700C08E51 /* Relogio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3815265C387700C08E51 /* Relogio.swift */; };
+		B62C3819265D92BA00C08E51 /* Rodas.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3818265D92BA00C08E51 /* Rodas.swift */; };
 		B6F165D626544272005F9C03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F165D526544272005F9C03 /* AppDelegate.swift */; };
 		B6F165D826544272005F9C03 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B6F165D726544272005F9C03 /* GameScene.sks */; };
 		B6F165DA26544272005F9C03 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B6F165D926544272005F9C03 /* Actions.sks */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-VariableFont_wght.ttf"; path = "Tipografia/Oswald-VariableFont_wght.ttf"; sourceTree = SOURCE_ROOT; };
+		B62C3815265C387700C08E51 /* Relogio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relogio.swift; sourceTree = "<group>"; };
+		B62C3818265D92BA00C08E51 /* Rodas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rodas.swift; sourceTree = "<group>"; };
 		B6F165D226544272005F9C03 /* LockLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LockLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6F165D526544272005F9C03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6F165D726544272005F9C03 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 			children = (
 				B6F165ED265591FD005F9C03 /* LabirintoScene.swift */,
 				B6F165F22656D9F9005F9C03 /* Letras.swift */,
+				B62C3815265C387700C08E51 /* Relogio.swift */,
+				B62C3818265D92BA00C08E51 /* Rodas.swift */,
 			);
 			path = Fases;
 			sourceTree = "<group>";
@@ -170,6 +176,8 @@
 				B6F165F32656D9F9005F9C03 /* Letras.swift in Sources */,
 				B6F165DC26544272005F9C03 /* GameScene.swift in Sources */,
 				B6F165EE265591FE005F9C03 /* LabirintoScene.swift in Sources */,
+				B62C3816265C387700C08E51 /* Relogio.swift in Sources */,
+				B62C3819265D92BA00C08E51 /* Rodas.swift in Sources */,
 				B6F165DE26544272005F9C03 /* GameViewController.swift in Sources */,
 				B6F165D626544272005F9C03 /* AppDelegate.swift in Sources */,
 			);
