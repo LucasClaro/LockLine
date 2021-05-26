@@ -165,7 +165,7 @@ extension GameScene {
                                 navegação.Labirinto.historico.removeLast()
                             }
                             else {
-                                if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i ,j:navegação.Labirinto.historico.last!.j - 1)}){
+                                if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i ,j:navegação.Labirinto.historico.last!.j + 1)}){
                                     navegação.Labirinto.historico.append((i: navegação.Labirinto.historico.last!.i ,j:navegação.Labirinto.historico.last!.j + 1))
                                     if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0 {
                                         navegação.Labirinto.vitoria += 1
