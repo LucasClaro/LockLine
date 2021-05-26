@@ -12,7 +12,7 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
-    private var tamanhoCofre : CGSize = CGSize(width: 380, height: 472)
+    private var tamanhoCofre : CGSize = CGSize(width: 400, height: 496)
     
     var navegação = ControleNavegação()
     
@@ -188,7 +188,7 @@ struct ControleNavegação {
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [1]
+    var modulos = [1,2]
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
