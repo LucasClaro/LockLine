@@ -76,6 +76,8 @@ class GameScene: SKScene {
                     DrawLetrasAberto()
                 case 3:
                     DrawRelogioAberto()
+                case 5:
+                    DrawRodasAberto()
                 default:
                     break
             }
@@ -159,7 +161,17 @@ class GameScene: SKScene {
         
     }
     
+    //MARK: Update
     override func update(_ currentTime: TimeInterval) {
+        
+        if navegação.ModuloAberto {
+            switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
+                case 5:
+                    UpdateRodas()
+                default:
+                    break
+            }
+        }
         
     }
     
@@ -193,12 +205,13 @@ struct ControleNavegação {
     var Labirinto : LabirintoControler = LabirintoControler()
     var Letras : LetrasControler = LetrasControler()
     var Relogio : RelogioController = RelogioController()
+    var Rodas : RodasController = RodasController()
     
     //vars manual
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [3]
+    var modulos = [5]
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
