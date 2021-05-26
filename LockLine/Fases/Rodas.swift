@@ -44,7 +44,7 @@ extension GameScene {
     
     //MARK: Update
     func UpdateRodas() {
-        navegação.Rodas.angulo += 1
+        navegação.Rodas.angulo += 2
         atualizarTela()
     }
     

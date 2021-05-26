@@ -86,6 +86,23 @@ extension GameScene {
         botao.name = "Cofre"
         
         addChild(botao)
+        
+        let engrenagemHoras = SKSpriteNode(imageNamed: "Engrenagem")
+        engrenagemHoras.position = PosProporcional(pos:CGPoint(x: -90, y: -120))
+        engrenagemHoras.size = SizeProporcional(size: CGSize(width: 50, height: 50))
+        engrenagemHoras.zPosition = 10
+        engrenagemHoras.name = "Cofre"
+        
+        let engrenagemMinutos = SKSpriteNode(imageNamed: "Engrenagem")
+        engrenagemMinutos.position = PosProporcional(pos:CGPoint(x: 90, y: -120))
+        engrenagemMinutos.size = SizeProporcional(size: CGSize(width: 50, height: 50))
+        engrenagemMinutos.xScale = engrenagemHoras.xScale * -1;
+        engrenagemMinutos.zPosition = 10
+        engrenagemMinutos.name = "Cofre"
+        
+        addChild(engrenagemHoras)
+        addChild(engrenagemMinutos)
+        
     }
     
     //MARK: DrawAberto
@@ -94,13 +111,11 @@ extension GameScene {
         padrao1.position = PosProporcional(pos: CGPoint(x: -118, y: 95))
         padrao1.size = SizeProporcional(size: CGSize(width: 40, height: 40))
         padrao1.zPosition = 10
-        padrao1.name = "BotaoHoras"
         
         let padrao2 = SKSpriteNode(imageNamed: "padrao\(navegação.Relogio.padroes[1])")
         padrao2.position = PosProporcional(pos: CGPoint(x: -72, y: 95))
         padrao2.size = SizeProporcional(size: CGSize(width: 40, height: 40))
         padrao2.zPosition = 10
-        padrao2.name = "BotaoMinutos"
         
         let padrao3 = SKSpriteNode(imageNamed: "padrao\(navegação.Relogio.padroes[2])")
         padrao3.position = PosProporcional(pos: CGPoint(x: -25, y: 95))
@@ -158,6 +173,22 @@ extension GameScene {
         botao.name = "Botao"
         
         addChild(botao)
+        
+        let engrenagemHoras = SKSpriteNode(imageNamed: "Engrenagem")
+        engrenagemHoras.position = PosProporcional(pos:CGPoint(x: -150, y: -196))
+        engrenagemHoras.size = SizeProporcional(size: CGSize(width: 70, height: 70))
+        engrenagemHoras.zPosition = 10
+        engrenagemHoras.name = "BotaoHoras"
+        
+        let engrenagemMinutos = SKSpriteNode(imageNamed: "Engrenagem")
+        engrenagemMinutos.position = PosProporcional(pos:CGPoint(x: 150, y: -196))
+        engrenagemMinutos.size = SizeProporcional(size: CGSize(width: 70, height: 70))
+        engrenagemMinutos.xScale = engrenagemHoras.xScale * -1;
+        engrenagemMinutos.zPosition = 10
+        engrenagemMinutos.name = "BotaoMinutos"
+        
+        addChild(engrenagemHoras)
+        addChild(engrenagemMinutos)
     }
     
     //MARK: Touched
