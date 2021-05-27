@@ -197,7 +197,6 @@ extension GameScene {
         if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
             switch atPoint(pos).name {
                 case "Botao":
-                    print(navegação.Relogio.senha)
                     if navegação.Relogio.senha.0 == mod(navegação.Relogio.ponteiroHoras, 12) && navegação.Relogio.senha.1 == mod(navegação.Relogio.ponterioMinutos, 60){
                         navegação.ModulosCompletos[navegação.ModuloOlhando] = true
                     }

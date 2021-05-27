@@ -36,6 +36,8 @@ class GameScene: SKScene {
                 quadrado.texture = SKTexture(imageNamed: "CofreLetras")
             case 3:
                 quadrado.texture = SKTexture(imageNamed: "CofreRelogio")
+            case 5:
+                quadrado.texture = SKTexture(imageNamed: "CofreRodas")
             default:
                 break
         }
@@ -88,6 +90,8 @@ class GameScene: SKScene {
                     DrawLetrasFechado()
                 case 3:
                     DrawRelogioFechado()
+                case 5:
+                    DrawRodasFechado()
                 default:
                     break
             }
@@ -211,7 +215,7 @@ struct ControleNavegação {
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [3, 5]
+    var modulos = [5]
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
