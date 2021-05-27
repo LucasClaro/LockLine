@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8BD42D0526601C0B003014E0 /* Interruptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD42D0426601C0B003014E0 /* Interruptor.swift */; };
 		B62C380A265833C900C08E51 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */; };
 		B62C3816265C387700C08E51 /* Relogio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3815265C387700C08E51 /* Relogio.swift */; };
 		B62C3819265D92BA00C08E51 /* Rodas.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3818265D92BA00C08E51 /* Rodas.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8BD42D0426601C0B003014E0 /* Interruptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interruptor.swift; sourceTree = "<group>"; };
 		B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-VariableFont_wght.ttf"; path = "Tipografia/Oswald-VariableFont_wght.ttf"; sourceTree = SOURCE_ROOT; };
 		B62C3815265C387700C08E51 /* Relogio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relogio.swift; sourceTree = "<group>"; };
 		B62C3818265D92BA00C08E51 /* Rodas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rodas.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				B6F165F22656D9F9005F9C03 /* Letras.swift */,
 				B62C3815265C387700C08E51 /* Relogio.swift */,
 				B62C3818265D92BA00C08E51 /* Rodas.swift */,
+				8BD42D0426601C0B003014E0 /* Interruptor.swift */,
 			);
 			path = Fases;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			files = (
 				B6F165F32656D9F9005F9C03 /* Letras.swift in Sources */,
 				B6F165DC26544272005F9C03 /* GameScene.swift in Sources */,
+				8BD42D0526601C0B003014E0 /* Interruptor.swift in Sources */,
 				B6F165EE265591FE005F9C03 /* LabirintoScene.swift in Sources */,
 				B62C3816265C387700C08E51 /* Relogio.swift in Sources */,
 				B62C3819265D92BA00C08E51 /* Rodas.swift in Sources */,
