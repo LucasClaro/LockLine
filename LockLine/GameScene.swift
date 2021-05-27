@@ -94,6 +94,8 @@ class GameScene: SKScene {
                     DrawLetrasFechado()
                 case 3:
                     DrawRelogioFechado()
+                case 4:
+                    DrawEsteiraFechado()
                 case 5:
                     DrawRodasFechado()
                 default:
@@ -171,16 +173,17 @@ class GameScene: SKScene {
     
     //MARK: Update
     override func update(_ currentTime: TimeInterval) {
-        
         if navegação.ModuloAberto {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
+                case 4:
+                    updateEsteira()
                 case 5:
                     UpdateRodas()
                 default:
                     break
             }
         }
-        
+
     }
     
     func PosProporcional(pos : CGPoint) -> CGPoint{
