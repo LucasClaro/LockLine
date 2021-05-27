@@ -36,6 +36,8 @@ class GameScene: SKScene {
                 quadrado.texture = SKTexture(imageNamed: "CofreLetras")
             case 3:
                 quadrado.texture = SKTexture(imageNamed: "CofreRelogio")
+            case 4:
+                quadrado.texture = SKTexture(imageNamed: "CofreEsteira")
             case 5:
                 quadrado.texture = SKTexture(imageNamed: "CofreRodas")
             default:
@@ -78,6 +80,8 @@ class GameScene: SKScene {
                     DrawLetrasAberto()
                 case 3:
                     DrawRelogioAberto()
+                case 4:
+                    DrawEsteiraAberto()
                 case 5:
                     DrawRodasAberto()
                 default:
@@ -90,6 +94,8 @@ class GameScene: SKScene {
                     DrawLetrasFechado()
                 case 3:
                     DrawRelogioFechado()
+                case 4:
+                    DrawEsteiraFechado()
                 case 5:
                     DrawRodasFechado()
                 default:
@@ -142,8 +148,8 @@ class GameScene: SKScene {
                                 TouchedLabirinto(pos: pos)
                             case 2:
                                 TouchedLetras(pos: pos)
-                            case 3:
-                                TouchedRelogio(pos: pos)
+                            case 4:
+                                TouchedEsteira(pos: pos)
                             default:
                                 break
                         }
@@ -167,16 +173,17 @@ class GameScene: SKScene {
     
     //MARK: Update
     override func update(_ currentTime: TimeInterval) {
-        
         if navegação.ModuloAberto {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
+                case 4:
+                    updateEsteira()
                 case 5:
                     UpdateRodas()
                 default:
                     break
             }
         }
-        
+
     }
     
     func PosProporcional(pos : CGPoint) -> CGPoint{
@@ -209,6 +216,7 @@ struct ControleNavegação {
     var Labirinto : LabirintoControler = LabirintoControler()
     var Letras : LetrasControler = LetrasControler()
     var Relogio : RelogioController = RelogioController()
+    var Esteira : EsteiraController = EsteiraController()
     var Rodas : RodasController = RodasController()
     
     //vars manual
