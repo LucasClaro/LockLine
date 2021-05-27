@@ -10,8 +10,163 @@ import GameplayKit
 
 extension GameScene{
     
+    //MARK: Cubo minimizado
+    func DrawEsteiraFechado(){
+        
+        //MOLDURA
+        let moldura = SKSpriteNode(imageNamed: "moldura")
+        moldura.size = SizeProporcional(size: CGSize(width: 250.1, height: 250.1))
+        moldura.position = PosProporcional(pos: CGPoint(x: 0, y: -30))
+        moldura.zPosition = 12
+        moldura.name = "Cofre"
+        
+        self.addChild(moldura)
+        
+        //PLACAS
+        if navegação.Esteira.placasCores[0] == "azul" {
+            let placaEsquerda = SKSpriteNode(imageNamed: "azul")
+            placaEsquerda.size = SizeProporcional(size: CGSize(width: 85.5, height: 62))
+            placaEsquerda.position = PosProporcional(pos: CGPoint(x: -50, y: 39.5))
+            placaEsquerda.zPosition = 10
+            
+            self.addChild(placaEsquerda)
+            
+            if navegação.Esteira.placasCores[1] == "vermelho" {
+                let placaDireita = SKSpriteNode(imageNamed: "vermelho")
+                placaDireita.size = SizeProporcional(size: CGSize(width: 85.5, height: 62))
+                placaDireita.position = PosProporcional(pos: CGPoint(x: 51.5, y: 39.5))
+                placaDireita.zPosition = 10
+                
+                self.addChild(placaDireita)
+            } else{
+                let placaDireita = SKSpriteNode(imageNamed: "verde")
+                placaDireita.size = SizeProporcional(size: CGSize(width: 85.5, height: 62))
+                placaDireita.position = PosProporcional(pos: CGPoint(x: 51.5, y: 39.5))
+                placaDireita.zPosition = 10
+                
+                self.addChild(placaDireita)
+            }
+        } else if navegação.Esteira.placasCores[0] == "verde" {
+            let placaEsquerda = SKSpriteNode(imageNamed: "verde")
+            placaEsquerda.size = SizeProporcional(size: CGSize(width: 85.5, height: 62))
+            placaEsquerda.position = PosProporcional(pos: CGPoint(x: -50, y: 39.5))
+            placaEsquerda.zPosition = 10
+            
+            let placaDireita = SKSpriteNode(imageNamed: "vermelho")
+            placaDireita.size = SizeProporcional(size: CGSize(width: 85.5, height: 62))
+            placaDireita.position = PosProporcional(pos: CGPoint(x: 51.5, y: 39.5))
+            placaDireita.zPosition = 10
+            
+            self.addChild(placaEsquerda)
+            self.addChild(placaDireita)
+        }
+        
+        let simbolo = SKSpriteNode(imageNamed: navegação.Esteira.simbolo)
+        simbolo.size = SizeProporcional(size: CGSize(width: 32, height: 105))
+        simbolo.position = PosProporcional(pos: CGPoint(x: 0, y: 18))
+        simbolo.zPosition = 10
+        
+        self.addChild(simbolo)
+        
+        //LACUNAS
+        let lacuna1 = SKSpriteNode(imageNamed: "Simbolo\(navegação.Esteira.input[0])")
+        let lacuna2 = SKSpriteNode(imageNamed: "Simbolo\(navegação.Esteira.input[1])")
+        let lacuna3 = SKSpriteNode(imageNamed: "Simbolo\(navegação.Esteira.input[2])")
+        let lacuna4 = SKSpriteNode(imageNamed: "Simbolo\(navegação.Esteira.input[3])")
+        let lacuna5 = SKSpriteNode(imageNamed: "Simbolo\(navegação.Esteira.input[4])")
+        let lacuna6 = SKSpriteNode(imageNamed: "Simbolo\(navegação.Esteira.input[5])")
+        
+        lacuna1.size = SizeProporcional(size: CGSize(width: 20.1, height: 20.1))
+        lacuna1.position = PosProporcional(pos: CGPoint(x: -74.1, y: 32.2))
+        lacuna1.zPosition = 11
+        lacuna1.name = "L1"
+        
+        lacuna2.size = SizeProporcional(size: CGSize(width: 20.1, height: 20.1))
+        lacuna2.position = PosProporcional(pos: CGPoint(x: -49.8, y: 32.2))
+        lacuna2.zPosition = 11
+        lacuna2.name = "L2"
+        
+        lacuna3.size = SizeProporcional(size: CGSize(width: 20.1, height: 20.1))
+        lacuna3.position = PosProporcional(pos: CGPoint(x: -25.1, y: 32.2))
+        lacuna3.zPosition = 11
+        lacuna3.name = "L3"
+        
+        lacuna4.size = SizeProporcional(size: CGSize(width: 20.1, height: 20.1))
+        lacuna4.position = PosProporcional(pos: CGPoint(x: 27, y: 32.2))
+        lacuna4.zPosition = 11
+        lacuna4.name = "L4"
+        
+        lacuna5.size = SizeProporcional(size: CGSize(width: 20.1, height: 20.1))
+        lacuna5.position = PosProporcional(pos: CGPoint(x: 52, y: 32.2))
+        lacuna5.zPosition = 11
+        lacuna5.name = "L5"
+        
+        lacuna6.size = SizeProporcional(size: CGSize(width: 20.1, height: 20.1))
+        lacuna6.position = PosProporcional(pos: CGPoint(x: 76, y: 32.2))
+        lacuna6.zPosition = 11
+        lacuna6.name = "L6"
+        
+        self.addChild(lacuna1)
+        self.addChild(lacuna2)
+        self.addChild(lacuna3)
+        self.addChild(lacuna4)
+        self.addChild(lacuna5)
+        self.addChild(lacuna6)
+        
+        //CUBOS
+        cubopapel.size = CGSize(width: 25, height: 29.5)
+        cubopapel.position = PosProporcional(pos:CGPoint(x: -99, y: -100.5))
+        cubopapel.zPosition = 10
+        
+        cuboancora.size = CGSize(width: 25, height: 29.5)
+        cuboancora.position = PosProporcional(pos:CGPoint(x: -62, y: -100.5))
+        cuboancora.zPosition = 10
+        
+        cuboarvore.size = CGSize(width: 25, height: 29.5)
+        cuboarvore.position = PosProporcional(pos:CGPoint(x: -25, y: -100.5))
+        cuboarvore.zPosition = 10
+        
+        cuboaviao.size = CGSize(width: 25, height: 29.5)
+        cuboaviao.position = PosProporcional(pos:CGPoint(x: 11, y: -100.5))
+        cuboaviao.zPosition = 10
+        
+        cubolanterna.size = CGSize(width: 25, height: 29.5)
+        cubolanterna.position = PosProporcional(pos:CGPoint(x: 48, y: -100.5))
+        cubolanterna.zPosition = 10
+        
+        cubonuvem.size = CGSize(width: 25, height: 29.5)
+        cubonuvem.position = PosProporcional(pos:CGPoint(x: 85, y: -100.5))
+        cubonuvem.zPosition = 10
+        
+        self.addChild(cubopapel)
+        self.addChild(cuboancora)
+        self.addChild(cuboarvore)
+        self.addChild(cuboaviao)
+        self.addChild(cubolanterna)
+        self.addChild(cubonuvem)
+        
+        if navegação.Esteira.input == navegação.Esteira.lacunasCertas{
+            simbolo.texture = SKTexture(imageNamed: "\(navegação.Esteira.simbolo)certo")
+        }
+    }
+    
+    
     //MARK: Cubo aproximado
     func DrawEsteiraAberto() {
+        status()
+        
+        //LATERAIS
+        let lateralEsquerda = SKSpriteNode(imageNamed: "lateral")
+        lateralEsquerda.size = SizeProporcional(size: CGSize(width: 41.2, height: 70))
+        lateralEsquerda.position = PosProporcional(pos: CGPoint(x: -179.5, y: -160))
+        lateralEsquerda.zPosition = 12
+        self.addChild(lateralEsquerda)
+        
+        let lateralDireita = SKSpriteNode(imageNamed: "lateral")
+        lateralDireita.size = SizeProporcional(size: CGSize(width: 38.8, height: 60))
+        lateralDireita.position = PosProporcional(pos: CGPoint(x: 180.5, y: -160))
+        lateralDireita.zPosition = 12
+        self.addChild(lateralDireita)
         
         //PLACAS
         if navegação.Esteira.placasCores[0] == "azul" {
@@ -60,37 +215,54 @@ extension GameScene{
         self.addChild(simbolo)
         
         //CUBOS
-        cuboancora.size = CGSize(width: 39, height: 45)
-        cuboancora.position = PosProporcional(pos:CGPoint(x: -100, y: -161))
+        cubopincel.size = CGSize(width: 40, height: 46)
+        cubopincel.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[0], y: -161))
+        cubopincel.zPosition = 10
+        cubopincel.name = "Pincel"
+        
+        cubopapel.size = CGSize(width: 40, height: 46)
+        cubopapel.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[1], y: -161))
+        cubopapel.zPosition = 10
+        cubopapel.name = "Papel"
+        
+        cuboancora.size = CGSize(width: 40, height: 46)
+        cuboancora.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[2], y: -161))
         cuboancora.zPosition = 10
         cuboancora.name = "Ancora"
         
-        cuboarvore.size = CGSize(width: 39, height: 45)
-        cuboarvore.position = PosProporcional(pos:CGPoint(x: -40, y: -161))
+        cuboarvore.size = CGSize(width: 40, height: 46)
+        cuboarvore.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[3], y: -161))
         cuboarvore.zPosition = 10
         cuboarvore.name = "Arvore"
         
-        cuboaviao.size = CGSize(width: 39, height: 45)
-        cuboaviao.position = PosProporcional(pos:CGPoint(x: 18, y: -161))
+        cuboaviao.size = CGSize(width: 40, height: 46)
+        cuboaviao.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[4], y: -161))
         cuboaviao.zPosition = 10
         cuboaviao.name = "Aviao"
         
-        cubolanterna.size = CGSize(width: 39, height: 45)
-        cubolanterna.position = PosProporcional(pos:CGPoint(x: 75, y: -161))
+        cubolanterna.size = CGSize(width: 40, height: 46)
+        cubolanterna.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[5], y: -161))
         cubolanterna.zPosition = 10
         cubolanterna.name = "Lanterna"
         
-        cubonuvem.size = CGSize(width: 39, height: 45)
-        cubonuvem.position = PosProporcional(pos:CGPoint(x: 135, y: -161))
+        cubonuvem.size = CGSize(width: 40, height: 46)
+        cubonuvem.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[6], y: -161))
         cubonuvem.zPosition = 10
         cubonuvem.name = "Nuvem"
         
+        cuboponteiro.size = CGSize(width: 40, height: 46)
+        cuboponteiro.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[7], y: -161))
+        cuboponteiro.zPosition = 10
+        cuboponteiro.name = "Ponteiro"
+        
+        self.addChild(cubopincel)
+        self.addChild(cubopapel)
         self.addChild(cuboancora)
         self.addChild(cuboarvore)
         self.addChild(cuboaviao)
         self.addChild(cubolanterna)
         self.addChild(cubonuvem)
-        
+        self.addChild(cuboponteiro)
         
         //LACUNAS
         let lacuna1 = SKSpriteNode(imageNamed: "Simbolo\(navegação.Esteira.input[0])")
@@ -99,6 +271,7 @@ extension GameScene{
         let lacuna4 = SKSpriteNode(imageNamed: "Simbolo\(navegação.Esteira.input[3])")
         let lacuna5 = SKSpriteNode(imageNamed: "Simbolo\(navegação.Esteira.input[4])")
         let lacuna6 = SKSpriteNode(imageNamed: "Simbolo\(navegação.Esteira.input[5])")
+        
         lacuna1.size = SizeProporcional(size: CGSize(width: 31, height: 31))
         lacuna1.position = PosProporcional(pos: CGPoint(x: -118.7, y: 54))
         lacuna1.zPosition = 11
@@ -135,6 +308,10 @@ extension GameScene{
         self.addChild(lacuna4)
         self.addChild(lacuna5)
         self.addChild(lacuna6)
+        
+        if navegação.Esteira.input == navegação.Esteira.lacunasCertas{
+            simbolo.texture = SKTexture(imageNamed: "\(navegação.Esteira.simbolo)certo")
+        }
     }
     
     func TouchedEsteira(pos : CGPoint){
@@ -142,36 +319,28 @@ extension GameScene{
             switch atPoint(pos).name{
             //Toque em cubos
                 case "Ancora":
-                    cuboancora.isHidden = true
-                    verificaPos(simb: 1)
+                    verificaPos(simb: 1, cubo: cuboancora)
                     atualizarTela()
                 case "Arvore":
-                    cuboarvore.isHidden = true
-                    verificaPos(simb: 2)
+                    verificaPos(simb: 2, cubo: cuboarvore)
                     atualizarTela()
                 case "Aviao":
-                    cuboaviao.isHidden = true
-                    verificaPos(simb: 3)
+                    verificaPos(simb: 3, cubo: cuboaviao)
                     atualizarTela()
                 case "Lanterna":
-                    cubolanterna.isHidden = true
-                    verificaPos(simb: 4)
+                    verificaPos(simb: 4, cubo: cubolanterna)
                     atualizarTela()
                 case "Nuvem":
-                    cubonuvem.isHidden = true
-                    verificaPos(simb: 5)
+                    verificaPos(simb: 5, cubo: cubonuvem)
                     atualizarTela()
                 case "Papel":
-                    cubopapel.isHidden = true
-                    verificaPos(simb: 6)
+                    verificaPos(simb: 6, cubo: cubopapel)
                     atualizarTela()
                 case "Pincel":
-                    cubopincel.isHidden = true
-                    verificaPos(simb: 7)
+                    verificaPos(simb: 7, cubo: cubopincel)
                     atualizarTela()
                 case "Ponteiro":
-                    cuboponteiro.isHidden = true
-                    verificaPos(simb: 8)
+                    verificaPos(simb: 8, cubo: cuboponteiro)
                     atualizarTela()
             //Toque em lacunas
                 case "L1":
@@ -204,13 +373,36 @@ extension GameScene{
         }
     }
     
-    func verificaPos(simb: Int){
+    //MARK: Adicionar imagem do cubo à placa
+    func verificaPos(simb: Int, cubo: SKSpriteNode){
         for n in 0...5{
             if (navegação.Esteira.input[n] == 0){
                 navegação.Esteira.input[n] = simb
+                cubo.isHidden = true
                 break
             }
         }
+    }
+    
+    //MARK: Verificar se o puzzle está correto
+    func status(){
+        if navegação.Esteira.input == navegação.Esteira.lacunasCertas{
+            navegação.ModulosCompletos[navegação.ModuloOlhando] = true
+        }
+    }
+    
+    //MARK: Atualizar posição dos cubos
+    func updateEsteira(){
+        //min: -240  max: 227
+        for n in 1...8{
+            navegação.Esteira.posCubos[n-1] += 2
+            cubos[n]?.position = PosProporcional(pos: CGPoint(x: navegação.Esteira.posCubos[n-1], y: -161))
+            
+            if (navegação.Esteira.posCubos[n-1] == 227 || navegação.Esteira.posCubos[n-1] > 227){
+                navegação.Esteira.posCubos[n-1] = -240
+            }
+        }
+        atualizarTela()
     }
 }
 
@@ -228,8 +420,8 @@ fileprivate let cubos: [Int: SKSpriteNode] = [1: cuboancora, 2: cuboarvore, 3: c
 
 //MARK: struct EsteiraController
 struct EsteiraController {
-    var ordemEsteira: [Int] = []
     var placasCores: [String] = []
+    var posCubos = [-215,-157,-100,-40,18,76,135,194]
     var simbolo: String = ""
     var lacunasCertas: [Int] = []
     var input = [0,0,0,0,0,0]
