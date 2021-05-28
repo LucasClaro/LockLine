@@ -148,8 +148,12 @@ class GameScene: SKScene {
                                 TouchedLabirinto(pos: pos)
                             case 2:
                                 TouchedLetras(pos: pos)
+                            case 3:
+                                TouchedRelogio(pos: pos)
                             case 4:
                                 TouchedEsteira(pos: pos)
+                            case 5:
+                                TouchedRodas(pos: pos)
                             default:
                                 break
                         }
