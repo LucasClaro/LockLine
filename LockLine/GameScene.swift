@@ -7,23 +7,36 @@
 
 import SpriteKit
 import GameplayKit
+import Combine
 
 class GameScene: SKScene {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    let publisher = Timer.publish(every: 1, on: .current, in: .common)
+    
+    private var tempo : Int = 300
     private var tamanhoCofre : CGSize = CGSize(width: 400, height: 496)
     private var tamanhoCofreFechado : CGSize = CGSize(width: 252, height: 310)
+    private var cancelable : Combine.Cancellable?
     
     var navegação = ControleNavegação()
     
     override func didMove(to view: SKView) {
+        
+        cancelable = publisher.autoconnect().sink { _ in
+            self.diminuirTempo()
+        }
+        
         atualizarTela()
     }
     
     //MARK: atualizarTela
     func atualizarTela() {
         self.removeAllChildren()
+        
+        let labelTempo = SKLabelNode(text: String(tempo))
+        labelTempo.position = CGPoint(x: 0, y: 220)
+        labelTempo.fontColor = UIColor.white
+        labelTempo.zPosition = 10
         
         let quadrado = SKSpriteNode(color: UIColor.orange, size: tamanhoCofreFechado)
         quadrado.position = CGPoint(x: 0, y: 0)
@@ -61,16 +74,12 @@ class GameScene: SKScene {
             setaEsquerda.position = CGPoint(x: -155, y: 0)
             setaEsquerda.name = "SetaEsquerda"
             
-            let label = SKLabelNode(text: String(navegação.ModulosEmJogo[navegação.ModuloOlhando]))
-            label.fontSize = 62
-            label.position = CGPoint(x: 0, y: 0)
-            
             self.addChild(setaDireita)
             self.addChild(setaEsquerda)
-            self.addChild(label)
         }
         
         self.addChild(quadrado)
+        self.addChild(labelTempo)
         
         if navegação.ModuloAberto {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
@@ -177,6 +186,9 @@ class GameScene: SKScene {
     
     //MARK: Update
     override func update(_ currentTime: TimeInterval) {
+        
+        
+        
         if navegação.ModuloAberto {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                 case 4:
@@ -187,15 +199,20 @@ class GameScene: SKScene {
                     break
             }
         }
-
     }
     
+    //MARK: Funcs adicionais
     func PosProporcional(pos : CGPoint) -> CGPoint{
         return CGPoint(x: tamanhoCofre.width * pos.x/400, y: tamanhoCofre.height * pos.y/496)
     }
     
     func SizeProporcional(size : CGSize) -> CGSize {
         return CGSize(width: tamanhoCofre.width * size.width/400, height: tamanhoCofre.height * size.height/496)
+    }
+    
+    func diminuirTempo() {
+        tempo -= 1
+        atualizarTela()
     }
 }
 
@@ -227,7 +244,7 @@ struct ControleNavegação {
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [5]
+    var modulos = [3]
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {

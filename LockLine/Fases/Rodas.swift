@@ -88,6 +88,13 @@ extension GameScene {
         apertado4.zPosition = 9
         apertado4.name = "Cofre"
         
+        if navegação.ModulosCompletos[navegação.ModuloOlhando] {
+            apertado1.texture = SKTexture(imageNamed: "ApertadoVerde")
+            apertado3.texture = SKTexture(imageNamed: "ApertadoVerde")
+            apertado4.texture = SKTexture(imageNamed: "ApertadoVerde")
+            apertado2.texture = SKTexture(imageNamed: "ApertadoVerde")
+        }
+        
         self.addChild(roda1)
         self.addChild(rodaFuro1)
         if navegação.Rodas.input.contains(1) {
@@ -205,6 +212,13 @@ extension GameScene {
         apertado4.position = PosProporcional(pos: CGPoint(x: 90, y: -132))
         apertado4.size = SizeProporcional(size: CGSize(width: 140, height: 140))
         apertado4.zPosition = 9
+        
+        if navegação.ModulosCompletos[navegação.ModuloOlhando] {
+            apertado1.texture = SKTexture(imageNamed: "ApertadoVerde")
+            apertado3.texture = SKTexture(imageNamed: "ApertadoVerde")
+            apertado4.texture = SKTexture(imageNamed: "ApertadoVerde")
+            apertado2.texture = SKTexture(imageNamed: "ApertadoVerde")
+        }
         
         self.addChild(roda1)
         self.addChild(rodaFuro1)

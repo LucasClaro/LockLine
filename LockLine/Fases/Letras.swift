@@ -52,6 +52,9 @@ extension GameScene {
         simboloCofre.zRotation = -CGFloat(navegação.Letras.simboloCofre-1) * CGFloat.pi/2
         simboloCofre.zPosition = 10
         simboloCofre.name = "Cofre"
+        if navegação.ModulosCompletos[navegação.ModuloOlhando] {
+            simboloCofre.texture = SKTexture(imageNamed: "SimboloVerde")
+        }
         
 
         let simboloParede = SKSpriteNode(imageNamed: "Quadro\(navegação.Letras.simboloParede)")
@@ -140,6 +143,9 @@ extension GameScene {
         simboloCofre.size = SizeProporcional(size: CGSize(width: 60, height: 60))
         simboloCofre.zRotation = -CGFloat(navegação.Letras.simboloCofre-1) * CGFloat.pi/2
         simboloCofre.zPosition = 10
+        if navegação.ModulosCompletos[navegação.ModuloOlhando] {
+            simboloCofre.texture = SKTexture(imageNamed: "simboloVerde")
+        }
         
         let Letra1 = SKLabelNode(text: String(navegação.Letras.letras[navegação.Letras.input[0]]))
         Letra1.fontSize = 36

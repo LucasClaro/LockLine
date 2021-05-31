@@ -74,6 +74,9 @@ extension GameScene {
         ponteiroSegundos.zPosition = 10
         ponteiroSegundos.zRotation = -CGFloat(navegação.Relogio.ponteiroSegundo) * CGFloat.pi/2 - CGFloat.pi/4
         ponteiroSegundos.name = "Cofre"
+        if navegação.ModulosCompletos[navegação.ModuloOlhando] {
+            ponteiroSegundos.texture = SKTexture(imageNamed: "ponteiroVerde")
+        }
         
         addChild(ponteiroHoras)
         addChild(ponteiroMinutos)
@@ -162,6 +165,10 @@ extension GameScene {
         ponteiroSegundos.zPosition = 10
         ponteiroSegundos.zRotation = -CGFloat(navegação.Relogio.ponteiroSegundo) * CGFloat.pi/2 - CGFloat.pi/4
         
+        if navegação.ModulosCompletos[navegação.ModuloOlhando] {
+            ponteiroSegundos.texture = SKTexture(imageNamed: "ponteiroVerde")
+        }
+        
         addChild(ponteiroHoras)
         addChild(ponteiroMinutos)
         addChild(ponteiroSegundos)
@@ -197,7 +204,7 @@ extension GameScene {
         if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
             switch atPoint(pos).name {
                 case "Botao":
-                    if navegação.Relogio.senha.0 == mod(navegação.Relogio.ponteiroHoras, 12) && navegação.Relogio.senha.1 == mod(navegação.Relogio.ponterioMinutos, 60){
+                    if mod(navegação.Relogio.senha.0, 12) == mod(navegação.Relogio.ponteiroHoras, 12) && mod(navegação.Relogio.senha.1, 60) == mod(navegação.Relogio.ponterioMinutos, 60){
                         navegação.ModulosCompletos[navegação.ModuloOlhando] = true
                     }
                     else {
