@@ -9,10 +9,63 @@ import SpriteKit
 
 extension GameScene {
     // MARK: Draw
-    func DrawLabirinto() {
+    
+    func DrawLabirintoFechado(){
         let seta = SKTexture(imageNamed: "Seta")
         
-
+        let nodeFinal = SKSpriteNode(color: (navegação.Labirinto.terminado ? UIColor.green : UIColor.black), size: SizeProporcional(size: CGSize(width: 23, height: 23)))
+        nodeFinal.position = PosProporcional(pos: CGPoint(x: 82, y: 47))
+        nodeFinal.zPosition = CGFloat(15)
+        nodeFinal.zRotation = CGFloat(Double.pi/4)
+        nodeFinal.name = "Cofre"
+        
+        let nodeStart = SKShapeNode(circleOfRadius: 12)
+        nodeStart.fillColor = UIColor(red: 0.57, green: 1, blue: 0.56, alpha: 1)
+        nodeStart.strokeColor = .black
+        nodeStart.position = PosProporcional(pos: returnPointFechado(i: navegação.Labirinto.nodeStart.i, j: navegação.Labirinto.nodeStart.j))
+        nodeStart.zPosition = CGFloat(15)
+        nodeStart.name = "Cofre"
+        
+        
+        let arrowUp = SKSpriteNode(texture: seta, size: SizeProporcional(size: CGSize(width: 37.5, height: 18.5)))
+        arrowUp.zRotation = CGFloat(Double.pi)
+        arrowUp.position = PosProporcional(pos: CGPoint(x: 0, y: 60))
+        arrowUp.zPosition = CGFloat(10)
+        arrowUp.name = "Cofre"
+        
+        let arrowDown = SKSpriteNode(texture: seta, size: SizeProporcional(size: CGSize(width: 37.5, height: 18.5)))
+        arrowDown.zRotation = 0
+        arrowDown.zPosition = CGFloat(10)
+        arrowDown.position = PosProporcional(pos: CGPoint(x: 0, y: -128))
+        arrowDown.name = "Cofre"
+        
+        let arrowLeft = SKSpriteNode(texture: seta, size: SizeProporcional(size: CGSize(width: 37.5, height: 18.5)))
+        arrowLeft.zRotation = CGFloat((3 * Double.pi)/2)
+        arrowLeft.zPosition = CGFloat(10)
+        arrowLeft.position = PosProporcional(pos: CGPoint(x: -95, y: -35))
+        arrowLeft.name = "Cofre"
+        
+        let arrowRight = SKSpriteNode(texture: seta, size: SizeProporcional(size: CGSize(width: 37.5, height: 18.5)))
+        arrowRight.zRotation = CGFloat(Double.pi/2)
+        arrowRight.zPosition = CGFloat(10)
+        arrowRight.position = PosProporcional(pos: CGPoint(x: 96, y: -35))
+        arrowRight.name = "Cofre"
+        
+        if navegação.Labirinto.historico.count > 0 {
+            drawLineFechado()
+        }
+        
+        self.addChild(nodeStart)
+        self.addChild(nodeFinal)
+        self.addChild(arrowLeft)
+        self.addChild(arrowRight)
+        self.addChild(arrowDown)
+        self.addChild(arrowUp)
+    }
+    
+    func DrawLabirintoAberto() {
+        let seta = SKTexture(imageNamed: "Seta")
+        
         let nodeFinal = SKSpriteNode(color: (navegação.Labirinto.terminado ? UIColor.green : UIColor.black), size: SizeProporcional(size: CGSize(width: 37, height: 37)))
         nodeFinal.position = PosProporcional(pos: CGPoint(x: 130, y: 77))
         nodeFinal.zPosition = CGFloat(15)
@@ -20,12 +73,11 @@ extension GameScene {
         nodeFinal.name = "nodeFinal"
         
         let nodeStart = SKShapeNode(circleOfRadius: 18.5)
-        nodeStart.fillColor = UIColor(red: 1, green: 0.94, blue: 0.84, alpha: 1)
+        nodeStart.fillColor = UIColor(red: 0.57, green: 1, blue: 0.56, alpha: 1)
         nodeStart.strokeColor = .black
         nodeStart.position = PosProporcional(pos: returnPoint(i: navegação.Labirinto.nodeStart.i, j: navegação.Labirinto.nodeStart.j))
         nodeStart.zPosition = CGFloat(15)
         nodeStart.name = "nodeStart"
-        
         
         let arrowUp = SKSpriteNode(texture: seta, size: SizeProporcional(size: CGSize(width: 75, height: 37)))
         arrowUp.zRotation = CGFloat(Double.pi)
@@ -188,7 +240,6 @@ extension GameScene {
         
     }
     
-    
     //MARK: DrawLine
     fileprivate func drawLine(){
         for i in 1..<navegação.Labirinto.historico.count {
@@ -198,15 +249,32 @@ extension GameScene {
             path.addLine(to: returnPoint(i: navegação.Labirinto.historico[i].i, j: navegação.Labirinto.historico[i].j))
             line.zPosition = 15
             line.path = path
-            line.strokeColor = (navegação.Labirinto.terminado ? UIColor.red : UIColor.black)
+            line.strokeColor = (navegação.Labirinto.terminado ? UIColor(red: 0.57, green: 1, blue: 0.56, alpha: 1) : UIColor.black)
             line.lineWidth = 4
             self.addChild(line)
         }
     }
     
+    fileprivate func drawLineFechado(){
+        for i in 1..<navegação.Labirinto.historico.count {
+            let line = SKShapeNode()
+            let path = CGMutablePath()
+            path.move(to: returnPointFechado(i: navegação.Labirinto.historico[i-1].i, j: navegação.Labirinto.historico[i - 1].j))
+            path.addLine(to: returnPointFechado(i: navegação.Labirinto.historico[i].i, j: navegação.Labirinto.historico[i].j))
+            line.zPosition = 15
+            line.path = path
+            line.strokeColor = (navegação.Labirinto.terminado ? UIColor(red: 0.57, green: 1, blue: 0.56, alpha: 1) : UIColor.black)
+            line.lineWidth = 2
+            self.addChild(line)
+        }
+    }
     
     fileprivate func returnPoint(i: Int, j: Int) -> CGPoint {
         return CGPoint(x: dictX[j]! + 1, y: dictY[i]!)
+    }
+    
+    fileprivate func returnPointFechado(i: Int, j: Int) -> CGPoint {
+        return CGPoint(x: dictXFec[j]! + 1, y: dictYFec[i]!)
     }
     
 }
@@ -272,5 +340,7 @@ struct LabirintoControler {
 }
 
 //MARK: Vars
-fileprivate var dictX: [Int:CGFloat] = [0: -131, 1:-44, 2: 44, 3:131]
-fileprivate var dictY: [Int:CGFloat] = [0: 77, 1:-10, 2: -98, 3:-181]
+fileprivate var dictX: [Int:CGFloat] = [0: -130, 1: -44, 2: 42, 3:129]
+fileprivate var dictY: [Int:CGFloat] = [0: 76, 1: -10, 2: -97, 3: -183]
+fileprivate var dictXFec: [Int: CGFloat] = [0: -82, 1: -28, 2: 27, 3: 81]
+fileprivate var dictYFec: [Int: CGFloat] = [0: 47.5, 1: -6.5, 2: -60.5, 3: -114.5]
