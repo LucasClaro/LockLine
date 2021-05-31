@@ -84,7 +84,7 @@ class GameScene: SKScene {
         if navegação.ModuloAberto {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                 case 1:
-                    DrawLabirinto()
+                    DrawLabirintoAberto()
                 case 2:
                     DrawLetrasAberto()
                 case 3:
@@ -99,6 +99,8 @@ class GameScene: SKScene {
         }
         else {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
+                case 1:
+                    DrawLabirintoFechado()
                 case 2:
                     DrawLetrasFechado()
                 case 3:
