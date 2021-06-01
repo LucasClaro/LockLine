@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		977FD89C265C1C73009FCC76 /* Esteira.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977FD89B265C1C73009FCC76 /* Esteira.swift */; };
+		B618C1562666C0430046986A /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B618C1552666C0430046986A /* Menu.swift */; };
 		B62C380A265833C900C08E51 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */; };
 		B62C3816265C387700C08E51 /* Relogio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3815265C387700C08E51 /* Relogio.swift */; };
 		B62C3819265D92BA00C08E51 /* Rodas.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3818265D92BA00C08E51 /* Rodas.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		977FD89B265C1C73009FCC76 /* Esteira.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Esteira.swift; sourceTree = "<group>"; };
+		B618C1552666C0430046986A /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-VariableFont_wght.ttf"; path = "Tipografia/Oswald-VariableFont_wght.ttf"; sourceTree = SOURCE_ROOT; };
 		B62C3815265C387700C08E51 /* Relogio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relogio.swift; sourceTree = "<group>"; };
 		B62C3818265D92BA00C08E51 /* Rodas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rodas.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				B6F165F22656D9F9005F9C03 /* Letras.swift */,
 				B62C3815265C387700C08E51 /* Relogio.swift */,
 				B62C3818265D92BA00C08E51 /* Rodas.swift */,
+				B618C1552666C0430046986A /* Menu.swift */,
 			);
 			path = Fases;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				B6F165EE265591FE005F9C03 /* LabirintoScene.swift in Sources */,
 				B62C3816265C387700C08E51 /* Relogio.swift in Sources */,
 				B62C3819265D92BA00C08E51 /* Rodas.swift in Sources */,
+				B618C1562666C0430046986A /* Menu.swift in Sources */,
 				B6F165DE26544272005F9C03 /* GameViewController.swift in Sources */,
 				B6F165D626544272005F9C03 /* AppDelegate.swift in Sources */,
 			);
