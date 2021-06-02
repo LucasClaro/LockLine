@@ -90,28 +90,38 @@ extension GameScene {
     //MARK: Touch
     func TouchedInterruptor(pos : CGPoint) {
         
-        if !navegação.Interruptor.terminado {
+        if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
             switch atPoint(pos).name {
                 case "1":
                     navegação.Interruptor.switchTela[0] = !navegação.Interruptor.switchTela[0]
+                    attLuzes(index: 0, ligado: navegação.Interruptor.switchTela[0])
                     break
                 case "2":
                     navegação.Interruptor.switchTela[1] = !navegação.Interruptor.switchTela[1]
+                    attLuzes(index: 1, ligado: navegação.Interruptor.switchTela[1])
                     break
                 case "3":
                     navegação.Interruptor.switchTela[2] = !navegação.Interruptor.switchTela[2]
+                    attLuzes(index: 2, ligado: navegação.Interruptor.switchTela[2])
                     break
                 case "4":
                     navegação.Interruptor.switchTela[3] = !navegação.Interruptor.switchTela[3]
+                    attLuzes(index: 3, ligado: navegação.Interruptor.switchTela[3])
                     break
                 case "5":
                     navegação.Interruptor.switchTela[4] = !navegação.Interruptor.switchTela[4]
+                    attLuzes(index: 4, ligado: navegação.Interruptor.switchTela[4])
                     break
                 case "6":
                     navegação.Interruptor.switchTela[5] = !navegação.Interruptor.switchTela[5]
+                    attLuzes(index: 5, ligado: navegação.Interruptor.switchTela[5])
                     break
                 default:
                     break
+            }
+            
+            if navegação.Interruptor.senha == navegação.Interruptor.switchTela {
+                navegação.ModulosCompletos[navegação.ModuloOlhando] = true
             }
             
             
@@ -136,7 +146,7 @@ extension GameScene {
             }
         }
         else {
-            if !navegação.Interruptor.terminado {
+            if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
                 if navegação.Interruptor.lampsTela[index] {
                     if navegação.Interruptor.lamps[index] == 1{
                         return luzesImgs["red"]!
@@ -155,6 +165,19 @@ extension GameScene {
         }
     }
     
+    fileprivate func attLuzes(index : Int, ligado: Bool){
+        for lamp in 0...5 {
+            var controle = false
+            
+            for swit in 0...5{
+                if navegação.Interruptor.lampsSwitch[swit][lamp] && navegação.Interruptor.switchTela[swit]{
+                    controle = true
+                }
+            }
+            navegação.Interruptor.lampsTela[lamp] = controle
+        }
+    }
+    
     
 }
 //MARK: Vars
@@ -162,39 +185,42 @@ fileprivate let luzesImgs = ["green": SKTexture(imageNamed: "lightGreen"), "off"
 fileprivate let switchsImgs = ["off": SKTexture(imageNamed: "InterOff"), "OffTex": SKTexture(imageNamed: "InterOffTex"), "OnTex": SKTexture(imageNamed: "InterOnTex"), "on": SKTexture(imageNamed: "InterOn")]
 
 
-fileprivate func sortlamps() -> [Int]{
-    var aux = [Int]()
+fileprivate func sortlamps() -> [Bool]{
+    var aux = [Bool]()
     
     for i in 0...5 {
-        let sorteado = [0,1].randomElement()!
-        if (sorteado != 0) {
-            aux.append(i)
-        }
+        let sorteado = [false,true].randomElement()!
+        aux.append(sorteado)
     }
     
     return aux
 }
 
-fileprivate func geradorSenha(lamps: [Int], corSwitch: [Bool], lampsSwitch: [[Int]]) -> [Bool]{
+fileprivate func geradorSenha(lamps: [Int], corSwitch: [Bool], lampsSwitch: [[Bool]]) -> [Bool]{
     var aux = [Bool]()
     
     for i in 0...5 {
         var countRed = 0
         var countYellow = 0
     
-        for lamp in lampsSwitch[i] {
-            if lamp == 1 {
-                countRed += 1
-            }
-            else {
-                countYellow += 1
+        for j in 0...5 {
+            if lampsSwitch[i][j] == true {
+                if lamps[j] == 1 {
+                    countRed += 1
+                }
+                else {
+                    countYellow += 1
+                    
+                }
             }
         }
     
-        if countRed + countYellow > 1 && countRed > 0 && countYellow > 0 && countRed % 2 == 0 && corSwitch[i]{
+        if countRed + countYellow >= 3 && countRed > 0 && countYellow > 0 && countRed % 2 == 0 && corSwitch[i]{
             aux.append(true)
         }
-        else if (countRed + countYellow > 1 && countRed > 0 && countYellow > 0) || (countRed + countYellow > 1 && corSwitch[i]) || (corSwitch[i] && countRed > 0 && countYellow > 0){
+        else if (countRed + countYellow >= 3 && (countRed > 0 && countYellow > 0) && !corSwitch[i]) ||
+                    (countRed + countYellow >= 3 && corSwitch[i] && (countRed == 0 || countYellow == 0)) ||
+                    (corSwitch[i] && countRed > 0 && countYellow > 0 && countRed + countYellow < 3){
             aux.append(true)
         }
         else{
@@ -202,6 +228,7 @@ fileprivate func geradorSenha(lamps: [Int], corSwitch: [Bool], lampsSwitch: [[In
         }
         
     }
+
     
     return aux
 }
@@ -213,27 +240,46 @@ struct InterruptorController {
     var lamps:[Int]
     var senha:[Bool]
     var corSwitch:[Bool]
-    var lampsSwitch:[[Int]]
+    var lampsSwitch:[[Bool]]
     var switchTela:[Bool]
     var lampsTela:[Bool]
     init() {
         lamps = [Int]()
         senha = [Bool]()
         corSwitch = [Bool]()
-        lampsSwitch = [[Int]]()
+        lampsSwitch = [[Bool]]()
         switchTela = [Bool]()
         lampsTela = [Bool]()
         
-        for _ in 0...5 {
-            lamps.append([0,0,0,1].randomElement()!)
-            corSwitch.append([false, true].randomElement()!)
-            lampsSwitch.append(sortlamps())
-            switchTela.append(false)
-            lampsTela.append(false)
-        }
+        var countSenha = 0
+        var senhaGerada = [false, false, false, false, false, false]
+        repeat {
+            lamps.removeAll()
+            corSwitch.removeAll()
+            lampsSwitch.removeAll()
+            switchTela.removeAll()
+            lampsTela.removeAll()
+            
+            countSenha = 0
+            for _ in 0...5 {
+                lamps.append([0,0,0,1].randomElement()!)
+                corSwitch.append([false, true].randomElement()!)
+                lampsSwitch.append(sortlamps())
+                switchTela.append(false)
+                lampsTela.append(false)
+            }
+            
+            senhaGerada = geradorSenha(lamps: lamps, corSwitch: corSwitch, lampsSwitch: lampsSwitch)
+            print(senhaGerada)
+            
+            for cell in senhaGerada {
+                if cell {
+                    countSenha += 1
+                }
+            }
+        } while countSenha < 2
         
-        senha = geradorSenha(lamps: lamps, corSwitch: corSwitch, lampsSwitch: lampsSwitch)
-        print(senha)
+        senha = senhaGerada
     }
     
 }
