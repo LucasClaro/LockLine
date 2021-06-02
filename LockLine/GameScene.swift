@@ -120,7 +120,6 @@ class GameScene: SKScene {
             default:
                 break
         }
-        
     }
     
     
@@ -187,6 +186,7 @@ class GameScene: SKScene {
             
         }
     }
+        
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -202,9 +202,6 @@ class GameScene: SKScene {
     
     //MARK: Update
     override func update(_ currentTime: TimeInterval) {
-        
-        
-        
         if navegação.ModuloAberto {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                 case 4:
@@ -232,7 +229,8 @@ class GameScene: SKScene {
             atualizarTela()
         }
     }
-}
+    
+}//Fim da classe
 
 //MARK: struct ControleNavegação
 struct ControleNavegação {
@@ -257,12 +255,13 @@ struct ControleNavegação {
     var Relogio : RelogioController = RelogioController()
     var Esteira : EsteiraController = EsteiraController()
     var Rodas : RodasController = RodasController()
+    var Interruptor: InterruptorController = InterruptorController()
     
     //vars manual
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [3]
+    var modulos = [3, 5 , 7]
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
