@@ -79,11 +79,83 @@ extension GameScene {
         self.addChild(l4)
         self.addChild(l5)
         self.addChild(l6)
-
     }
     
     func DrawInterruptorFechado() {
+        let s1 = SKSpriteNode(texture: getImg(index: 0, isSwicth: true), size: SizeProporcional(size: CGSize(width: 24, height: 45)))
+        s1.position = PosProporcional(pos: CGPoint(x: -105 + 20, y: -90))
+        s1.zPosition = CGFloat(15)
+        s1.name = "Cofre"
         
+        let s2 = SKSpriteNode(texture: getImg(index: 1, isSwicth: true), size: SizeProporcional(size: CGSize(width: 24, height: 45)))
+        s2.position = PosProporcional(pos: CGPoint(x: -71 + 20, y: -90))
+        s2.zPosition = CGFloat(15)
+        s2.name = "Cofre"
+        
+        let s3 = SKSpriteNode(texture: getImg(index: 2, isSwicth: true), size: SizeProporcional(size: CGSize(width: 24, height: 45)))
+        s3.position = PosProporcional(pos: CGPoint(x: -37 + 20, y: -90))
+        s3.zPosition = CGFloat(15)
+        s3.name = "Cofre"
+        
+        let s4 = SKSpriteNode(texture: getImg(index: 3, isSwicth: true), size: SizeProporcional(size: CGSize(width: 24, height: 45)))
+        s4.position = PosProporcional(pos: CGPoint(x: 37 - 20, y: -90))
+        s4.zPosition = CGFloat(15)
+        s4.name = "Cofre"
+        
+        let s5 = SKSpriteNode(texture: getImg(index: 4, isSwicth: true), size: SizeProporcional(size: CGSize(width: 24, height: 45)))
+        s5.position = PosProporcional(pos: CGPoint(x: 71 - 20, y: -90))
+        s5.zPosition = CGFloat(15)
+        s5.name = "Cofre"
+        
+        let s6 = SKSpriteNode(texture: getImg(index: 5, isSwicth: true), size: SizeProporcional(size: CGSize(width: 24, height: 45)))
+        s6.position = PosProporcional(pos: CGPoint(x: 105 - 20, y: -90))
+        s6.zPosition = CGFloat(15)
+        s6.name = "Cofre"
+        
+        
+        let l1 = SKSpriteNode(texture: getImg(index: 0, isSwicth: false), size: SizeProporcional(size: CGSize(width: 24, height: 24)))
+        l1.position = PosProporcional(pos: CGPoint(x: -105 + 20, y: 31))
+        l1.zPosition = CGFloat(15)
+        l1.name = "Cofre"
+        
+        let l2 = SKSpriteNode(texture: getImg(index: 1, isSwicth: false), size: SizeProporcional(size: CGSize(width: 24, height: 24)))
+        l2.position = PosProporcional(pos: CGPoint(x: -71 + 20, y: 31))
+        l2.zPosition = CGFloat(15)
+        l2.name = "Cofre"
+        
+        let l3 = SKSpriteNode(texture: getImg(index: 2, isSwicth: false), size: SizeProporcional(size: CGSize(width: 24, height: 24)))
+        l3.position = PosProporcional(pos: CGPoint(x: -37 + 20, y: 31))
+        l3.zPosition = CGFloat(15)
+        l3.name = "Cofre"
+        
+        let l4 = SKSpriteNode(texture: getImg(index: 3, isSwicth: false), size: SizeProporcional(size: CGSize(width: 24, height: 24)))
+        l4.position = PosProporcional(pos: CGPoint(x: 37 - 20, y: 31))
+        l4.zPosition = CGFloat(15)
+        l4.name = "Cofre"
+        
+        let l5 = SKSpriteNode(texture: getImg(index: 4, isSwicth: false), size: SizeProporcional(size: CGSize(width: 24, height: 24)))
+        l5.position = PosProporcional(pos: CGPoint(x: 71 - 20, y: 31))
+        l5.zPosition = CGFloat(15)
+        l5.name = "Cofre"
+        
+        let l6 = SKSpriteNode(texture: getImg(index: 5, isSwicth: false), size: SizeProporcional(size: CGSize(width: 24, height: 24)))
+        l6.position = PosProporcional(pos: CGPoint(x: 105 - 20, y: 32))
+        l6.zPosition = CGFloat(15)
+        l6.name = "Cofre"
+        
+        self.addChild(s1)
+        self.addChild(s2)
+        self.addChild(s3)
+        self.addChild(s4)
+        self.addChild(s5)
+        self.addChild(s6)
+
+        self.addChild(l1)
+        self.addChild(l2)
+        self.addChild(l3)
+        self.addChild(l4)
+        self.addChild(l5)
+        self.addChild(l6)
     }
     
     
@@ -123,7 +195,6 @@ extension GameScene {
             if navegação.Interruptor.senha == navegação.Interruptor.switchTela {
                 navegação.ModulosCompletos[navegação.ModuloOlhando] = true
             }
-            
             
             atualizarTela()
         }
@@ -188,7 +259,7 @@ fileprivate let switchsImgs = ["off": SKTexture(imageNamed: "InterOff"), "OffTex
 fileprivate func sortlamps() -> [Bool]{
     var aux = [Bool]()
     
-    for i in 0...5 {
+    for _ in 0...5 {
         let sorteado = [false,true].randomElement()!
         aux.append(sorteado)
     }
@@ -270,7 +341,6 @@ struct InterruptorController {
             }
             
             senhaGerada = geradorSenha(lamps: lamps, corSwitch: corSwitch, lampsSwitch: lampsSwitch)
-            print(senhaGerada)
             
             for cell in senhaGerada {
                 if cell {
@@ -283,4 +353,3 @@ struct InterruptorController {
     }
     
 }
-// cor do switch,
