@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8BD42D0526601C0B003014E0 /* Interruptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD42D0426601C0B003014E0 /* Interruptor.swift */; };
+		977FD89C265C1C73009FCC76 /* Esteira.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977FD89B265C1C73009FCC76 /* Esteira.swift */; };
+		B618C1562666C0430046986A /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B618C1552666C0430046986A /* Menu.swift */; };
 		B62C380A265833C900C08E51 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */; };
 		B62C3816265C387700C08E51 /* Relogio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3815265C387700C08E51 /* Relogio.swift */; };
 		B62C3819265D92BA00C08E51 /* Rodas.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3818265D92BA00C08E51 /* Rodas.swift */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		8BD42D0426601C0B003014E0 /* Interruptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interruptor.swift; sourceTree = "<group>"; };
+		977FD89B265C1C73009FCC76 /* Esteira.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Esteira.swift; sourceTree = "<group>"; };
+		B618C1552666C0430046986A /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-VariableFont_wght.ttf"; path = "Tipografia/Oswald-VariableFont_wght.ttf"; sourceTree = SOURCE_ROOT; };
 		B62C3815265C387700C08E51 /* Relogio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relogio.swift; sourceTree = "<group>"; };
 		B62C3818265D92BA00C08E51 /* Rodas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rodas.swift; sourceTree = "<group>"; };
@@ -95,11 +99,13 @@
 		B6F165F02656D976005F9C03 /* Fases */ = {
 			isa = PBXGroup;
 			children = (
+				977FD89B265C1C73009FCC76 /* Esteira.swift */,
 				B6F165ED265591FD005F9C03 /* LabirintoScene.swift */,
 				B6F165F22656D9F9005F9C03 /* Letras.swift */,
 				B62C3815265C387700C08E51 /* Relogio.swift */,
 				B62C3818265D92BA00C08E51 /* Rodas.swift */,
 				8BD42D0426601C0B003014E0 /* Interruptor.swift */,
+				B618C1552666C0430046986A /* Menu.swift */,
 			);
 			path = Fases;
 			sourceTree = "<group>";
@@ -177,11 +183,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6F165F32656D9F9005F9C03 /* Letras.swift in Sources */,
+				977FD89C265C1C73009FCC76 /* Esteira.swift in Sources */,
 				B6F165DC26544272005F9C03 /* GameScene.swift in Sources */,
 				8BD42D0526601C0B003014E0 /* Interruptor.swift in Sources */,
 				B6F165EE265591FE005F9C03 /* LabirintoScene.swift in Sources */,
 				B62C3816265C387700C08E51 /* Relogio.swift in Sources */,
 				B62C3819265D92BA00C08E51 /* Rodas.swift in Sources */,
+				B618C1562666C0430046986A /* Menu.swift in Sources */,
 				B6F165DE26544272005F9C03 /* GameViewController.swift in Sources */,
 				B6F165D626544272005F9C03 /* AppDelegate.swift in Sources */,
 			);
@@ -323,7 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ARQY7RCV8V;
+				DEVELOPMENT_TEAM = 9X475P5993;
 				INFOPLIST_FILE = LockLine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -342,7 +350,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ARQY7RCV8V;
+				DEVELOPMENT_TEAM = 9X475P5993;
 				INFOPLIST_FILE = LockLine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
