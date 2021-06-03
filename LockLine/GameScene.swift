@@ -44,6 +44,7 @@ class GameScene: SKScene {
                 
                 let quadrado = SKSpriteNode(color: UIColor.orange, size: tamanhoCofreFechado)
                 quadrado.position = CGPoint(x: 0, y: 0)
+                quadrado.zPosition = 5
                 quadrado.name = "Cofre"
 
                 switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
@@ -64,26 +65,46 @@ class GameScene: SKScene {
                 if navegação.ModuloAberto {
                     quadrado.size = tamanhoCofre
                     
-                    let setaBaixo = SKSpriteNode(color: UIColor.green, size: CGSize(width: 50, height: 50))
+                    let setaBaixo = SKSpriteNode(imageNamed: "buttonBack")
+                    setaBaixo.size = CGSize(width: 50, height: 30)
                     setaBaixo.position = CGPoint(x: 0, y: -350)
                     setaBaixo.name = "SetaVoltar"
                     
                     self.addChild(setaBaixo)
                 }
                 else {
-                    let setaDireita = SKSpriteNode(color: UIColor.red, size: CGSize(width: 50, height: 50))
+                    let background = SKSpriteNode(imageNamed: "background2")
+                    background.size = CGSize(width: frame.size.width, height: frame.size.height)
+                    background.zPosition = 0
+                    
+                    let mesa = SKSpriteNode(imageNamed: "mesa")
+                    mesa.size = CGSize(width: 560, height: 540)
+                    mesa.position = CGPoint(x: 0, y: -280)
+                    mesa.zPosition = 2
+                    
+                    let setaDireita = SKSpriteNode(imageNamed: "buttonRight")
+                    setaDireita.size = CGSize(width: 30, height: 50)
                     setaDireita.position = CGPoint(x: 155, y: 0)
+                    setaDireita.zPosition = 5
                     setaDireita.name = "SetaDireita"
-                    let setaEsquerda = SKSpriteNode(color: UIColor.blue, size: CGSize(width: 50, height: 50))
+                    
+                    let setaEsquerda = SKSpriteNode(imageNamed: "buttonLeft")
+                    setaEsquerda.size = CGSize(width: 30, height: 50)
                     setaEsquerda.position = CGPoint(x: -155, y: 0)
+                    setaEsquerda.zPosition = 5
                     setaEsquerda.name = "SetaEsquerda"
                     
+                    self.addChild(background)
+                    self.addChild(mesa)
                     self.addChild(setaDireita)
                     self.addChild(setaEsquerda)
                 }
                 
+                
+                
                 self.addChild(quadrado)
                 self.addChild(labelTempo)
+                
                 
                 if navegação.ModuloAberto {
                     switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
