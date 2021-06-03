@@ -159,7 +159,7 @@ extension GameScene {
     }
     
     
-    //MARK: Touch
+    //MARK: Touched
     func TouchedInterruptor(pos : CGPoint) {
         
         if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
