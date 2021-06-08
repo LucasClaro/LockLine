@@ -106,6 +106,13 @@ extension GameScene {
         addChild(engrenagemHoras)
         addChild(engrenagemMinutos)
         
+        let carta = SKSpriteNode(imageNamed: "Naipe\(navegação.Relogio.naipeCarta)")
+        carta.position = PosProporcional(pos:CGPoint(x: -90, y: -170))
+        carta.size = SizeProporcional(size: CGSize(width: 100, height: 57))
+        carta.zPosition = 11
+        
+        addChild(carta)
+
     }
     
     //MARK: DrawAberto
