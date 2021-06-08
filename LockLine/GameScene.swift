@@ -225,6 +225,8 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         if navegação.ModuloAberto {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
+                case 3:
+                    updateRelogio()
                 case 4:
                     updateEsteira()
                 case 5:

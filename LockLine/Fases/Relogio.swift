@@ -72,7 +72,7 @@ extension GameScene {
         ponteiroSegundos.position = PosProporcional(pos:CGPoint(x: 3, y: -34))
         ponteiroSegundos.size = SizeProporcional(size: CGSize(width: 7, height: 100))
         ponteiroSegundos.zPosition = 10
-        ponteiroSegundos.zRotation = -CGFloat(navegação.Relogio.ponteiroSegundo) * CGFloat.pi/2 - CGFloat.pi/4
+        ponteiroSegundos.zRotation = -CGFloat(navegação.Relogio.ponteiroSegundo) * CGFloat.pi/30
         ponteiroSegundos.name = "Cofre"
         if navegação.ModulosCompletos[navegação.ModuloOlhando] {
             ponteiroSegundos.texture = SKTexture(imageNamed: "ponteiroVerde")
@@ -170,7 +170,7 @@ extension GameScene {
         ponteiroSegundos.position = PosProporcional(pos:CGPoint(x: 1, y: -54))
         ponteiroSegundos.size = SizeProporcional(size: CGSize(width: 11, height: 160))
         ponteiroSegundos.zPosition = 10
-        ponteiroSegundos.zRotation = -CGFloat(navegação.Relogio.ponteiroSegundo) * CGFloat.pi/2 - CGFloat.pi/4
+        ponteiroSegundos.zRotation = -CGFloat(navegação.Relogio.ponteiroSegundo) * CGFloat.pi/30
         
         if navegação.ModulosCompletos[navegação.ModuloOlhando] {
             ponteiroSegundos.texture = SKTexture(imageNamed: "ponteiroVerde")
@@ -203,6 +203,14 @@ extension GameScene {
         
         addChild(engrenagemHoras)
         addChild(engrenagemMinutos)
+    }
+    
+    //MARK: Update
+    func updateRelogio() {
+        if navegação.ModulosCompletos[navegação.ModuloOlhando] {
+            navegação.Relogio.ponteiroSegundo += 1
+            atualizarTela()
+        }
     }
     
     //MARK: Touched
@@ -252,7 +260,7 @@ struct RelogioController {
         }
         padroes = padraoSorteado
         
-        let segundosSorteados = [1,2,3,4].randomElement()!
+        let segundosSorteados = [7,21,36,53].randomElement()!
         ponteiroSegundo = segundosSorteados
         
         let naipeSorteado = [1,2,3,4].randomElement()!
@@ -276,7 +284,7 @@ fileprivate func DefinirSenha(naipe: Int, segundos : Int, padroes : [Int]) -> (I
     var valorPadroes = [Int]()
     
     switch segundos {
-        case 1:
+        case 7:
             switch naipe {
                 case 1:
                     horas = 12
@@ -289,7 +297,7 @@ fileprivate func DefinirSenha(naipe: Int, segundos : Int, padroes : [Int]) -> (I
                 default:
                     break
             }
-        case 2:
+        case 21:
             switch naipe {
                 case 1:
                     horas = 6
@@ -302,7 +310,7 @@ fileprivate func DefinirSenha(naipe: Int, segundos : Int, padroes : [Int]) -> (I
                 default:
                     break
             }
-        case 3:
+        case 36:
             switch naipe {
                 case 1:
                     horas = 6
@@ -315,7 +323,7 @@ fileprivate func DefinirSenha(naipe: Int, segundos : Int, padroes : [Int]) -> (I
                 default:
                     break
             }
-        case 4:
+        case 53:
             switch naipe {
                 case 1:
                     horas = 9
