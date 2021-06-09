@@ -8,6 +8,11 @@
 import SpriteKit
 import GameplayKit
 import Combine
+import AVFoundation
+
+//MARK: Dicionário de áudios
+var audios: [String: AVAudioPlayer] = ["ligado": AVAudioPlayer(), "desligado": AVAudioPlayer(), "tic": AVAudioPlayer(), "tictac": AVAudioPlayer()]
+//var audios: [String: SKAudioNode] = ["ligado": SKAudioNode(), "desligado": SKAudioNode(), "tic": SKAudioNode(), "tictac": SKAudioNode()]
 
 class GameScene: SKScene {
     
@@ -32,6 +37,7 @@ class GameScene: SKScene {
     //MARK: atualizarTela
     func atualizarTela() {
         self.removeAllChildren()
+        importarAudios()
         
         switch navegação.Tela {
             case .Menu:
@@ -250,6 +256,18 @@ class GameScene: SKScene {
         if navegação.Tela == .Jogo {
             tempo -= 1
             atualizarTela()
+        }
+    }
+    
+    //Função para importar todos os áudios usados no jogo
+    func importarAudios(){
+        for i in 0...audios.count-1{
+            let chave = Array(audios)[i].key
+            let AssortedMusics = URL(fileURLWithPath: Bundle.main.path(forResource: chave, ofType: "mp3")!)
+            audios[chave] = try! AVAudioPlayer(contentsOf: AssortedMusics as URL)
+            if(chave == "background" || chave == "tictac"){
+                audios[chave]!.numberOfLoops = -1
+            }
         }
     }
     
