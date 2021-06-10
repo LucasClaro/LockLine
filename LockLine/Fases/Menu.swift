@@ -28,6 +28,8 @@ extension GameScene {
         switch atPoint(pos).name {
             case "BtnJogar":
                 navegação.Tela = .Jogo
+            case "BtnManual":
+                navegação.Tela = .Manual
             default:
                 break
         }

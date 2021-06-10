@@ -36,6 +36,8 @@ class GameScene: SKScene {
         switch navegação.Tela {
             case .Menu:
                 DrawMenu()
+            case .Manual:
+                DrawManual()
             case .Jogo:
                 let labelTempo = SKLabelNode(text: String(tempo))
                 labelTempo.position = CGPoint(x: 0, y: 220)
@@ -138,8 +140,6 @@ class GameScene: SKScene {
                             break
                     }
                 }
-            default:
-                break
         }
     }
     
@@ -165,6 +165,10 @@ class GameScene: SKScene {
             switch navegação.Tela {
                 case .Menu:
                     TouchMenu(pos: pos)
+                    atualizarTela()
+                case .Manual:
+                    TouchedManual(pos: pos)
+                    atualizarTela()
                 case .Jogo:
                     switch atPoint(pos).name {
                         case "SetaDireita":
@@ -201,8 +205,6 @@ class GameScene: SKScene {
                                 }
                             }
                     }
-                default:
-                    break
             }
             
         }
@@ -279,6 +281,8 @@ struct ControleNavegação {
     var Esteira : EsteiraController = EsteiraController()
     var Rodas : RodasController = RodasController()
     var Interruptor: InterruptorController = InterruptorController()
+    
+    var Manual : ManualController = ManualController()
     
     //vars manual
 }
