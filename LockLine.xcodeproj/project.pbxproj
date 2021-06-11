@@ -13,6 +13,10 @@
 		97B2ABC726714C150082AE8B /* ligado.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97B2ABC326714C150082AE8B /* ligado.mp3 */; };
 		97B2ABC826714C150082AE8B /* tictac.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97B2ABC426714C150082AE8B /* tictac.mp3 */; };
 		97B2ABC926714C150082AE8B /* tic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97B2ABC526714C150082AE8B /* tic.mp3 */; };
+		97C56DD026728EB70071E727 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C56DCF26728EB70071E727 /* background.mp3 */; };
+		97C56DDA2672AAD40071E727 /* botao.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C56DD92672AAD40071E727 /* botao.mp3 */; };
+		97C56DDE2672AE860071E727 /* esteira2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C56DDD2672AE860071E727 /* esteira2.mp3 */; };
+		97C56DE02672B54F0071E727 /* esteira.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C56DDF2672B54F0071E727 /* esteira.mp3 */; };
 		B618C1562666C0430046986A /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B618C1552666C0430046986A /* Menu.swift */; };
 		B62C380A265833C900C08E51 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */; };
 		B62C3816265C387700C08E51 /* Relogio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3815265C387700C08E51 /* Relogio.swift */; };
@@ -35,6 +39,10 @@
 		97B2ABC326714C150082AE8B /* ligado.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ligado.mp3; sourceTree = "<group>"; };
 		97B2ABC426714C150082AE8B /* tictac.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tictac.mp3; sourceTree = "<group>"; };
 		97B2ABC526714C150082AE8B /* tic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tic.mp3; sourceTree = "<group>"; };
+		97C56DCF26728EB70071E727 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		97C56DD92672AAD40071E727 /* botao.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = botao.mp3; sourceTree = "<group>"; };
+		97C56DDD2672AE860071E727 /* esteira2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = esteira2.mp3; sourceTree = "<group>"; };
+		97C56DDF2672B54F0071E727 /* esteira.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = esteira.mp3; sourceTree = "<group>"; };
 		B618C1552666C0430046986A /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-VariableFont_wght.ttf"; path = "Tipografia/Oswald-VariableFont_wght.ttf"; sourceTree = SOURCE_ROOT; };
 		B62C3815265C387700C08E51 /* Relogio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relogio.swift; sourceTree = "<group>"; };
@@ -67,7 +75,11 @@
 			isa = PBXGroup;
 			children = (
 				97B2ABC226714C150082AE8B /* desligado.mp3 */,
+				97C56DCF26728EB70071E727 /* background.mp3 */,
+				97C56DDF2672B54F0071E727 /* esteira.mp3 */,
+				97C56DDD2672AE860071E727 /* esteira2.mp3 */,
 				97B2ABC326714C150082AE8B /* ligado.mp3 */,
+				97C56DD92672AAD40071E727 /* botao.mp3 */,
 				97B2ABC526714C150082AE8B /* tic.mp3 */,
 				97B2ABC426714C150082AE8B /* tictac.mp3 */,
 			);
@@ -193,8 +205,12 @@
 				97B2ABC926714C150082AE8B /* tic.mp3 in Resources */,
 				B6F165E32654427D005F9C03 /* Assets.xcassets in Resources */,
 				97B2ABC626714C150082AE8B /* desligado.mp3 in Resources */,
+				97C56DD026728EB70071E727 /* background.mp3 in Resources */,
 				B62C380A265833C900C08E51 /* Oswald-VariableFont_wght.ttf in Resources */,
+				97C56DDA2672AAD40071E727 /* botao.mp3 in Resources */,
 				B6F165DA26544272005F9C03 /* Actions.sks in Resources */,
+				97C56DDE2672AE860071E727 /* esteira2.mp3 in Resources */,
+				97C56DE02672B54F0071E727 /* esteira.mp3 in Resources */,
 				97B2ABC726714C150082AE8B /* ligado.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

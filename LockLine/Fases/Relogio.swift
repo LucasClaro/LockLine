@@ -220,8 +220,8 @@ extension GameScene {
             switch atPoint(pos).name {
                 case "Botao":
                     if mod(navegação.Relogio.senha.0, 12) == mod(navegação.Relogio.ponteiroHoras, 12) && mod(navegação.Relogio.senha.1, 60) == mod(navegação.Relogio.ponterioMinutos, 60){
+                        audios["tictac"]?.volume = 2
                         audios["tictac"]?.play()
-                        //run(navegação.Relogio.tictac)
                         navegação.ModulosCompletos[navegação.ModuloOlhando] = true
                     }
                     else {
@@ -231,13 +231,13 @@ extension GameScene {
                     atualizarTela()
                 case "BotaoHoras":
                     navegação.Relogio.ponteiroHoras += 3
+                    audios["tic"]?.volume = 2
                     audios["tic"]?.play()
-                    //run(navegação.Relogio.tic)
                     atualizarTela()
                 case "BotaoMinutos":
                     navegação.Relogio.ponterioMinutos += 5
+                    audios["tic"]?.volume = 2
                     audios["tic"]?.play()
-                    //run(navegação.Relogio.tic)
                     atualizarTela()
                 default:
                     break
@@ -274,9 +274,6 @@ struct RelogioController {
         
         senha = DefinirSenha(naipe: naipeSorteado, segundos: segundosSorteados, padroes: padraoSorteado)
     }
-    
-    //let tictac = SKAction.playSoundFileNamed("tictac", waitForCompletion: false)
-    //let tic = SKAction.playSoundFileNamed("tic", waitForCompletion: false)
     
     var ponteiroSegundo : Int
     var ponterioMinutos : Int = 0

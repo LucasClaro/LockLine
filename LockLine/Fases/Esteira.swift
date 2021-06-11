@@ -154,7 +154,8 @@ extension GameScene{
     //MARK: Cubo aproximado
     func DrawEsteiraAberto() {
         status()
-        
+        audios["esteira"]?.volume = 3
+        audios["esteira"]?.play()
         //LATERAIS
         let lateralEsquerda = SKSpriteNode(imageNamed: "lateral")
         lateralEsquerda.size = SizeProporcional(size: CGSize(width: 41.2, height: 70))

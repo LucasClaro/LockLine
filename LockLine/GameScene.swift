@@ -11,8 +11,7 @@ import Combine
 import AVFoundation
 
 //MARK: Dicionário de áudios
-var audios: [String: AVAudioPlayer] = ["ligado": AVAudioPlayer(), "desligado": AVAudioPlayer(), "tic": AVAudioPlayer(), "tictac": AVAudioPlayer()]
-//var audios: [String: SKAudioNode] = ["ligado": SKAudioNode(), "desligado": SKAudioNode(), "tic": SKAudioNode(), "tictac": SKAudioNode()]
+var audios: [String: AVAudioPlayer] = ["background": AVAudioPlayer(), "botao": AVAudioPlayer(), "ligado": AVAudioPlayer(), "desligado": AVAudioPlayer(), "tic": AVAudioPlayer(), "tictac": AVAudioPlayer(), "esteira": AVAudioPlayer()]
 
 class GameScene: SKScene {
     
@@ -27,6 +26,8 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        importarAudios()
+        
         cancelable = publisher.autoconnect().sink { _ in
             self.diminuirTempo()
         }
@@ -37,11 +38,13 @@ class GameScene: SKScene {
     //MARK: atualizarTela
     func atualizarTela() {
         self.removeAllChildren()
-        importarAudios()
+        
         
         switch navegação.Tela {
             case .Menu:
                 DrawMenu()
+                audios["background"]?.volume = 0.4
+                audios["background"]?.play()
             case .Jogo:
                 let labelTempo = SKLabelNode(text: String(tempo))
                 labelTempo.position = CGPoint(x: 0, y: 220)
@@ -69,6 +72,7 @@ class GameScene: SKScene {
                 }
                 
                 if navegação.ModuloAberto {
+                    audios["background"]?.volume = 0.1
                     quadrado.size = tamanhoCofre
                     
                     let setaBaixo = SKSpriteNode(imageNamed: "buttonBack")
@@ -79,6 +83,8 @@ class GameScene: SKScene {
                     self.addChild(setaBaixo)
                 }
                 else {
+                    verificacaoAudios()
+                    audios["background"]?.volume = 0.4
                     let background = SKSpriteNode(imageNamed: "background2")
                     background.size = CGSize(width: frame.size.width, height: frame.size.height)
                     background.zPosition = 0
@@ -263,12 +269,23 @@ class GameScene: SKScene {
     func importarAudios(){
         for i in 0...audios.count-1{
             let chave = Array(audios)[i].key
-            let AssortedMusics = URL(fileURLWithPath: Bundle.main.path(forResource: chave, ofType: "mp3")!)
+            let AssortedMusics = NSURL(fileURLWithPath: Bundle.main.path(forResource: chave, ofType: "mp3")!)
             audios[chave] = try! AVAudioPlayer(contentsOf: AssortedMusics as URL)
-            if(chave == "background" || chave == "tictac"){
+            audios[chave]?.prepareToPlay()
+            if(chave == "background" || chave == "tictac" || chave == "esteira"){
                 audios[chave]!.numberOfLoops = -1
             }
         }
+    }
+    
+    func verificacaoAudios(){
+        for i in 0...audios.count-1{
+            let chave = Array(audios)[i].key
+            if((audios[chave]?.play()) != nil){
+                audios[chave]?.stop()
+            }
+        }
+        audios["background"]?.play()
     }
     
 }//Fim da classe
@@ -302,7 +319,7 @@ struct ControleNavegação {
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [3, 5 , 7]
+    var modulos = [3,5,4]
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
