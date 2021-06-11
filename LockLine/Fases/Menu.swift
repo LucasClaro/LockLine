@@ -27,6 +27,7 @@ extension GameScene {
     func TouchMenu(pos : CGPoint) {
         switch atPoint(pos).name {
             case "BtnJogar":
+                audios["botao"]?.volume = 2
                 audios["botao"]?.play()
                 navegação.Tela = .Jogo
             default:

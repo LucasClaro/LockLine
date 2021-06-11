@@ -16,7 +16,7 @@ var audios: [String: AVAudioPlayer] = ["background": AVAudioPlayer(), "botao": A
 class GameScene: SKScene {
     
     let publisher = Timer.publish(every: 1, on: .current, in: .common)
-    
+    var esteira: AVAudioPlayer?
     private var tempo : Int = 300
     private var tamanhoCofre : CGSize = CGSize(width: 400, height: 496)
     private var tamanhoCofreFechado : CGSize = CGSize(width: 252, height: 310)
@@ -38,7 +38,7 @@ class GameScene: SKScene {
     //MARK: atualizarTela
     func atualizarTela() {
         self.removeAllChildren()
-        
+        verificacaoAudios()
         
         switch navegação.Tela {
             case .Menu:
@@ -181,10 +181,12 @@ class GameScene: SKScene {
                     switch atPoint(pos).name {
                         case "SetaDireita":
                             navegação.ModuloOlhando = (navegação.ModuloOlhando + 1) % 4
+                            audios["botao"]?.play()
                             atualizarTela()
                             break
                         case "SetaEsquerda":
                             navegação.ModuloOlhando = (navegação.ModuloOlhando + 3) % 4
+                            audios["botao"]?.play()
                             atualizarTela()
                             break
                         case "Cofre":
@@ -193,6 +195,7 @@ class GameScene: SKScene {
                             break
                         case "SetaVoltar":
                             navegação.ModuloAberto = false
+                            audios["botao"]?.play()
                             atualizarTela()
                             break
                         default:
@@ -279,13 +282,10 @@ class GameScene: SKScene {
     }
     
     func verificacaoAudios(){
-        for i in 0...audios.count-1{
+        for i in 1...audios.count-1{
             let chave = Array(audios)[i].key
-            if((audios[chave]?.play()) != nil){
-                audios[chave]?.stop()
-            }
+            audios[chave]?.stop()
         }
-        audios["background"]?.play()
     }
     
 }//Fim da classe
