@@ -16,7 +16,6 @@ var audios: [String: AVAudioPlayer] = ["background": AVAudioPlayer(), "botao": A
 class GameScene: SKScene {
     
     let publisher = Timer.publish(every: 1, on: .current, in: .common)
-    var esteira: AVAudioPlayer?
     private var tempo : Int = 300
     private var tamanhoCofre : CGSize = CGSize(width: 400, height: 496)
     private var tamanhoCofreFechado : CGSize = CGSize(width: 252, height: 310)
@@ -38,7 +37,6 @@ class GameScene: SKScene {
     //MARK: atualizarTela
     func atualizarTela() {
         self.removeAllChildren()
-        verificacaoAudios()
         
         switch navegação.Tela {
             case .Menu:
