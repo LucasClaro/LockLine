@@ -251,7 +251,7 @@ class GameScene: SKScene {
                             break
                         case "SetaEsquerda":
                             if !navegação.Pausado && !navegação.Finalizado {
-                                navegação.ModuloOlhando = (navegação.ModuloOlhando + 1) % 4
+                                navegação.ModuloOlhando = (navegação.ModuloOlhando + 3) % 4
                                 audios["botao"]?.play()
                                 atualizarTela()
                             }
