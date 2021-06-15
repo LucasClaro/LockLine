@@ -8,7 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		8BD42D0526601C0B003014E0 /* Interruptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD42D0426601C0B003014E0 /* Interruptor.swift */; };
+		9725694926791CD0004A8395 /* clickMaleta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9725694626791CD0004A8395 /* clickMaleta.mp3 */; };
+		9725694A26791CD0004A8395 /* roda.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9725694726791CD0004A8395 /* roda.mp3 */; };
+		9725694B26791CD0004A8395 /* clickCofre.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9725694826791CD0004A8395 /* clickCofre.mp3 */; };
 		977FD89C265C1C73009FCC76 /* Esteira.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977FD89B265C1C73009FCC76 /* Esteira.swift */; };
+		97C02AB52674060200EDEF9E /* botao.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C02AAF2674060100EDEF9E /* botao.mp3 */; };
+		97C02AB62674060200EDEF9E /* ligado.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C02AB02674060100EDEF9E /* ligado.mp3 */; };
+		97C02AB72674060200EDEF9E /* tic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C02AB12674060100EDEF9E /* tic.mp3 */; };
+		97C02AB82674060200EDEF9E /* tictac.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C02AB22674060100EDEF9E /* tictac.mp3 */; };
+		97C02AB92674060200EDEF9E /* esteira.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C02AB32674060200EDEF9E /* esteira.mp3 */; };
+		97C02ABA2674060200EDEF9E /* desligado.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C02AB42674060200EDEF9E /* desligado.mp3 */; };
+		97C56DD026728EB70071E727 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C56DCF26728EB70071E727 /* background.mp3 */; };
 		B618C1562666C0430046986A /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B618C1552666C0430046986A /* Menu.swift */; };
 		B62C380A265833C900C08E51 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */; };
 		B62C3816265C387700C08E51 /* Relogio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3815265C387700C08E51 /* Relogio.swift */; };
@@ -27,7 +37,17 @@
 
 /* Begin PBXFileReference section */
 		8BD42D0426601C0B003014E0 /* Interruptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interruptor.swift; sourceTree = "<group>"; };
+		9725694626791CD0004A8395 /* clickMaleta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clickMaleta.mp3; sourceTree = "<group>"; };
+		9725694726791CD0004A8395 /* roda.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = roda.mp3; sourceTree = "<group>"; };
+		9725694826791CD0004A8395 /* clickCofre.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clickCofre.mp3; sourceTree = "<group>"; };
 		977FD89B265C1C73009FCC76 /* Esteira.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Esteira.swift; sourceTree = "<group>"; };
+		97C02AAF2674060100EDEF9E /* botao.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = botao.mp3; sourceTree = "<group>"; };
+		97C02AB02674060100EDEF9E /* ligado.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ligado.mp3; sourceTree = "<group>"; };
+		97C02AB12674060100EDEF9E /* tic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tic.mp3; sourceTree = "<group>"; };
+		97C02AB22674060100EDEF9E /* tictac.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tictac.mp3; sourceTree = "<group>"; };
+		97C02AB32674060200EDEF9E /* esteira.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = esteira.mp3; sourceTree = "<group>"; };
+		97C02AB42674060200EDEF9E /* desligado.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = desligado.mp3; sourceTree = "<group>"; };
+		97C56DCF26728EB70071E727 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		B618C1552666C0430046986A /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-VariableFont_wght.ttf"; path = "Tipografia/Oswald-VariableFont_wght.ttf"; sourceTree = SOURCE_ROOT; };
 		B62C3815265C387700C08E51 /* Relogio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relogio.swift; sourceTree = "<group>"; };
@@ -57,6 +77,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		97B2ABB926714BC80082AE8B /* Sons */ = {
+			isa = PBXGroup;
+			children = (
+				97C02AAF2674060100EDEF9E /* botao.mp3 */,
+				97C02AB42674060200EDEF9E /* desligado.mp3 */,
+				97C02AB32674060200EDEF9E /* esteira.mp3 */,
+				97C02AB02674060100EDEF9E /* ligado.mp3 */,
+				9725694826791CD0004A8395 /* clickCofre.mp3 */,
+				9725694626791CD0004A8395 /* clickMaleta.mp3 */,
+				9725694726791CD0004A8395 /* roda.mp3 */,
+				97C02AB12674060100EDEF9E /* tic.mp3 */,
+				97C02AB22674060100EDEF9E /* tictac.mp3 */,
+				97C56DCF26728EB70071E727 /* background.mp3 */,
+			);
+			path = Sons;
+			sourceTree = "<group>";
+		};
 		B62C3807265828B500C08E51 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +121,7 @@
 		B6F165D426544272005F9C03 /* LockLine */ = {
 			isa = PBXGroup;
 			children = (
+				97B2ABB926714BC80082AE8B /* Sons */,
 				B62C3807265828B500C08E51 /* fonts */,
 				B6F165F02656D976005F9C03 /* Fases */,
 				B6F165D526544272005F9C03 /* AppDelegate.swift */,
@@ -170,9 +208,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9725694A26791CD0004A8395 /* roda.mp3 in Resources */,
+				97C02AB62674060200EDEF9E /* ligado.mp3 in Resources */,
+				97C02AB52674060200EDEF9E /* botao.mp3 in Resources */,
 				B6F165E126544272005F9C03 /* Main.storyboard in Resources */,
+				97C02ABA2674060200EDEF9E /* desligado.mp3 in Resources */,
+				9725694926791CD0004A8395 /* clickMaleta.mp3 in Resources */,
+				97C02AB72674060200EDEF9E /* tic.mp3 in Resources */,
+				97C02AB92674060200EDEF9E /* esteira.mp3 in Resources */,
+				97C02AB82674060200EDEF9E /* tictac.mp3 in Resources */,
 				B6F165D826544272005F9C03 /* GameScene.sks in Resources */,
+				9725694B26791CD0004A8395 /* clickCofre.mp3 in Resources */,
 				B6F165E32654427D005F9C03 /* Assets.xcassets in Resources */,
+				97C56DD026728EB70071E727 /* background.mp3 in Resources */,
 				B62C380A265833C900C08E51 /* Oswald-VariableFont_wght.ttf in Resources */,
 				B6F165DA26544272005F9C03 /* Actions.sks in Resources */,
 			);
