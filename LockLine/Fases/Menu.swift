@@ -10,7 +10,8 @@ import SpriteKit
 extension GameScene {
     
     func DrawMenu() {
-        
+        audios["background"]?.volume = 0.4
+        audios["background"]?.play()
         let btnJogar = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 300, height: 100))
         btnJogar.position = CGPoint(x: 0, y: -190)
         btnJogar.name = "BtnJogar"

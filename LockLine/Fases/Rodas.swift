@@ -120,6 +120,8 @@ extension GameScene {
         
     //MARK: DrawAberto
     func DrawRodasAberto() {
+        audios["roda"]?.volume = 1
+        audios["roda"]?.play()
         
         let roda1 = SKSpriteNode(imageNamed: "Roda\(navegação.Rodas.rodas[0])")
         roda1.position = PosProporcional(pos: CGPoint(x: -92, y: 18))

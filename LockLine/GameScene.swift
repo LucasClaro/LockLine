@@ -11,7 +11,7 @@ import Combine
 import AVFoundation
 
 //MARK: Dicionário de áudios
-var audios: [String: AVAudioPlayer] = ["background": AVAudioPlayer(), "botao": AVAudioPlayer(), "ligado": AVAudioPlayer(), "desligado": AVAudioPlayer(), "tic": AVAudioPlayer(), "tictac": AVAudioPlayer(), "esteira": AVAudioPlayer()]
+var audios: [String: AVAudioPlayer] = ["background": AVAudioPlayer(), "botao": AVAudioPlayer(), "ligado": AVAudioPlayer(), "desligado": AVAudioPlayer(), "tic": AVAudioPlayer(), "tictac": AVAudioPlayer(), "esteira": AVAudioPlayer(), "clickCofre": AVAudioPlayer(), "clickMaleta": AVAudioPlayer(), "roda": AVAudioPlayer()]
 
 class GameScene: SKScene {
     
@@ -41,9 +41,9 @@ class GameScene: SKScene {
         switch navegação.Tela {
             case .Menu:
                 DrawMenu()
-                audios["background"]?.volume = 0.4
-                audios["background"]?.play()
             case .Jogo:
+                audios["background"]?.volume = 0.4
+                
                 let labelTempo = SKLabelNode(text: String(tempo))
                 labelTempo.position = CGPoint(x: 0, y: 220)
                 labelTempo.fontColor = UIColor.white
@@ -83,6 +83,7 @@ class GameScene: SKScene {
                 else {
                     verificacaoAudios()
                     audios["background"]?.volume = 0.4
+                    
                     let background = SKSpriteNode(imageNamed: "background2")
                     background.size = CGSize(width: frame.size.width, height: frame.size.height)
                     background.zPosition = 0
@@ -273,7 +274,7 @@ class GameScene: SKScene {
             let AssortedMusics = NSURL(fileURLWithPath: Bundle.main.path(forResource: chave, ofType: "mp3")!)
             audios[chave] = try! AVAudioPlayer(contentsOf: AssortedMusics as URL)
             audios[chave]?.prepareToPlay()
-            if(chave == "background" || chave == "tictac" || chave == "esteira"){
+            if(chave == "background" || chave == "tictac" || chave == "esteira" || chave == "roda"){
                 audios[chave]!.numberOfLoops = -1
             }
         }
@@ -283,6 +284,9 @@ class GameScene: SKScene {
         for i in 1...audios.count-1{
             let chave = Array(audios)[i].key
             audios[chave]?.stop()
+        }
+        if (!audios["background"]!.isPlaying){
+            audios["background"]?.play()
         }
     }
     
@@ -317,7 +321,7 @@ struct ControleNavegação {
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [3,5,4]
+    var modulos = [2,5,4]
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
