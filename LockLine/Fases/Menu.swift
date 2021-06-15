@@ -31,6 +31,8 @@ extension GameScene {
                 audios["botao"]?.volume = 2
                 audios["botao"]?.play()
                 navegação.Tela = .Jogo
+            case "BtnManual":
+                navegação.Tela = .Manual
             default:
                 break
         }
