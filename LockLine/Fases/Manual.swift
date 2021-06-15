@@ -42,6 +42,42 @@ extension GameScene {
             Dica4.zPosition = 16
             Dica4.name = "Dica4"
             
+            if navegação.Manual.PCLigado {
+                
+                switch navegação.Manual.TelaPC {
+                    case .Desktop:
+                        let DiretoriosIcon = SKSpriteNode(color: UIColor.purple, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
+                        DiretoriosIcon.position = CGPoint(x: -150, y: 70)
+                        DiretoriosIcon.zPosition = 16
+                        DiretoriosIcon.name = "DiretoriosIcon"
+                        
+                        let ImpressoraIcon = SKSpriteNode(color: UIColor.yellow, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
+                        ImpressoraIcon.position = CGPoint(x: -150, y: 10)
+                        ImpressoraIcon.zPosition = 16
+                        ImpressoraIcon.name = "ImpressoraIcon"
+                        
+                        addChild(DiretoriosIcon)
+                        addChild(ImpressoraIcon)
+                    case .Diretorios:
+                        let DicaPdf = SKSpriteNode(color: UIColor.purple, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
+                        DicaPdf.position = CGPoint(x: 0, y: 70)
+                        DicaPdf.zPosition = 16
+                        DicaPdf.name = "DicaPdf"
+                        
+                        addChild(DicaPdf)
+                    case .Dica:
+                        break
+                    case .Imprimindo:
+                        let BtnPrint = SKSpriteNode(color: UIColor.purple, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
+                        BtnPrint.position = CGPoint(x: 100, y: 70)
+                        BtnPrint.zPosition = 16
+                        BtnPrint.name = "BtnPrint"
+                        
+                        addChild(BtnPrint)
+                }
+                
+            }
+            
             addChild(Dica4)
         }
         
@@ -104,6 +140,9 @@ extension GameScene {
             MonitorAberto.texture = SKTexture(imageNamed: "Monitor")
             MonitorAberto.zPosition = 15
             MonitorAberto.name = "MonitorAberto"
+            if navegação.Manual.PCLigado {
+                MonitorAberto.texture = SKTexture(imageNamed: navegação.Manual.TelaPC.rawValue)
+            }
             
             addChild(MonitorAberto)
         }
@@ -149,7 +188,15 @@ extension GameScene {
                 atualizarTela()
                 break
             case "MonitorAberto":
-                navegação.Manual.MonitorAberto = false
+                if navegação.Manual.TelaPC == .Desktop {
+                    navegação.Manual.MonitorAberto = false
+                }
+                else if navegação.Manual.TelaPC == .Dica {
+                    navegação.Manual.TelaPC = .Diretorios
+                }
+                else {
+                    navegação.Manual.TelaPC = .Desktop
+                }
                 atualizarTela()
                 break
             case "Dica4":
@@ -184,6 +231,20 @@ extension GameScene {
                 navegação.Manual.PCLigado.toggle()
                 atualizarTela()
                 break
+            case "DiretoriosIcon":
+                navegação.Manual.TelaPC = .Diretorios
+                atualizarTela()
+                break
+            case "ImpressoraIcon":
+                navegação.Manual.TelaPC = .Imprimindo
+                atualizarTela()
+                break
+            case "DicaPdf":
+                navegação.Manual.TelaPC = .Dica
+                atualizarTela()
+                break
+            case "BtnPrint":
+                break
             default:
                 navegação.Manual.DicaAberta = 0
                 atualizarTela()
@@ -199,4 +260,12 @@ struct ManualController {
     var ImpressoraAberta : Bool = false
     
     var PCLigado : Bool = false
+    var TelaPC : telaPC = .Desktop
+}
+
+enum telaPC : String {
+    case Desktop = "Desktop"
+    case Diretorios = "Finder"
+    case Imprimindo = "Print"
+    case Dica = "Hint"
 }

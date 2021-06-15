@@ -13,14 +13,14 @@ extension GameScene {
     func DrawLabirintoFechado(){
         let seta = SKTexture(imageNamed: "Seta")
         
-        let nodeFinal = SKSpriteNode(color: (navegação.Labirinto.terminado ? UIColor.green : UIColor.black), size: SizeProporcional(size: CGSize(width: 23, height: 23)))
+        let nodeFinal = SKSpriteNode(color: (navegação.ModulosCompletos[navegação.ModuloOlhando] ? UIColor.green : UIColor.black), size: SizeProporcional(size: CGSize(width: 23, height: 23)))
         nodeFinal.position = PosProporcional(pos: CGPoint(x: 82, y: 47))
         nodeFinal.zPosition = CGFloat(15)
         nodeFinal.zRotation = CGFloat(Double.pi/4)
         nodeFinal.name = "Cofre"
         
         let nodeStart = SKShapeNode(circleOfRadius: 12)
-        nodeStart.fillColor = UIColor(red: 0.57, green: 1, blue: 0.56, alpha: 1)
+        nodeStart.fillColor = UIColor(named: "Papiro") ?? UIColor.white
         nodeStart.strokeColor = .black
         nodeStart.position = PosProporcional(pos: returnPointFechado(i: navegação.Labirinto.nodeStart.i, j: navegação.Labirinto.nodeStart.j))
         nodeStart.zPosition = CGFloat(15)
@@ -66,14 +66,14 @@ extension GameScene {
     func DrawLabirintoAberto() {
         let seta = SKTexture(imageNamed: "Seta")
         
-        let nodeFinal = SKSpriteNode(color: (navegação.Labirinto.terminado ? UIColor.green : UIColor.black), size: SizeProporcional(size: CGSize(width: 37, height: 37)))
+        let nodeFinal = SKSpriteNode(color: (navegação.ModulosCompletos[navegação.ModuloOlhando] ? UIColor.green : UIColor.black), size: SizeProporcional(size: CGSize(width: 37, height: 37)))
         nodeFinal.position = PosProporcional(pos: CGPoint(x: 130, y: 77))
         nodeFinal.zPosition = CGFloat(15)
         nodeFinal.zRotation = CGFloat(Double.pi/4)
         nodeFinal.name = "nodeFinal"
         
         let nodeStart = SKShapeNode(circleOfRadius: 18.5)
-        nodeStart.fillColor = UIColor(red: 0.57, green: 1, blue: 0.56, alpha: 1)
+        nodeStart.fillColor = UIColor(named: "Papiro") ?? UIColor.white
         nodeStart.strokeColor = .black
         nodeStart.position = PosProporcional(pos: returnPoint(i: navegação.Labirinto.nodeStart.i, j: navegação.Labirinto.nodeStart.j))
         nodeStart.zPosition = CGFloat(15)
@@ -118,7 +118,7 @@ extension GameScene {
     //MARK: Touch
     func TouchedLabirinto(pos : CGPoint) {
         
-        if !navegação.Labirinto.terminado {
+        if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
             switch atPoint(pos).name {
                 case "arrowUp":
                     if navegação.Labirinto.historico.last!.i > 0{
@@ -233,7 +233,7 @@ extension GameScene {
             }
             
             if navegação.Labirinto.vitoria == 4{
-                navegação.Labirinto.terminado = true
+                navegação.ModulosCompletos[navegação.ModuloOlhando] = true
             }
             atualizarTela()
         }
@@ -249,7 +249,7 @@ extension GameScene {
             path.addLine(to: returnPoint(i: navegação.Labirinto.historico[i].i, j: navegação.Labirinto.historico[i].j))
             line.zPosition = 15
             line.path = path
-            line.strokeColor = (navegação.Labirinto.terminado ? UIColor(red: 0.57, green: 1, blue: 0.56, alpha: 1) : UIColor.black)
+            line.strokeColor = (navegação.ModulosCompletos[navegação.ModuloOlhando] ? UIColor(red: 0.57, green: 1, blue: 0.56, alpha: 1) : UIColor.black)
             line.lineWidth = 4
             self.addChild(line)
         }
@@ -263,7 +263,7 @@ extension GameScene {
             path.addLine(to: returnPointFechado(i: navegação.Labirinto.historico[i].i, j: navegação.Labirinto.historico[i].j))
             line.zPosition = 15
             line.path = path
-            line.strokeColor = (navegação.Labirinto.terminado ? UIColor(red: 0.57, green: 1, blue: 0.56, alpha: 1) : UIColor.black)
+            line.strokeColor = (navegação.ModulosCompletos[navegação.ModuloOlhando] ? UIColor(red: 0.57, green: 1, blue: 0.56, alpha: 1) : UIColor.black)
             line.lineWidth = 2
             self.addChild(line)
         }
@@ -281,7 +281,6 @@ extension GameScene {
 
 //MARK: Struct
 struct LabirintoControler {
-    var terminado : Bool = false
     var config : Bool = false
     var vitoria = 0
     var nodeStart = (i:0, j:0)

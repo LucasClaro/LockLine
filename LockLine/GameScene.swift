@@ -1,4 +1,4 @@
-//
+    //
 //  GameScene.swift
 //  LockLine
 //
@@ -39,16 +39,73 @@ class GameScene: SKScene {
             case .Manual:
                 DrawManual()
             case .Jogo:
+                
+                                                                    //MARK: Geral
+                let btnPause = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+                btnPause.position = CGPoint(x: 170, y: 380)
+                btnPause.zPosition = 10
+                btnPause.name = "Pause"
+                
                 let labelTempo = SKLabelNode(text: String(tempo))
-                labelTempo.position = CGPoint(x: 0, y: 220)
-                labelTempo.fontColor = UIColor.white
+                labelTempo.position = CGPoint(x: 0, y: 270)
+                labelTempo.fontColor = UIColor.black
                 labelTempo.zPosition = 10
                 
                 let quadrado = SKSpriteNode(color: UIColor.orange, size: tamanhoCofreFechado)
                 quadrado.position = CGPoint(x: 0, y: 0)
                 quadrado.zPosition = 5
                 quadrado.name = "Cofre"
-
+                
+                self.addChild(btnPause)
+                self.addChild(quadrado)
+                self.addChild(labelTempo)
+                
+                                                                    //MARK: Pausado
+                if navegação.Pausado {
+                    let telaPause = SKSpriteNode(color: UIColor.blue, size: SizeProporcional(size: CGSize(width: 200, height: 300)))
+                    telaPause.position = CGPoint(x: 0, y: 0)
+                    telaPause.zPosition = 30
+                    
+                    let btnPauseSim = SKSpriteNode(color: UIColor.green, size: SizeProporcional(size: CGSize(width: 100, height: 70)))
+                    btnPauseSim.position = CGPoint(x: -50, y: 0)
+                    btnPauseSim.zPosition = 31
+                    btnPauseSim.name = "PauseSim"
+                    
+                    let btnPauseNao = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 100, height: 70)))
+                    btnPauseNao.position = CGPoint(x: 50, y: 0)
+                    btnPauseNao.zPosition = 31
+                    btnPauseNao.name = "PauseNao"
+                    
+                    addChild(telaPause)
+                    addChild(btnPauseNao)
+                    addChild(btnPauseSim)
+                }
+                
+                                                                    //MARK: Finalizado
+                if navegação.Finalizado {
+                    let TelaFim = SKSpriteNode(color: UIColor.gray, size: SizeProporcional(size: CGSize(width: 200, height: 300)))
+                    TelaFim.position = CGPoint(x: 0, y: 0)
+                    TelaFim.zPosition = 30
+                    if navegação.ModulosCompletos.allSatisfy({ return $0 }) {
+                        TelaFim.color = UIColor.orange
+                    }
+                    
+                    let btnRestart = SKSpriteNode(color: UIColor.green, size: SizeProporcional(size: CGSize(width: 100, height: 70)))
+                    btnRestart.position = CGPoint(x: -50, y: 0)
+                    btnRestart.zPosition = 31
+                    btnRestart.name = "FimRestart"
+                    
+                    let btnInicio = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 100, height: 70)))
+                    btnInicio.position = CGPoint(x: 50, y: 0)
+                    btnInicio.zPosition = 31
+                    btnInicio.name = "FimInicio"
+                    
+                    addChild(TelaFim)
+                    addChild(btnRestart)
+                    addChild(btnInicio)
+                }
+                
+                                                                    //MARK: TexturaCaixa
                 switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                     case 1:
                         quadrado.texture = SKTexture(imageNamed: "CofreLabirinto")
@@ -64,6 +121,7 @@ class GameScene: SKScene {
                         break
                 }
                 
+                                                                    //MARK: GeralAberto
                 if navegação.ModuloAberto {
                     quadrado.size = tamanhoCofre
                     
@@ -75,6 +133,7 @@ class GameScene: SKScene {
                     self.addChild(setaBaixo)
                 }
                 else {
+                                                                    //MARK: GeralFechado
                     let background = SKSpriteNode(imageNamed: "background2")
                     background.size = CGSize(width: frame.size.width, height: frame.size.height)
                     background.zPosition = 0
@@ -102,12 +161,7 @@ class GameScene: SKScene {
                     self.addChild(setaEsquerda)
                 }
                 
-                
-                
-                self.addChild(quadrado)
-                self.addChild(labelTempo)
-                
-                
+                                                                    //MARK: PuzzleAberto
                 if navegação.ModuloAberto {
                     switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                         case 1:
@@ -125,6 +179,7 @@ class GameScene: SKScene {
                     }
                 }
                 else {
+                                                                    //MARK: PuzzleFechado
                     switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                         case 1:
                             DrawLabirintoFechado()
@@ -140,6 +195,8 @@ class GameScene: SKScene {
                             break
                     }
                 }
+                
+                
         }
     }
     
@@ -172,23 +229,56 @@ class GameScene: SKScene {
                 case .Jogo:
                     switch atPoint(pos).name {
                         case "SetaDireita":
-                            navegação.ModuloOlhando = (navegação.ModuloOlhando + 1) % 4
-                            atualizarTela()
+                            if !navegação.Pausado && !navegação.Finalizado {
+                                navegação.ModuloOlhando = (navegação.ModuloOlhando + 1) % 4
+                                atualizarTela()
+                            }
                             break
                         case "SetaEsquerda":
-                            navegação.ModuloOlhando = (navegação.ModuloOlhando + 3) % 4
-                            atualizarTela()
+                            if !navegação.Pausado && !navegação.Finalizado {
+                                navegação.ModuloOlhando = (navegação.ModuloOlhando + 3) % 4
+                                atualizarTela()
+                            }
                             break
                         case "Cofre":
-                            navegação.ModuloAberto = true
-                            atualizarTela()
+                            if !navegação.Pausado && !navegação.Finalizado {
+                                navegação.ModuloAberto = true
+                                atualizarTela()
+                            }
                             break
                         case "SetaVoltar":
-                            navegação.ModuloAberto = false
+                            if !navegação.Pausado && !navegação.Finalizado {
+                                navegação.ModuloAberto = false
+                                atualizarTela()
+                            }
+                            break
+                        case "Pause":
+                            if !navegação.Pausado && !navegação.Finalizado {
+                                navegação.Pausado = true
+                                atualizarTela()
+                            }
+                            break
+                        case "PauseSim":
+                            navegação = ControleNavegação()
+                            tempo = 300
+                            atualizarTela()
+                            break
+                        case "PauseNao":
+                            navegação.Pausado = false
+                            atualizarTela()
+                            break
+                        case "FimRestart":
+                            navegação = ControleNavegação()
+                            tempo = 300
+                            navegação.Tela = .Jogo
+                            atualizarTela()
+                            break
+                        case "FimInicio":
+                            navegação = ControleNavegação()
                             atualizarTela()
                             break
                         default:
-                            if navegação.ModuloAberto {
+                            if navegação.ModuloAberto && !navegação.Pausado && !navegação.Finalizado {
                                 switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                                     case 1:
                                         TouchedLabirinto(pos: pos)
@@ -206,7 +296,10 @@ class GameScene: SKScene {
                             }
                     }
             }
-            
+         
+            if navegação.ModulosCompletos.allSatisfy({ return $0 }) {
+                navegação.Finalizado = true
+            }
         }
     }
         
@@ -249,8 +342,11 @@ class GameScene: SKScene {
     }
     
     func diminuirTempo() {
-        if navegação.Tela == .Jogo {
+        if navegação.Tela == .Jogo && !navegação.Pausado && !navegação.Finalizado {
             tempo -= 1
+            if tempo <= 0 {
+                navegação.Finalizado = true
+            }
             atualizarTela()
         }
     }
@@ -274,6 +370,8 @@ struct ControleNavegação {
     var ModulosCompletos : [Bool]
     var ModuloOlhando : Int
     var ModuloAberto : Bool
+    var Pausado : Bool = false
+    var Finalizado : Bool = false
     
     var Labirinto : LabirintoControler = LabirintoControler()
     var Letras : LetrasControler = LetrasControler()
@@ -288,7 +386,7 @@ struct ControleNavegação {
 }
 
 func SortearModulos() -> [Int] {
-    var modulos = [3, 5 , 7]
+    var modulos = [Int]()
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
