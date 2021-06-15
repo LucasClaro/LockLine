@@ -218,6 +218,8 @@ extension GameScene {
             navegação.Letras.letras[n]
         })
         if navegação.Letras.senha == senhaInputada {
+            audios["clickMaleta"]?.volume = 2
+            audios["clickMaleta"]?.play()
             navegação.ModulosCompletos[navegação.ModuloOlhando] = true
         }
         

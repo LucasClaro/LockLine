@@ -154,7 +154,8 @@ extension GameScene{
     //MARK: Cubo aproximado
     func DrawEsteiraAberto() {
         status()
-        
+        audios["esteira"]?.volume = 2
+        audios["esteira"]?.play()
         //LATERAIS
         let lateralEsquerda = SKSpriteNode(imageNamed: "lateral")
         lateralEsquerda.size = SizeProporcional(size: CGSize(width: 41.2, height: 70))
@@ -320,51 +321,65 @@ extension GameScene{
             //Toque em cubos
                 case "Ancora":
                     verificaPos(simb: 1, cubo: cuboancora)
+                    audios["botao"]?.play()
                     atualizarTela()
                 case "Arvore":
                     verificaPos(simb: 2, cubo: cuboarvore)
+                    audios["botao"]?.play()
                     atualizarTela()
                 case "Aviao":
                     verificaPos(simb: 3, cubo: cuboaviao)
+                    audios["botao"]?.play()
                     atualizarTela()
                 case "Lanterna":
                     verificaPos(simb: 4, cubo: cubolanterna)
+                    audios["botao"]?.play()
                     atualizarTela()
                 case "Nuvem":
                     verificaPos(simb: 5, cubo: cubonuvem)
+                    audios["botao"]?.play()
                     atualizarTela()
                 case "Papel":
                     verificaPos(simb: 6, cubo: cubopapel)
+                    audios["botao"]?.play()
                     atualizarTela()
                 case "Pincel":
                     verificaPos(simb: 7, cubo: cubopincel)
+                    audios["botao"]?.play()
                     atualizarTela()
                 case "Ponteiro":
                     verificaPos(simb: 8, cubo: cuboponteiro)
+                    audios["botao"]?.play()
                     atualizarTela()
             //Toque em lacunas
                 case "L1":
                     cubos[navegação.Esteira.input[0]]?.isHidden = false
+                    audios["botao"]?.play()
                     navegação.Esteira.input[0] = 0
                     atualizarTela()
                 case "L2":
                     cubos[navegação.Esteira.input[1]]?.isHidden = false
+                    audios["botao"]?.play()
                     navegação.Esteira.input[1] = 0
                     atualizarTela()
                 case "L3":
                     cubos[navegação.Esteira.input[2]]?.isHidden = false
+                    audios["botao"]?.play()
                     navegação.Esteira.input[2] = 0
                     atualizarTela()
                 case "L4":
                     cubos[navegação.Esteira.input[3]]?.isHidden = false
+                    audios["botao"]?.play()
                     navegação.Esteira.input[3] = 0
                     atualizarTela()
                 case "L5":
                     cubos[navegação.Esteira.input[4]]?.isHidden = false
+                    audios["botao"]?.play()
                     navegação.Esteira.input[4] = 0
                     atualizarTela()
                 case "L6":
                     cubos[navegação.Esteira.input[5]]?.isHidden = false
+                    audios["botao"]?.play()
                     navegação.Esteira.input[5] = 0
                     atualizarTela()
                 default:

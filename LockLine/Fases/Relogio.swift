@@ -154,6 +154,7 @@ extension GameScene {
         addChild(padrao5)
         addChild(padrao6)
         
+        
         let ponteiroHoras = SKSpriteNode(imageNamed: "ponteiro")
         ponteiroHoras.position = PosProporcional(pos:CGPoint(x: 1, y: -54))
         ponteiroHoras.size = SizeProporcional(size: CGSize(width: 11, height: 130))
@@ -215,11 +216,12 @@ extension GameScene {
     
     //MARK: Touched
     func TouchedRelogio(pos : CGPoint) {
-        
         if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
             switch atPoint(pos).name {
                 case "Botao":
                     if mod(navegação.Relogio.senha.0, 12) == mod(navegação.Relogio.ponteiroHoras, 12) && mod(navegação.Relogio.senha.1, 60) == mod(navegação.Relogio.ponterioMinutos, 60){
+                        audios["tictac"]?.volume = 2
+                        audios["tictac"]?.play()
                         navegação.ModulosCompletos[navegação.ModuloOlhando] = true
                     }
                     else {
@@ -229,9 +231,13 @@ extension GameScene {
                     atualizarTela()
                 case "BotaoHoras":
                     navegação.Relogio.ponteiroHoras += 3
+                    audios["tic"]?.volume = 2
+                    audios["tic"]?.play()
                     atualizarTela()
                 case "BotaoMinutos":
                     navegação.Relogio.ponterioMinutos += 5
+                    audios["tic"]?.volume = 2
+                    audios["tic"]?.play()
                     atualizarTela()
                 default:
                     break
