@@ -8,11 +8,14 @@
 import SpriteKit
 import GameplayKit
 import Combine
+import AVFoundation
+
+//MARK: Dicionário de áudios
+var audios: [String: AVAudioPlayer] = ["background": AVAudioPlayer(), "botao": AVAudioPlayer(), "ligado": AVAudioPlayer(), "desligado": AVAudioPlayer(), "tic": AVAudioPlayer(), "tictac": AVAudioPlayer(), "esteira": AVAudioPlayer(), "clickCofre": AVAudioPlayer(), "clickMaleta": AVAudioPlayer(), "roda": AVAudioPlayer()]
 
 class GameScene: SKScene {
     
     let publisher = Timer.publish(every: 1, on: .current, in: .common)
-    
     private var tempo : Int = 300
     private var tamanhoCofre : CGSize = CGSize(width: 400, height: 496)
     private var tamanhoCofreFechado : CGSize = CGSize(width: 252, height: 310)
@@ -21,6 +24,8 @@ class GameScene: SKScene {
     var navegação = ControleNavegação()
     
     override func didMove(to view: SKView) {
+        
+        importarAudios()
         
         cancelable = publisher.autoconnect().sink { _ in
             self.diminuirTempo()
@@ -39,12 +44,16 @@ class GameScene: SKScene {
             case .Manual:
                 DrawManual()
             case .Jogo:
+
+                audios["background"]?.volume = 0.4
+
                 
                                                                     //MARK: Geral
                 let btnPause = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
                 btnPause.position = CGPoint(x: 170, y: 380)
                 btnPause.zPosition = 10
                 btnPause.name = "Pause"
+
                 
                 let labelTempo = SKLabelNode(text: String(tempo))
                 labelTempo.position = CGPoint(x: 0, y: 270)
@@ -123,6 +132,7 @@ class GameScene: SKScene {
                 
                                                                     //MARK: GeralAberto
                 if navegação.ModuloAberto {
+                    audios["background"]?.volume = 0.1
                     quadrado.size = tamanhoCofre
                     
                     let setaBaixo = SKSpriteNode(imageNamed: "buttonBack")
@@ -133,7 +143,13 @@ class GameScene: SKScene {
                     self.addChild(setaBaixo)
                 }
                 else {
+
+                    verificacaoAudios()
+                    audios["background"]?.volume = 0.4
+                    
+
                                                                     //MARK: GeralFechado
+
                     let background = SKSpriteNode(imageNamed: "background2")
                     background.size = CGSize(width: frame.size.width, height: frame.size.height)
                     background.zPosition = 0
@@ -229,14 +245,14 @@ class GameScene: SKScene {
                 case .Jogo:
                     switch atPoint(pos).name {
                         case "SetaDireita":
-                            if !navegação.Pausado && !navegação.Finalizado {
-                                navegação.ModuloOlhando = (navegação.ModuloOlhando + 1) % 4
-                                atualizarTela()
-                            }
+                            navegação.ModuloOlhando = (navegação.ModuloOlhando + 1) % 4
+                            audios["botao"]?.play()
+                            atualizarTela()
                             break
                         case "SetaEsquerda":
                             if !navegação.Pausado && !navegação.Finalizado {
-                                navegação.ModuloOlhando = (navegação.ModuloOlhando + 3) % 4
+                                navegação.ModuloOlhando = (navegação.ModuloOlhando + 1) % 4
+                                audios["botao"]?.play()
                                 atualizarTela()
                             }
                             break
@@ -249,6 +265,7 @@ class GameScene: SKScene {
                         case "SetaVoltar":
                             if !navegação.Pausado && !navegação.Finalizado {
                                 navegação.ModuloAberto = false
+                                audios["botao"]?.play()
                                 atualizarTela()
                             }
                             break
@@ -275,6 +292,7 @@ class GameScene: SKScene {
                             break
                         case "FimInicio":
                             navegação = ControleNavegação()
+
                             atualizarTela()
                             break
                         default:
@@ -351,6 +369,29 @@ class GameScene: SKScene {
         }
     }
     
+    //Função para importar todos os áudios usados no jogo
+    func importarAudios(){
+        for i in 0...audios.count-1{
+            let chave = Array(audios)[i].key
+            let AssortedMusics = NSURL(fileURLWithPath: Bundle.main.path(forResource: chave, ofType: "mp3")!)
+            audios[chave] = try! AVAudioPlayer(contentsOf: AssortedMusics as URL)
+            audios[chave]?.prepareToPlay()
+            if(chave == "background" || chave == "tictac" || chave == "esteira" || chave == "roda"){
+                audios[chave]!.numberOfLoops = -1
+            }
+        }
+    }
+    
+    func verificacaoAudios(){
+        for i in 1...audios.count-1{
+            let chave = Array(audios)[i].key
+            audios[chave]?.stop()
+        }
+        if (!audios["background"]!.isPlaying){
+            audios["background"]?.play()
+        }
+    }
+    
 }//Fim da classe
 
 //MARK: struct ControleNavegação
@@ -386,7 +427,9 @@ struct ControleNavegação {
 }
 
 func SortearModulos() -> [Int] {
+
     var modulos = [Int]()
+
     while modulos.count < 4 {
         let n = [1,2,3,4,5,6,7].randomElement()!
         if modulos.firstIndex(of: n) == nil {
