@@ -47,12 +47,14 @@ class GameScene: SKScene {
 
                 audios["background"]?.volume = 0.4
 
-                
                                                                     //MARK: Geral
                 let btnPause = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
                 btnPause.position = CGPoint(x: 170, y: 380)
                 btnPause.zPosition = 10
                 btnPause.name = "Pause"
+                if navegação.Pausado {
+                    btnPause.alpha = 0
+                }
 
                 
                 let labelTempo = SKLabelNode(text: String(tempo))
@@ -71,20 +73,30 @@ class GameScene: SKScene {
                 
                                                                     //MARK: Pausado
                 if navegação.Pausado {
-                    let telaPause = SKSpriteNode(color: UIColor.blue, size: SizeProporcional(size: CGSize(width: 200, height: 300)))
+                    let telaPause = SKSpriteNode(imageNamed: "pausaP")
+                    telaPause.size = SizeProporcional(size: CGSize(width: 400, height: 234))
                     telaPause.position = CGPoint(x: 0, y: 0)
                     telaPause.zPosition = 30
                     
-                    let btnPauseSim = SKSpriteNode(color: UIColor.green, size: SizeProporcional(size: CGSize(width: 100, height: 70)))
-                    btnPauseSim.position = CGPoint(x: -50, y: 0)
+                    let btnPauseSim = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 170, height: 70)))
+                    btnPauseSim.position = PosProporcional(pos: CGPoint(x: -90, y: -55))
                     btnPauseSim.zPosition = 31
+                    btnPauseSim.alpha = 0.001
                     btnPauseSim.name = "PauseSim"
                     
-                    let btnPauseNao = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 100, height: 70)))
-                    btnPauseNao.position = CGPoint(x: 50, y: 0)
+                    let btnPauseNao = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 170, height: 70)))
+                    btnPauseNao.position = PosProporcional(pos: CGPoint(x: 90, y: -55))
                     btnPauseNao.zPosition = 31
+                    btnPauseNao.alpha = 0.001
                     btnPauseNao.name = "PauseNao"
                     
+                    let btnX = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+                    btnX.position = PosProporcional(pos: CGPoint(x: 165, y: 75))
+                    btnX.zPosition = 31
+                    btnX.alpha = 0.001
+                    btnX.name = "PauseNao"
+                    
+                    addChild(btnX)
                     addChild(telaPause)
                     addChild(btnPauseNao)
                     addChild(btnPauseSim)
@@ -299,7 +311,6 @@ class GameScene: SKScene {
                             break
                         case "FimInicio":
                             navegação = ControleNavegação()
-
                             atualizarTela()
                             break
                         default:
@@ -396,7 +407,7 @@ class GameScene: SKScene {
             audios[chave]?.stop()
         }
         if (!audios["background"]!.isPlaying){
-            audios["background"]?.play()
+//            audios["background"]?.play()
         }
     }
     
