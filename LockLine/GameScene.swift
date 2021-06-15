@@ -83,22 +83,29 @@ class GameScene: SKScene {
                 
                                                                     //MARK: Finalizado
                 if navegação.Finalizado {
-                    let TelaFim = SKSpriteNode(color: UIColor.gray, size: SizeProporcional(size: CGSize(width: 200, height: 300)))
+                    let TelaFim = SKSpriteNode(imageNamed: "poxaT")
+                    TelaFim.size = SizeProporcional(size: CGSize(width: 400, height: 356))
                     TelaFim.position = CGPoint(x: 0, y: 0)
                     TelaFim.zPosition = 30
-                    if navegação.ModulosCompletos.allSatisfy({ return $0 }) {
-                        TelaFim.color = UIColor.orange
-                    }
                     
-                    let btnRestart = SKSpriteNode(color: UIColor.green, size: SizeProporcional(size: CGSize(width: 100, height: 70)))
-                    btnRestart.position = CGPoint(x: -50, y: 0)
+                    let btnRestart = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 230, height: 70)))
+                    btnRestart.position = PosProporcional(pos: CGPoint(x: -63, y: -120))
+                    btnRestart.alpha = 0.001
                     btnRestart.zPosition = 31
                     btnRestart.name = "FimRestart"
                     
-                    let btnInicio = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 100, height: 70)))
-                    btnInicio.position = CGPoint(x: 50, y: 0)
+                    let btnInicio = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 120, height: 70)))
+                    btnInicio.position = PosProporcional(pos: CGPoint(x: 115, y: -120))
                     btnInicio.zPosition = 31
+                    btnInicio.alpha = 0.001
                     btnInicio.name = "FimInicio"
+                    
+                    if navegação.ModulosCompletos.allSatisfy({ return $0 }) {
+                        TelaFim.size = SizeProporcional(size: CGSize(width: 400, height: 356))
+                        TelaFim.texture = SKTexture(imageNamed: "ParabensT")
+                        btnRestart.position = PosProporcional(pos: CGPoint(x: -63, y: -115))
+                        btnInicio.position = PosProporcional(pos: CGPoint(x: 115, y: -115))
+                    }
                     
                     addChild(TelaFim)
                     addChild(btnRestart)
@@ -299,6 +306,7 @@ class GameScene: SKScene {
          
             if navegação.ModulosCompletos.allSatisfy({ return $0 }) {
                 navegação.Finalizado = true
+                atualizarTela()
             }
         }
     }
