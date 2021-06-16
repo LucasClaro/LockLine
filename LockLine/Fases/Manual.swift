@@ -42,6 +42,8 @@ extension GameScene {
             Dica4.zPosition = 16
             Dica4.name = "Dica4"
             
+            addChild(Dica4)
+            
             if navegação.Manual.PCLigado {
                 
                 switch navegação.Manual.TelaPC {
@@ -78,7 +80,6 @@ extension GameScene {
                 
             }
             
-            addChild(Dica4)
         }
         
         let Gabinete = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
