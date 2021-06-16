@@ -49,18 +49,24 @@ class GameScene: SKScene {
 
                                                                     //MARK: Geral
                 let btnPause = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
-                btnPause.position = CGPoint(x: 170, y: 380)
+                btnPause.position = PosProporcional(pos: CGPoint(x: 170, y: 380))
                 btnPause.zPosition = 10
                 btnPause.name = "Pause"
                 if navegação.Pausado {
                     btnPause.alpha = 0
                 }
-
                 
-                let labelTempo = SKLabelNode(text: String(tempo))
-                labelTempo.position = CGPoint(x: 0, y: 270)
+                let timerQuadro = SKSpriteNode(imageNamed: "quadro")
+                timerQuadro.position = PosProporcional(pos: CGPoint(x: 0, y: 360))
+                timerQuadro.size = SizeProporcional(size: CGSize(width: 150, height: 76))
+                timerQuadro.zPosition = 10
+
+                let labelTempo = SKLabelNode(text: String("0\(tempo / 60):\(corrigirZeros())"))
+                labelTempo.position = CGPoint(x: 0, y: 343)
                 labelTempo.fontColor = UIColor.black
-                labelTempo.zPosition = 10
+                labelTempo.fontName = "Oswald-Regular"
+                labelTempo.fontSize = 40
+                labelTempo.zPosition = 11
                 
                 let quadrado = SKSpriteNode(color: UIColor.orange, size: tamanhoCofreFechado)
                 quadrado.position = CGPoint(x: 0, y: 0)
@@ -70,7 +76,7 @@ class GameScene: SKScene {
                 self.addChild(btnPause)
                 self.addChild(quadrado)
                 self.addChild(labelTempo)
-                
+                self.addChild(timerQuadro)
                                                                     //MARK: Pausado
                 if navegação.Pausado {
                     let telaPause = SKSpriteNode(imageNamed: "pausaP")
@@ -391,6 +397,13 @@ class GameScene: SKScene {
             }
             atualizarTela()
         }
+    }
+    
+    func corrigirZeros() -> String {
+        if tempo % 60 == 0 {
+            return "00"
+        }
+        return String(tempo % 60)
     }
     
     //Função para importar todos os áudios usados no jogo

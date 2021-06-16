@@ -25,7 +25,7 @@ extension GameScene {
         rodaFuro1.zRotation = CGFloat(navegação.Rodas.angulo) * CGFloat.pi/180
         rodaFuro1.name = "Cofre"
         
-        let apertado1 = SKSpriteNode(imageNamed: "rodaApertada")
+        let apertado1 = SKSpriteNode(imageNamed: "RodaApertada")
         apertado1.position = PosProporcional(pos: CGPoint(x: -58, y: 11))
         apertado1.size = SizeProporcional(size: CGSize(width: 85, height: 85))
         apertado1.zPosition = 9
@@ -44,7 +44,7 @@ extension GameScene {
         rodaFuro2.zRotation = CGFloat(navegação.Rodas.angulo) * CGFloat.pi/180
         rodaFuro2.name = "Cofre"
         
-        let apertado2 = SKSpriteNode(imageNamed: "rodaApertada")
+        let apertado2 = SKSpriteNode(imageNamed: "RodaApertada")
         apertado2.position = PosProporcional(pos: CGPoint(x: 57, y: 11))
         apertado2.size = SizeProporcional(size: CGSize(width: 85, height: 85))
         apertado2.zPosition = 9
@@ -63,7 +63,7 @@ extension GameScene {
         rodaFuro3.zRotation = CGFloat(navegação.Rodas.angulo) * CGFloat.pi/180
         rodaFuro3.name = "Cofre"
         
-        let apertado3 = SKSpriteNode(imageNamed: "rodaApertada")
+        let apertado3 = SKSpriteNode(imageNamed: "RodaApertada")
         apertado3.position = PosProporcional(pos: CGPoint(x: -58, y: -85))
         apertado3.size = SizeProporcional(size: CGSize(width: 85, height: 85))
         apertado3.zPosition = 9
@@ -82,7 +82,7 @@ extension GameScene {
         rodaFuro4.zRotation = CGFloat(navegação.Rodas.angulo) * CGFloat.pi/180
         rodaFuro4.name = "Cofre"
         
-        let apertado4 = SKSpriteNode(imageNamed: "rodaApertada")
+        let apertado4 = SKSpriteNode(imageNamed: "RodaApertada")
         apertado4.position = PosProporcional(pos: CGPoint(x: 57, y: -85))
         apertado4.size = SizeProporcional(size: CGSize(width: 85, height: 85))
         apertado4.zPosition = 9
@@ -141,7 +141,7 @@ extension GameScene {
             rodaFuro1.position = PosProporcional(pos: CGPoint(x: -92, y: 24))
         }
         
-        let apertado1 = SKSpriteNode(imageNamed: "rodaApertada")
+        let apertado1 = SKSpriteNode(imageNamed: "RodaApertada")
         apertado1.position = PosProporcional(pos: CGPoint(x: -92, y: 24))
         apertado1.size = SizeProporcional(size: CGSize(width: 140, height: 140))
         apertado1.zPosition = 9
@@ -164,7 +164,7 @@ extension GameScene {
             rodaFuro2.position = PosProporcional(pos: CGPoint(x: 90, y: 24))
         }
         
-        let apertado2 = SKSpriteNode(imageNamed: "rodaApertada")
+        let apertado2 = SKSpriteNode(imageNamed: "RodaApertada")
         apertado2.position = PosProporcional(pos: CGPoint(x: 90, y: 24))
         apertado2.size = SizeProporcional(size: CGSize(width: 140, height: 140))
         apertado2.zPosition = 9
@@ -187,7 +187,7 @@ extension GameScene {
             rodaFuro3.position = PosProporcional(pos: CGPoint(x: -92, y: -132))
         }
         
-        let apertado3 = SKSpriteNode(imageNamed: "rodaApertada")
+        let apertado3 = SKSpriteNode(imageNamed: "RodaApertada")
         apertado3.position = PosProporcional(pos: CGPoint(x: -92, y: -132))
         apertado3.size = SizeProporcional(size: CGSize(width: 140, height: 140))
         apertado3.zPosition = 9
@@ -210,7 +210,7 @@ extension GameScene {
             rodaFuro4.position = PosProporcional(pos: CGPoint(x: 90, y: -132))
         }
         
-        let apertado4 = SKSpriteNode(imageNamed: "rodaApertada")
+        let apertado4 = SKSpriteNode(imageNamed: "RodaApertada")
         apertado4.position = PosProporcional(pos: CGPoint(x: 90, y: -132))
         apertado4.size = SizeProporcional(size: CGSize(width: 140, height: 140))
         apertado4.zPosition = 9
