@@ -16,7 +16,7 @@ var audios: [String: AVAudioPlayer] = ["background": AVAudioPlayer(), "botao": A
 class GameScene: SKScene {
     
     let publisher = Timer.publish(every: 1, on: .current, in: .common)
-    private var tempo : Int = 300
+    private var tempo : Int = 15
     private var tamanhoCofre : CGSize = CGSize(width: 400, height: 496)
     private var tamanhoCofreFechado : CGSize = CGSize(width: 252, height: 310)
     private var cancelable : Combine.Cancellable?
@@ -151,6 +151,8 @@ class GameScene: SKScene {
                         quadrado.texture = SKTexture(imageNamed: "CofreEsteira")
                     case 5:
                         quadrado.texture = SKTexture(imageNamed: "CofreRodas")
+                    case 7:
+                        quadrado.texture = SKTexture(imageNamed: "CofreInterruptor")
                     default:
                         break
                 }
@@ -215,6 +217,8 @@ class GameScene: SKScene {
                             DrawEsteiraAberto()
                         case 5:
                             DrawRodasAberto()
+                        case 7:
+                            DrawInterruptorAberto()
                         default:
                             break
                     }
@@ -232,6 +236,8 @@ class GameScene: SKScene {
                             DrawEsteiraFechado()
                         case 5:
                             DrawRodasFechado()
+                        case 7:
+                            DrawInterruptorFechado()
                         default:
                             break
                     }
@@ -337,6 +343,8 @@ class GameScene: SKScene {
                                         TouchedEsteira(pos: pos)
                                     case 5:
                                         TouchedRodas(pos: pos)
+                                    case 7:
+                                        TouchedInterruptor(pos: pos)
                                     default:
                                         break
                                 }
@@ -403,6 +411,9 @@ class GameScene: SKScene {
         if tempo % 60 == 0 {
             return "00"
         }
+        else if tempo % 60 < 10{
+            return "0\(tempo % 60)"
+        }
         return String(tempo % 60)
     }
     
@@ -465,10 +476,11 @@ struct ControleNavegação {
 
 func SortearModulos() -> [Int] {
 
-    var modulos = [Int]()
+//    var modulos = [Int]()
+    var modulos = [7]
 
     while modulos.count < 4 {
-        let n = [1,2,3,4,5,6,7].randomElement()!
+        let n = [1,2,3,4,5,7].randomElement()! //MARK: TODO return 6
         if modulos.firstIndex(of: n) == nil {
             modulos.append(n)
         }
