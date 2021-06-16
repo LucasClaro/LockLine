@@ -116,6 +116,7 @@ extension GameScene {
         addChild(Impressora)
         
         if navegação.Manual.DicaAberta != 0 {
+            audios["background"]?.volume = 0.1
             let dicaAberta = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: frame.maxY*2))
             dicaAberta.position = CGPoint(x: 0, y: 0)
             dicaAberta.texture = SKTexture(imageNamed: "Dica\(navegação.Manual.DicaAberta)")
@@ -125,6 +126,7 @@ extension GameScene {
         }
         
         if navegação.Manual.ImpressoraAberta {
+            audios["background"]?.volume = 0.1
             let impressoraAberta = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: frame.maxY*2))
             impressoraAberta.position = CGPoint(x: 0, y: 0)
             impressoraAberta.texture = SKTexture(imageNamed: "Impressora")
@@ -135,6 +137,7 @@ extension GameScene {
         }
         
         if navegação.Manual.MonitorAberto {
+            audios["background"]?.volume = 0.1
             let MonitorAberto = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: frame.maxY*2))
             MonitorAberto.position = CGPoint(x: 0, y: 0)
             MonitorAberto.texture = SKTexture(imageNamed: "Monitor")
@@ -148,6 +151,7 @@ extension GameScene {
         }
         
         if navegação.Manual.GabineteAberto {
+            audios["background"]?.volume = 0.1
             let GabineteAberto = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: frame.maxY*2))
             GabineteAberto.position = CGPoint(x: 0, y: 0)
             GabineteAberto.texture = SKTexture(imageNamed: "Gabinete")
@@ -189,6 +193,7 @@ extension GameScene {
                 break
             case "MonitorAberto":
                 if navegação.Manual.TelaPC == .Desktop {
+                    audios["background"]?.volume = 0.4
                     navegação.Manual.MonitorAberto = false
                 }
                 else if navegação.Manual.TelaPC == .Dica {
@@ -208,6 +213,7 @@ extension GameScene {
                 atualizarTela()
                 break
             case "GabineteAberto":
+                audios["background"]?.volume = 0.4
                 navegação.Manual.GabineteAberto = false
                 atualizarTela()
                 break
@@ -224,6 +230,7 @@ extension GameScene {
                 atualizarTela()
                 break
             case "ImpressoraAberta":
+                audios["background"]?.volume = 0.4
                 navegação.Manual.ImpressoraAberta = false
                 atualizarTela()
                 break
@@ -246,6 +253,7 @@ extension GameScene {
             case "BtnPrint":
                 break
             default:
+                audios["background"]?.volume = 0.4
                 navegação.Manual.DicaAberta = 0
                 atualizarTela()
         }

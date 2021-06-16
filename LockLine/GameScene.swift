@@ -291,26 +291,31 @@ class GameScene: SKScene {
                         case "Pause":
                             if !navegação.Pausado && !navegação.Finalizado {
                                 navegação.Pausado = true
+                                audios["botao"]?.play()
                                 atualizarTela()
                             }
                             break
                         case "PauseSim":
                             navegação = ControleNavegação()
+                            audios["botao"]?.play()
                             tempo = 300
                             atualizarTela()
                             break
                         case "PauseNao":
                             navegação.Pausado = false
+                            audios["botao"]?.play()
                             atualizarTela()
                             break
                         case "FimRestart":
                             navegação = ControleNavegação()
                             tempo = 300
+                            audios["botao"]?.play()
                             navegação.Tela = .Jogo
                             atualizarTela()
                             break
                         case "FimInicio":
                             navegação = ControleNavegação()
+                            audios["botao"]?.play()
                             atualizarTela()
                             break
                         default:
@@ -402,12 +407,12 @@ class GameScene: SKScene {
     }
     
     func verificacaoAudios(){
-        for i in 1...audios.count-1{
+        for i in 2...audios.count-1{
             let chave = Array(audios)[i].key
             audios[chave]?.stop()
         }
         if (!audios["background"]!.isPlaying){
-//            audios["background"]?.play()
+            audios["background"]?.play()
         }
     }
     
