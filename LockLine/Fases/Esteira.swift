@@ -15,8 +15,8 @@ extension GameScene{
         
         //MOLDURA
         let moldura = SKSpriteNode(imageNamed: "moldura")
-        moldura.size = SizeProporcional(size: CGSize(width: 250.1, height: 250.1))
-        moldura.position = PosProporcional(pos: CGPoint(x: 0, y: -30))
+        moldura.size = SizeProporcional(size: CGSize(width: 252, height: 249.5))
+        moldura.position = PosProporcional(pos: CGPoint(x: 0, y: -30.3))
         moldura.zPosition = 12
         moldura.name = "Cofre"
         
