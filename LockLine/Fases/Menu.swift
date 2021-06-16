@@ -20,8 +20,26 @@ extension GameScene {
         btnManual.position = CGPoint(x: 0, y: -300)
         btnManual.name = "BtnManual"
         
+        let labelJogar = SKLabelNode(text: "Jogar")
+        labelJogar.position = CGPoint(x: 0, y: -190)
+        labelJogar.fontColor = UIColor.black
+        labelJogar.fontName = "Oswald-Regular"
+        labelJogar.fontSize = 40
+        labelJogar.zPosition = 11
+        labelJogar.name = "BtnJogar"
+        
+        let labelManual = SKLabelNode(text: "Manual")
+        labelManual.position = CGPoint(x: 0, y: -300)
+        labelManual.fontColor = UIColor.black
+        labelManual.fontName = "Oswald-Regular"
+        labelManual.fontSize = 40
+        labelManual.zPosition = 11
+        labelJogar.name = "BtnManual"
+        
         addChild(btnJogar)
         addChild(btnManual)
+        addChild(labelJogar)
+        addChild(labelManual)
         
     }
     

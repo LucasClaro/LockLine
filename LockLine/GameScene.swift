@@ -16,7 +16,7 @@ var audios: [String: AVAudioPlayer] = ["background": AVAudioPlayer(), "botao": A
 class GameScene: SKScene {
     
     let publisher = Timer.publish(every: 1, on: .current, in: .common)
-    private var tempo : Int = 15
+    private var tempo : Int = 300
     private var tamanhoCofre : CGSize = CGSize(width: 400, height: 496)
     private var tamanhoCofreFechado : CGSize = CGSize(width: 252, height: 310)
     private var cancelable : Combine.Cancellable?
