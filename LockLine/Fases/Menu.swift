@@ -12,34 +12,27 @@ extension GameScene {
     func DrawMenu() {
         audios["background"]?.volume = 0.4
         audios["background"]?.play()
-        let btnJogar = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 300, height: 100))
-        btnJogar.position = CGPoint(x: 0, y: -190)
+        
+        let Fundo = SKSpriteNode(imageNamed: "Menu")
+        Fundo.size = CGSize(width: frame.maxX*2, height: frame.maxY*2)
+        Fundo.position = CGPoint(x: 0, y: 0)
+        Fundo.zPosition = 0
+        
+        let btnJogar = SKSpriteNode(color: UIColor.white, size: CGSize(width: 400, height: 110))
+        btnJogar.position = PosProporcional(pos: CGPoint(x: 0, y: -70))
         btnJogar.name = "BtnJogar"
+        btnJogar.alpha = 0.001
+        btnJogar.zPosition = 5
         
-        let btnManual = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 300, height: 100))
-        btnManual.position = CGPoint(x: 0, y: -300)
+        let btnManual = SKSpriteNode(color: UIColor.white, size: CGSize(width: 400, height: 110))
+        btnManual.position = PosProporcional(pos: CGPoint(x: 0, y: -190))
         btnManual.name = "BtnManual"
+        btnManual.alpha = 0.001
+        btnManual.zPosition = 5
         
-        let labelJogar = SKLabelNode(text: "Jogar")
-        labelJogar.position = CGPoint(x: 0, y: -190)
-        labelJogar.fontColor = UIColor.black
-        labelJogar.fontName = "Oswald-Regular"
-        labelJogar.fontSize = 40
-        labelJogar.zPosition = 11
-        labelJogar.name = "BtnJogar"
-        
-        let labelManual = SKLabelNode(text: "Manual")
-        labelManual.position = CGPoint(x: 0, y: -300)
-        labelManual.fontColor = UIColor.black
-        labelManual.fontName = "Oswald-Regular"
-        labelManual.fontSize = 40
-        labelManual.zPosition = 11
-        labelJogar.name = "BtnManual"
-        
+        addChild(Fundo)
         addChild(btnJogar)
         addChild(btnManual)
-        addChild(labelJogar)
-        addChild(labelManual)
         
     }
     

@@ -16,31 +16,39 @@ extension GameScene {
         quadrado.texture = SKTexture(imageNamed: "Sala")
         quadrado.zPosition = 5
         
-        let Dica1 = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 100, height: 130)))
-        Dica1.position = CGPoint(x: -90, y: 240)
+        let Dica1 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 100, height: 130)))
+        Dica1.position = PosProporcional(pos: CGPoint(x: -90, y: 240))
         Dica1.zPosition = 10
+        Dica1.alpha = 0.001
         Dica1.name = "Dica1"
         
-        let Dica2 = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 80, height: 80)))
-        Dica2.position = CGPoint(x: 85, y: 210)
+        let Dica2 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 80, height: 80)))
+        Dica2.position = PosProporcional(pos: CGPoint(x: 85, y: 210))
         Dica2.zPosition = 10
+        Dica2.alpha = 0.001
         Dica2.name = "Dica2"
         
-        let Dica3 = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 80, height: 80)))
-        Dica3.position = CGPoint(x: 93, y: 300)
+        let Dica3 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 80, height: 80)))
+        Dica3.position = PosProporcional(pos: CGPoint(x: 93, y: 300))
         Dica3.zPosition = 10
+        Dica3.alpha = 0.001
         Dica3.name = "Dica3"
         
-        let Monitor = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 150, height: 150)))
-        Monitor.position = CGPoint(x: 0, y: -40)
+        let Monitor = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 150, height: 150)))
+        Monitor.position = PosProporcional(pos: CGPoint(x: 0, y: -40))
         Monitor.zPosition = 10
+        Monitor.alpha = 0.001
         Monitor.name = "Monitor"
         
         if navegação.Manual.MonitorAberto {
-            let Dica4 = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
-            Dica4.position = CGPoint(x: 150, y: 70)
+            let Dica4 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 150, height: 100)))
+            Dica4.position = PosProporcional(pos: CGPoint(x: 145, y: 130))
+            Dica4.alpha = 0.001
             Dica4.zPosition = 16
             Dica4.name = "Dica4"
+            if navegação.Manual.PCLigado {
+                Dica4.position = PosProporcional(pos: CGPoint(x: 145, y: 250))
+            }
             
             addChild(Dica4)
             
@@ -48,14 +56,16 @@ extension GameScene {
                 
                 switch navegação.Manual.TelaPC {
                     case .Desktop:
-                        let DiretoriosIcon = SKSpriteNode(color: UIColor.purple, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
-                        DiretoriosIcon.position = CGPoint(x: -150, y: 70)
+                        let DiretoriosIcon = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+                        DiretoriosIcon.position = CGPoint(x: -115, y: 130)
                         DiretoriosIcon.zPosition = 16
+                        DiretoriosIcon.alpha = 0.001
                         DiretoriosIcon.name = "DiretoriosIcon"
                         
-                        let ImpressoraIcon = SKSpriteNode(color: UIColor.yellow, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
-                        ImpressoraIcon.position = CGPoint(x: -150, y: 10)
+                        let ImpressoraIcon = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+                        ImpressoraIcon.position = CGPoint(x: -115, y: 70)
                         ImpressoraIcon.zPosition = 16
+                        ImpressoraIcon.alpha = 0.001
                         ImpressoraIcon.name = "ImpressoraIcon"
                         
                         addChild(DiretoriosIcon)
@@ -82,27 +92,31 @@ extension GameScene {
             
         }
         
-        let Gabinete = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
+        let Gabinete = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
         Gabinete.position = CGPoint(x: -150, y: -20)
         Gabinete.zPosition = 10
+        Gabinete.alpha = 0.001
         Gabinete.name = "Gabinete"
         
         if navegação.Manual.GabineteAberto {
-            let Dica5 = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
-            Dica5.position = CGPoint(x: 150, y: 70)
+            let Dica5 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 150, height: 110)))
+            Dica5.position = CGPoint(x: 110, y: 175)
             Dica5.zPosition = 16
+            Dica5.alpha = 0.001
             Dica5.name = "Dica5"
             
             addChild(Dica5)
         }
         
-        let Dica6 = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 130, height: 130)))
+        let Dica6 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 130, height: 130)))
         Dica6.position = CGPoint(x: -40, y: -300)
+        Dica6.alpha = 0.001
         Dica6.zPosition = 10
         Dica6.name = "Dica6"
         
-        let Impressora = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 120, height: 120)))
+        let Impressora = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 120, height: 120)))
         Impressora.position = CGPoint(x: 150, y: -130)
+        Impressora.alpha = 0.001
         Impressora.zPosition = 10
         Impressora.name = "Impressora"
         
@@ -124,6 +138,8 @@ extension GameScene {
             dicaAberta.zPosition = 20
             
             addChild(dicaAberta)
+            
+            desenharDica(dica : navegação.Manual.DicaAberta)
         }
         
         if navegação.Manual.ImpressoraAberta {
@@ -159,12 +175,13 @@ extension GameScene {
             GabineteAberto.zPosition = 15
             GabineteAberto.name = "GabineteAberto"
             
-            let BtnIO = SKSpriteNode(color: UIColor.red, size: CGSize(width: 50, height: 50))
-            BtnIO.position = CGPoint(x: -70, y: 100)
+            let BtnIO = SKSpriteNode(color: UIColor.white, size: CGSize(width: 50, height: 50))
+            BtnIO.position = CGPoint(x: 0, y: -360)
             BtnIO.zPosition = 16
+            BtnIO.alpha = 0.001
             BtnIO.name = "BtnIO"
             if navegação.Manual.PCLigado {
-                BtnIO.color = UIColor.green
+                GabineteAberto.texture = SKTexture(imageNamed: "GabineteLigado")
             }
             
             addChild(GabineteAberto)
@@ -173,6 +190,71 @@ extension GameScene {
         
     }
     
+    func desenharDica(dica : Int) {
+        switch dica {
+            case 1:
+                let txt = SKSpriteNode(imageNamed: "EsteiraManual1")
+                txt.size = SizeProporcional(size: CGSize(width: 200, height: 213))
+                txt.position = PosProporcional(pos: CGPoint(x: -95, y: 100))
+                txt.zPosition = 40
+                
+                let guia = SKSpriteNode(imageNamed: "EsteiraManual2")
+                guia.size = SizeProporcional(size: CGSize(width: 180, height: 496))
+                guia.position = PosProporcional(pos: CGPoint(x: 100, y: -40))
+                guia.zPosition = 40
+                
+                let caixa = SKSpriteNode(imageNamed: "EsteiraManual3")
+                caixa.size = SizeProporcional(size: CGSize(width: 150, height: 185))
+                caixa.position = PosProporcional(pos: CGPoint(x: -115, y: -140))
+                caixa.zPosition = 40
+                
+                addChild(txt)
+                addChild(guia)
+                addChild(caixa)
+            case 2:
+                let txt = SKSpriteNode(imageNamed: "LabirintoManual1")
+                txt.size = SizeProporcional(size: CGSize(width: 200, height: 149))
+                txt.position = PosProporcional(pos: CGPoint(x: -95, y: 100))
+                txt.zPosition = 40
+                
+                let guia = SKSpriteNode(imageNamed: "LabirintoManual2")
+                guia.size = SizeProporcional(size: CGSize(width: 400, height: 90))
+                guia.position = PosProporcional(pos: CGPoint(x: 0, y: -150))
+                guia.zPosition = 40
+                
+                let caixa = SKSpriteNode(imageNamed: "LabirintoManual3")
+                caixa.size = SizeProporcional(size: CGSize(width: 150, height: 185))
+                caixa.position = PosProporcional(pos: CGPoint(x: 120, y: 80))
+                caixa.zPosition = 40
+                
+                addChild(txt)
+                addChild(guia)
+                addChild(caixa)
+            case 3:
+                let txt = SKSpriteNode(imageNamed: "EsteiraManual1")
+                txt.size = SizeProporcional(size: CGSize(width: 200, height: 213))
+                txt.position = PosProporcional(pos: CGPoint(x: -95, y: 100))
+                txt.zPosition = 40
+                
+                let guia = SKSpriteNode(imageNamed: "EsteiraManual2")
+                guia.size = SizeProporcional(size: CGSize(width: 180, height: 496))
+                guia.position = PosProporcional(pos: CGPoint(x: 100, y: -40))
+                guia.zPosition = 40
+                
+                let caixa = SKSpriteNode(imageNamed: "EsteiraManual3")
+                caixa.size = SizeProporcional(size: CGSize(width: 150, height: 185))
+                caixa.position = PosProporcional(pos: CGPoint(x: -115, y: -140))
+                caixa.zPosition = 40
+                
+                addChild(txt)
+                addChild(guia)
+                addChild(caixa)
+            default:
+                break
+        }
+    }
+    
+    //MARK: Touched
     func TouchedManual(pos : CGPoint) {
         
         switch atPoint(pos).name {
@@ -262,6 +344,7 @@ extension GameScene {
     
 }
 
+//MARK: Struct
 struct ManualController {
     var DicaAberta : Int = 0
     var MonitorAberto : Bool = false
