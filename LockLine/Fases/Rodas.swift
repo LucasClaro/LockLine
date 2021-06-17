@@ -120,7 +120,7 @@ extension GameScene {
         
     //MARK: DrawAberto
     func DrawRodasAberto() {
-        audios["roda"]?.volume = 1
+        audios["roda"]?.volume = 2
         audios["roda"]?.play()
         
         let roda1 = SKSpriteNode(imageNamed: "Roda\(navegação.Rodas.rodas[0])")
@@ -251,24 +251,28 @@ extension GameScene {
             switch atPoint(pos).name {
                 case "Roda1":
                     if !navegação.Rodas.input.contains(1) {
+                        audios["botao"]?.play()
                         navegação.Rodas.input.append(1)
                     }
                     checarSenha()
                     atualizarTela()
                 case "Roda2":
                     if !navegação.Rodas.input.contains(2) {
+                        audios["botao"]?.play()
                         navegação.Rodas.input.append(2)
                     }
                     checarSenha()
                     atualizarTela()
                 case "Roda3":
                     if !navegação.Rodas.input.contains(3) {
+                        audios["botao"]?.play()
                         navegação.Rodas.input.append(3)
                     }
                     checarSenha()
                     atualizarTela()
                 case "Roda4":
                     if !navegação.Rodas.input.contains(4) {
+                        audios["botao"]?.play()
                         navegação.Rodas.input.append(4)
                     }
                     checarSenha()

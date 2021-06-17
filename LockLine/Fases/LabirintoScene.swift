@@ -121,108 +121,103 @@ extension GameScene {
         if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
             switch atPoint(pos).name {
                 case "arrowUp":
+                    audios["botao"]?.play()
                     if navegação.Labirinto.historico.last!.i > 0{
-                        if true {
-                            if navegação.Labirinto.historico.count > 2 && navegação.Labirinto.historico.last!.i - 1 == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].i && navegação.Labirinto.historico.last!.j == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].j{
-                                if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
+                        if navegação.Labirinto.historico.count > 2 && navegação.Labirinto.historico.last!.i - 1 == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].i && navegação.Labirinto.historico.last!.j == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].j{
+                            if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
                                     navegação.Labirinto.vitoria -= 1
-                                }
-                                navegação.Labirinto.historico.removeLast()
                             }
-                            else if navegação.Labirinto.historico.count > 1 && navegação.Labirinto.historico.last!.i - 1 == navegação.Labirinto.historico[0].i && navegação.Labirinto.historico.last!.j == navegação.Labirinto.historico[0].j {
-                                if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
-                                    navegação.Labirinto.vitoria -= 1
-                                }
-                                navegação.Labirinto.historico.removeLast()
+                            navegação.Labirinto.historico.removeLast()
+                        }
+                        else if navegação.Labirinto.historico.count > 1 && navegação.Labirinto.historico.last!.i - 1 == navegação.Labirinto.historico[0].i && navegação.Labirinto.historico.last!.j == navegação.Labirinto.historico[0].j {
+                            if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
+                                navegação.Labirinto.vitoria -= 1
                             }
-                            else {
-                                if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i - 1 ,j:navegação.Labirinto.historico.last!.j)}){
-                                    navegação.Labirinto.historico.append((i: navegação.Labirinto.historico.last!.i - 1 ,j:navegação.Labirinto.historico.last!.j))
-                                    if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0 {
-                                        navegação.Labirinto.vitoria += 1
-                                    }
+                            navegação.Labirinto.historico.removeLast()
+                        }
+                        else {
+                            if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i - 1 ,j:navegação.Labirinto.historico.last!.j)}){
+                                navegação.Labirinto.historico.append((i: navegação.Labirinto.historico.last!.i - 1 ,j:navegação.Labirinto.historico.last!.j))
+                                if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0 {
+                                    navegação.Labirinto.vitoria += 1
                                 }
                             }
                         }
                     }
                     break
                 case "arrowDown":
+                    audios["botao"]?.play()
                     if navegação.Labirinto.historico.last!.i < 3{
-                        if true {
-                            if navegação.Labirinto.historico.count > 2 && navegação.Labirinto.historico.last!.i + 1 == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].i && navegação.Labirinto.historico.last!.j == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].j{
-                                if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
-                                    navegação.Labirinto.vitoria -= 1
-                                }
-                                navegação.Labirinto.historico.removeLast()
+                        if navegação.Labirinto.historico.count > 2 && navegação.Labirinto.historico.last!.i + 1 == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].i && navegação.Labirinto.historico.last!.j == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].j{
+                            if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
+                                navegação.Labirinto.vitoria -= 1
                             }
-                            else if navegação.Labirinto.historico.count > 1 && navegação.Labirinto.historico.last!.i + 1 == navegação.Labirinto.historico[0].i && navegação.Labirinto.historico.last!.j == navegação.Labirinto.historico[0].j {
-                                if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
-                                    navegação.Labirinto.vitoria -= 1
-                                }
-                                navegação.Labirinto.historico.removeLast()
+                            navegação.Labirinto.historico.removeLast()
+                        }
+                        else if navegação.Labirinto.historico.count > 1 && navegação.Labirinto.historico.last!.i + 1 == navegação.Labirinto.historico[0].i && navegação.Labirinto.historico.last!.j == navegação.Labirinto.historico[0].j {
+                            if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
+                                navegação.Labirinto.vitoria -= 1
                             }
-                            else {
-                                if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i + 1 ,j:navegação.Labirinto.historico.last!.j)}){
-                                    navegação.Labirinto.historico.append((i: navegação.Labirinto.historico.last!.i + 1 ,j:navegação.Labirinto.historico.last!.j))
-                                    if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0 {
-                                        navegação.Labirinto.vitoria += 1
-                                        navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].1 = true
-                                    }
+                            navegação.Labirinto.historico.removeLast()
+                        }
+                        else {
+                            if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i + 1 ,j:navegação.Labirinto.historico.last!.j)}){
+                                navegação.Labirinto.historico.append((i: navegação.Labirinto.historico.last!.i + 1 ,j:navegação.Labirinto.historico.last!.j))
+                                if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0 {
+                                    navegação.Labirinto.vitoria += 1
+                                    navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].1 = true
                                 }
                             }
                         }
                     }
                     break
                 case "arrowLeft":
+                    audios["botao"]?.play()
                     if navegação.Labirinto.historico.last!.j > 0{
-                        if true {
-                            if navegação.Labirinto.historico.count > 2 && navegação.Labirinto.historico.last!.j - 1 == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].j && navegação.Labirinto.historico.last!.i == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].i{
-                                if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
-                                    navegação.Labirinto.vitoria -= 1
-                                }
-                                navegação.Labirinto.historico.removeLast()
+                        if navegação.Labirinto.historico.count > 2 && navegação.Labirinto.historico.last!.j - 1 == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].j && navegação.Labirinto.historico.last!.i == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].i{
+                            if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
+                                navegação.Labirinto.vitoria -= 1
                             }
-                            else if navegação.Labirinto.historico.count > 1 && navegação.Labirinto.historico.last!.j - 1 == navegação.Labirinto.historico[0].j && navegação.Labirinto.historico.last!.i == navegação.Labirinto.historico[0].i {
-                                if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
-                                    navegação.Labirinto.vitoria -= 1
-                                }
-                                navegação.Labirinto.historico.removeLast()
+                            navegação.Labirinto.historico.removeLast()
+                        }
+                        else if navegação.Labirinto.historico.count > 1 && navegação.Labirinto.historico.last!.j - 1 == navegação.Labirinto.historico[0].j && navegação.Labirinto.historico.last!.i == navegação.Labirinto.historico[0].i {
+                            if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
+                                navegação.Labirinto.vitoria -= 1
                             }
-                            else {
-                                if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i ,j:navegação.Labirinto.historico.last!.j - 1)}){
-                                    navegação.Labirinto.historico.append((i: navegação.Labirinto.historico.last!.i ,j:navegação.Labirinto.historico.last!.j - 1))
-                                    if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
-                                        navegação.Labirinto.vitoria += 1
-                                        navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].1 = true
-                                    }
-                                        
+                            navegação.Labirinto.historico.removeLast()
+                        }
+                        else {
+                            if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i ,j:navegação.Labirinto.historico.last!.j - 1)}){
+                                navegação.Labirinto.historico.append((i: navegação.Labirinto.historico.last!.i ,j:navegação.Labirinto.historico.last!.j - 1))
+                                if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
+                                    navegação.Labirinto.vitoria += 1
+                                    navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].1 = true
                                 }
                             }
                         }
                     }
                     break
                 case "arrowRight":
+                    audios["botao"]?.play()
                     if navegação.Labirinto.historico.last!.j < 3{
-                        if true {
-                            if navegação.Labirinto.historico.count > 2 && navegação.Labirinto.historico.last!.j + 1 == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].j && navegação.Labirinto.historico.last!.i == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].i{
-                                if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
-                                    navegação.Labirinto.vitoria -= 1
-                                }
-                                navegação.Labirinto.historico.removeLast()
+                        if navegação.Labirinto.historico.count > 2 && navegação.Labirinto.historico.last!.j + 1 == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].j && navegação.Labirinto.historico.last!.i == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].i{
+                            if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
+                                navegação.Labirinto.vitoria -= 1
                             }
-                            else if navegação.Labirinto.historico.count > 1 && navegação.Labirinto.historico.last!.j + 1 == navegação.Labirinto.historico[0].j && navegação.Labirinto.historico.last!.i == navegação.Labirinto.historico[0].i {
-                                if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
-                                    navegação.Labirinto.vitoria -= 1
-                                }
-                                navegação.Labirinto.historico.removeLast()
+                            navegação.Labirinto.historico.removeLast()
+                        }
+                        else if navegação.Labirinto.historico.count > 1 && navegação.Labirinto.historico.last!.j + 1 == navegação.Labirinto.historico[0].j && navegação.Labirinto.historico.last!.i == navegação.Labirinto.historico[0].i {
+                            if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
+                                navegação.Labirinto.vitoria -= 1
                             }
-                            else {
-                                if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i ,j:navegação.Labirinto.historico.last!.j + 1)}){
-                                    navegação.Labirinto.historico.append((i: navegação.Labirinto.historico.last!.i ,j:navegação.Labirinto.historico.last!.j + 1))
-                                    if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0 {
-                                        navegação.Labirinto.vitoria += 1
-                                        navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].1 = true
-                                    }
+                            navegação.Labirinto.historico.removeLast()
+                        }
+                        else {
+                            if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i ,j:navegação.Labirinto.historico.last!.j + 1)}){
+                                navegação.Labirinto.historico.append((i: navegação.Labirinto.historico.last!.i ,j:navegação.Labirinto.historico.last!.j + 1))
+                                if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0 {
+                                    navegação.Labirinto.vitoria += 1
+                                    navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].1 = true
                                 }
                             }
                         }

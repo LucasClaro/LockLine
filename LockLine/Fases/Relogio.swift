@@ -219,6 +219,7 @@ extension GameScene {
         if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
             switch atPoint(pos).name {
                 case "Botao":
+                    audios["botao"]?.play()
                     if mod(navegação.Relogio.senha.0, 12) == mod(navegação.Relogio.ponteiroHoras, 12) && mod(navegação.Relogio.senha.1, 60) == mod(navegação.Relogio.ponterioMinutos, 60){
                         audios["tictac"]?.volume = 2
                         audios["tictac"]?.play()

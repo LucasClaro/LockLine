@@ -34,7 +34,7 @@ extension GameScene {
         labelManual.fontName = "Oswald-Regular"
         labelManual.fontSize = 40
         labelManual.zPosition = 11
-        labelJogar.name = "BtnManual"
+        labelManual.name = "BtnManual"
         
         addChild(btnJogar)
         addChild(btnManual)
