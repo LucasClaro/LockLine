@@ -194,19 +194,24 @@ extension GameScene {
     
     //MARK: Touched
     func TouchedLetras(pos : CGPoint) {
+        audios["clickMaleta"]?.volume = 3
         
         if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
             switch atPoint(pos).name {
                 case "Letra1":
+                    audios["clickMaleta"]?.play()
                     navegação.Letras.input[0] = (navegação.Letras.input[0] + 1) % 10
                     atualizarTela()
                 case "Letra2":
+                    audios["clickMaleta"]?.play()
                     navegação.Letras.input[1] = (navegação.Letras.input[1] + 1) % 10
                     atualizarTela()
                 case "Letra3":
+                    audios["clickMaleta"]?.play()
                     navegação.Letras.input[2] = (navegação.Letras.input[2] + 1) % 10
                     atualizarTela()
                 case "Letra4":
+                    audios["clickMaleta"]?.play()
                     navegação.Letras.input[3] = (navegação.Letras.input[3] + 1) % 10
                     atualizarTela()
                 default:
@@ -218,8 +223,6 @@ extension GameScene {
             navegação.Letras.letras[n]
         })
         if navegação.Letras.senha == senhaInputada {
-            audios["clickMaleta"]?.volume = 2
-            audios["clickMaleta"]?.play()
             navegação.ModulosCompletos[navegação.ModuloOlhando] = true
         }
         

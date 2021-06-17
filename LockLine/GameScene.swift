@@ -45,8 +45,6 @@ class GameScene: SKScene {
                 DrawManual()
             case .Jogo:
 
-                audios["background"]?.volume = 0.4
-
                                                                     //MARK: Geral
                 let btnPause = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
                 btnPause.position = PosProporcional(pos: CGPoint(x: 170, y: 380))
@@ -159,8 +157,10 @@ class GameScene: SKScene {
                 
                                                                     //MARK: GeralAberto
                 if navegação.ModuloAberto {
-                    audios["background"]?.volume = 0.1
+                    
                     quadrado.size = tamanhoCofre
+                    
+                    self.backgroundColor = UIColor(named: "Papiro")!
                     
                     let setaBaixo = SKSpriteNode(imageNamed: "buttonBack")
                     setaBaixo.size = CGSize(width: 50, height: 30)
@@ -170,11 +170,6 @@ class GameScene: SKScene {
                     self.addChild(setaBaixo)
                 }
                 else {
-
-                    verificacaoAudios()
-                    audios["background"]?.volume = 0.4
-                    
-
                                                                     //MARK: GeralFechado
 
                     let background = SKSpriteNode(imageNamed: "background2")
@@ -290,13 +285,16 @@ class GameScene: SKScene {
                         case "Cofre":
                             if !navegação.Pausado && !navegação.Finalizado {
                                 navegação.ModuloAberto = true
+                                audios["background"]?.volume = 0.1
                                 atualizarTela()
                             }
                             break
                         case "SetaVoltar":
                             if !navegação.Pausado && !navegação.Finalizado {
+                                verificacaoAudios()
                                 navegação.ModuloAberto = false
                                 audios["botao"]?.play()
+                                audios["background"]?.volume = 0.4
                                 atualizarTela()
                             }
                             break
@@ -477,7 +475,7 @@ struct ControleNavegação {
 func SortearModulos() -> [Int] {
 
     var modulos = [Int]()
-//    var modulos = [7]
+    modulos = [4,5,3]
 
     while modulos.count < 4 {
         let n = [1,2,3,4,5,7].randomElement()! //MARK: TODO return 6

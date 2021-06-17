@@ -156,17 +156,30 @@ extension GameScene{
         status()
         audios["esteira"]?.volume = 2
         audios["esteira"]?.play()
+        
         //LATERAIS
+        let mascaraEsquerda = SKSpriteNode(imageNamed: "mascara")
+        mascaraEsquerda.size = SizeProporcional(size: CGSize(width: 30, height: 59))
+        mascaraEsquerda.position = PosProporcional(pos: CGPoint(x: -200, y: -160))
+        mascaraEsquerda.zPosition = 12
+        self.addChild(mascaraEsquerda)
+        
+        let mascaraDireita = SKSpriteNode(imageNamed: "mascara")
+        mascaraDireita.size = SizeProporcional(size: CGSize(width: 30, height: 59))
+        mascaraDireita.position = PosProporcional(pos: CGPoint(x: 200, y: -160))
+        mascaraDireita.zPosition = 12
+        self.addChild(mascaraDireita)
+        
         let lateralEsquerda = SKSpriteNode(imageNamed: "lateral")
         lateralEsquerda.size = SizeProporcional(size: CGSize(width: 41.2, height: 70))
         lateralEsquerda.position = PosProporcional(pos: CGPoint(x: -179.5, y: -160))
-        lateralEsquerda.zPosition = 12
+        lateralEsquerda.zPosition = 13
         self.addChild(lateralEsquerda)
         
         let lateralDireita = SKSpriteNode(imageNamed: "lateral")
         lateralDireita.size = SizeProporcional(size: CGSize(width: 38.8, height: 60))
         lateralDireita.position = PosProporcional(pos: CGPoint(x: 180.5, y: -160))
-        lateralDireita.zPosition = 12
+        lateralDireita.zPosition = 13
         self.addChild(lateralDireita)
         
         //PLACAS
@@ -410,7 +423,7 @@ extension GameScene{
     func updateEsteira(){
         //min: -240  max: 227
         for n in 1...8{
-            navegação.Esteira.posCubos[n-1] += 2
+            navegação.Esteira.posCubos[n-1] += 1
             cubos[n]?.position = PosProporcional(pos: CGPoint(x: navegação.Esteira.posCubos[n-1], y: -161))
             
             if (navegação.Esteira.posCubos[n-1] == 227 || navegação.Esteira.posCubos[n-1] > 227){
