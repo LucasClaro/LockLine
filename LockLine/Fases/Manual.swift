@@ -188,6 +188,12 @@ extension GameScene {
             addChild(BtnIO)
         }
         
+        let BtnSair = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 50, height: 50))
+        BtnSair.position = CGPoint(x: 170, y: 390)
+        BtnSair.zPosition = 50
+        BtnSair.name = "BtnSair"
+        
+        addChild(BtnSair)
     }
     
     func desenharDica(dica : Int) {
@@ -335,6 +341,14 @@ extension GameScene {
                 break
             case "BtnPrint":
                 break
+            case "BtnSair":
+                navegação.Manual.DicaAberta = 0
+                navegação.Manual.GabineteAberto = false
+                navegação.Manual.ImpressoraAberta = false
+                navegação.Manual.MonitorAberto = false
+                navegação.Manual.PCLigado = false
+                navegação.Manual.TelaPC = .Desktop
+                navegação.Tela = .Menu
             default:
                 audios["background"]?.volume = 0.4
                 navegação.Manual.DicaAberta = 0
