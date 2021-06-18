@@ -71,12 +71,13 @@ extension GameScene {
                         addChild(DiretoriosIcon)
                         addChild(ImpressoraIcon)
                     case .Diretorios:
-                        let DicaPdf = SKSpriteNode(color: UIColor.purple, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
-                        DicaPdf.position = CGPoint(x: 0, y: 70)
-                        DicaPdf.zPosition = 16
-                        DicaPdf.name = "DicaPdf"
-                        
-                        addChild(DicaPdf)
+//                        let DicaPdf = SKSpriteNode(color: UIColor.purple, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
+//                        DicaPdf.position = CGPoint(x: 0, y: 70)
+//                        DicaPdf.zPosition = 16
+//                        DicaPdf.name = "DicaPdf"
+//
+//                        addChild(DicaPdf)
+                        break
                     case .Dica:
                         break
                     case .Imprimindo:

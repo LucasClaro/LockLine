@@ -387,7 +387,7 @@ class GameScene: SKScene {
     }
     
     //MARK: Funcs adicionais
-    func PosProporcional(pos : CGPoint) -> CGPoint{
+    func PosProporcional(pos : CGPoint) -> CGPoint {
         return CGPoint(x: tamanhoCofre.width * pos.x/400, y: tamanhoCofre.height * pos.y/496)
     }
     
@@ -409,7 +409,7 @@ class GameScene: SKScene {
         if tempo % 60 == 0 {
             return "00"
         }
-        else if tempo % 60 < 10{
+        else if tempo % 60 < 10 {
             return "0\(tempo % 60)"
         }
         return String(tempo % 60)
