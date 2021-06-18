@@ -433,9 +433,9 @@ class GameScene: SKScene {
             let chave = Array(audios)[i].key
             audios[chave]?.stop()
         }
-        if (!audios["background"]!.isPlaying){
-            audios["background"]?.play()
-        }
+//        if (!audios["background"]!.isPlaying){
+//            audios["background"]?.play()
+//        }
     }
     
 }//Fim da classe

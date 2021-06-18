@@ -154,7 +154,7 @@ extension GameScene{
     //MARK: Cubo aproximado
     func DrawEsteiraAberto() {
         status()
-        audios["esteira"]?.volume = 2
+        audios["esteira"]?.volume = 1
         audios["esteira"]?.play()
         
         //LATERAIS

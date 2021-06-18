@@ -10,8 +10,8 @@ import SpriteKit
 extension GameScene {
     
     func DrawMenu() {
-        audios["background"]?.volume = 0.4
-        audios["background"]?.play()
+//        audios["background"]?.volume = 0.4
+//        audios["background"]?.play()
         
         let Fundo = SKSpriteNode(imageNamed: "Menu")
         Fundo.size = CGSize(width: frame.maxX*2, height: frame.maxY*2)
