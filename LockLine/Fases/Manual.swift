@@ -138,8 +138,6 @@ extension GameScene {
             dicaAberta.zPosition = 20
             
             addChild(dicaAberta)
-            
-            desenharDica(dica : navegação.Manual.DicaAberta)
         }
         
         if navegação.Manual.ImpressoraAberta {
@@ -175,8 +173,8 @@ extension GameScene {
             GabineteAberto.zPosition = 15
             GabineteAberto.name = "GabineteAberto"
             
-            let BtnIO = SKSpriteNode(color: UIColor.white, size: CGSize(width: 50, height: 50))
-            BtnIO.position = CGPoint(x: 0, y: -360)
+            let BtnIO = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+            BtnIO.position = PosProporcional(pos: CGPoint(x: 0, y: -360))
             BtnIO.zPosition = 16
             BtnIO.alpha = 0.001
             BtnIO.name = "BtnIO"
@@ -188,76 +186,13 @@ extension GameScene {
             addChild(BtnIO)
         }
         
-        let BtnSair = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 50, height: 50))
-        BtnSair.position = CGPoint(x: 170, y: 390)
+        let BtnSair = SKSpriteNode(imageNamed: "casinha")
+        BtnSair.size = SizeProporcional(size: CGSize(width: 50, height: 47))
+        BtnSair.position = PosProporcional(pos: CGPoint(x: 170, y: 390))
         BtnSair.zPosition = 50
         BtnSair.name = "BtnSair"
         
         addChild(BtnSair)
-    }
-    
-    func desenharDica(dica : Int) {
-        switch dica {
-            case 1:
-                let txt = SKSpriteNode(imageNamed: "EsteiraManual1")
-                txt.size = SizeProporcional(size: CGSize(width: 200, height: 213))
-                txt.position = PosProporcional(pos: CGPoint(x: -95, y: 100))
-                txt.zPosition = 40
-                
-                let guia = SKSpriteNode(imageNamed: "EsteiraManual2")
-                guia.size = SizeProporcional(size: CGSize(width: 180, height: 496))
-                guia.position = PosProporcional(pos: CGPoint(x: 100, y: -40))
-                guia.zPosition = 40
-                
-                let caixa = SKSpriteNode(imageNamed: "EsteiraManual3")
-                caixa.size = SizeProporcional(size: CGSize(width: 150, height: 185))
-                caixa.position = PosProporcional(pos: CGPoint(x: -115, y: -140))
-                caixa.zPosition = 40
-                
-                addChild(txt)
-                addChild(guia)
-                addChild(caixa)
-            case 2:
-                let txt = SKSpriteNode(imageNamed: "LabirintoManual1")
-                txt.size = SizeProporcional(size: CGSize(width: 200, height: 149))
-                txt.position = PosProporcional(pos: CGPoint(x: -95, y: 100))
-                txt.zPosition = 40
-                
-                let guia = SKSpriteNode(imageNamed: "LabirintoManual2")
-                guia.size = SizeProporcional(size: CGSize(width: 400, height: 90))
-                guia.position = PosProporcional(pos: CGPoint(x: 0, y: -150))
-                guia.zPosition = 40
-                
-                let caixa = SKSpriteNode(imageNamed: "LabirintoManual3")
-                caixa.size = SizeProporcional(size: CGSize(width: 150, height: 185))
-                caixa.position = PosProporcional(pos: CGPoint(x: 120, y: 80))
-                caixa.zPosition = 40
-                
-                addChild(txt)
-                addChild(guia)
-                addChild(caixa)
-            case 3:
-                let txt = SKSpriteNode(imageNamed: "EsteiraManual1")
-                txt.size = SizeProporcional(size: CGSize(width: 200, height: 213))
-                txt.position = PosProporcional(pos: CGPoint(x: -95, y: 100))
-                txt.zPosition = 40
-                
-                let guia = SKSpriteNode(imageNamed: "EsteiraManual2")
-                guia.size = SizeProporcional(size: CGSize(width: 180, height: 496))
-                guia.position = PosProporcional(pos: CGPoint(x: 100, y: -40))
-                guia.zPosition = 40
-                
-                let caixa = SKSpriteNode(imageNamed: "EsteiraManual3")
-                caixa.size = SizeProporcional(size: CGSize(width: 150, height: 185))
-                caixa.position = PosProporcional(pos: CGPoint(x: -115, y: -140))
-                caixa.zPosition = 40
-                
-                addChild(txt)
-                addChild(guia)
-                addChild(caixa)
-            default:
-                break
-        }
     }
     
     //MARK: Touched
@@ -314,15 +249,15 @@ extension GameScene {
                 navegação.Manual.DicaAberta = 6
                 atualizarTela()
                 break
-            case "Impressora":
-                navegação.Manual.ImpressoraAberta = true
-                atualizarTela()
-                break
-            case "ImpressoraAberta":
-                audios["background"]?.volume = 0.4
-                navegação.Manual.ImpressoraAberta = false
-                atualizarTela()
-                break
+//            case "Impressora":
+//                navegação.Manual.ImpressoraAberta = true
+//                atualizarTela()
+//                break
+//            case "ImpressoraAberta":
+//                audios["background"]?.volume = 0.4
+//                navegação.Manual.ImpressoraAberta = false
+//                atualizarTela()
+//                break
             case "BtnIO":
                 navegação.Manual.PCLigado.toggle()
                 atualizarTela()
@@ -331,10 +266,10 @@ extension GameScene {
                 navegação.Manual.TelaPC = .Diretorios
                 atualizarTela()
                 break
-            case "ImpressoraIcon":
-                navegação.Manual.TelaPC = .Imprimindo
-                atualizarTela()
-                break
+//            case "ImpressoraIcon":
+//                navegação.Manual.TelaPC = .Imprimindo
+//                atualizarTela()
+//                break
             case "DicaPdf":
                 navegação.Manual.TelaPC = .Dica
                 atualizarTela()

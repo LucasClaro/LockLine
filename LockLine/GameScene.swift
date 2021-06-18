@@ -44,9 +44,9 @@ class GameScene: SKScene {
             case .Manual:
                 DrawManual()
             case .Jogo:
-
                                                                     //MARK: Geral
-                let btnPause = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+                let btnPause = SKSpriteNode(imageNamed: "casinha")
+                btnPause.size = SizeProporcional(size: CGSize(width: 50, height: 47))
                 btnPause.position = PosProporcional(pos: CGPoint(x: 170, y: 380))
                 btnPause.zPosition = 10
                 btnPause.name = "Pause"
