@@ -120,7 +120,7 @@ extension GameScene {
         
     //MARK: DrawAberto
     func DrawRodasAberto() {
-        audios["roda"]?.volume = 2
+        audios["roda"]?.volume = 1
         audios["roda"]?.play()
         
         let roda1 = SKSpriteNode(imageNamed: "Roda\(navegação.Rodas.rodas[0])")
