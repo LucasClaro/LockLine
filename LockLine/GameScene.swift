@@ -475,7 +475,7 @@ struct ControleNavegação {
 func SortearModulos() -> [Int] {
 
     var modulos = [Int]()
-    modulos = [4,5,3]
+//    modulos = [4,5,3]
 
     while modulos.count < 4 {
         let n = [1,2,3,4,5,7].randomElement()! //MARK: TODO return 6
