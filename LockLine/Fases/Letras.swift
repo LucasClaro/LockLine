@@ -53,7 +53,7 @@ extension GameScene {
         simboloCofre.zPosition = 10
         simboloCofre.name = "Cofre"
         if navegação.ModulosCompletos[navegação.ModuloOlhando] {
-            simboloCofre.texture = SKTexture(imageNamed: "SimboloVerde")
+            simboloCofre.texture = SKTexture(imageNamed: "simboloVerde")
         }
         
 
