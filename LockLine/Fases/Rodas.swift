@@ -283,7 +283,7 @@ extension GameScene {
         }
     }
     
-    func checarSenha(){
+    func checarSenha() {
         if navegação.Rodas.input == navegação.Rodas.senha {
             navegação.ModulosCompletos[navegação.ModuloOlhando] = true
         }
@@ -314,7 +314,7 @@ struct RodasController {
     }
     
     var angulo = 0
-    var input = [0,0,0,0]
+    var input = [Int]()
     var rodas : [Int]
     var senha : [Int]
 }
