@@ -101,7 +101,7 @@ extension GameScene {
         
         if navegação.Manual.GabineteAberto {
             let Dica5 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 150, height: 110)))
-            Dica5.position = CGPoint(x: 110, y: 175)
+            Dica5.position = PosProporcional(pos: CGPoint(x: 110, y: 175))
             Dica5.zPosition = 16
             Dica5.alpha = 0.001
             Dica5.name = "Dica5"
@@ -110,13 +110,13 @@ extension GameScene {
         }
         
         let Dica6 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 130, height: 130)))
-        Dica6.position = CGPoint(x: -40, y: -300)
+        Dica6.position = PosProporcional(pos: CGPoint(x: -40, y: -300))
         Dica6.alpha = 0.001
         Dica6.zPosition = 10
         Dica6.name = "Dica6"
         
         let Impressora = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 120, height: 120)))
-        Impressora.position = CGPoint(x: 150, y: -130)
+        Impressora.position = PosProporcional(pos: CGPoint(x: 150, y: -130))
         Impressora.alpha = 0.001
         Impressora.zPosition = 10
         Impressora.name = "Impressora"

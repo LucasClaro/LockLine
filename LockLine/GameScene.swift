@@ -27,6 +27,9 @@ class GameScene: SKScene {
         
         importarAudios()
         
+        tamanhoCofre = CGSize(width: frame.maxX*2*0.975, height: frame.maxY*2/1.8)
+        tamanhoCofreFechado = SizeProporcional(size: CGSize(width: 252, height: 310))
+        
         cancelable = publisher.autoconnect().sink { _ in
             self.diminuirTempo()
         }
@@ -60,10 +63,14 @@ class GameScene: SKScene {
                 timerQuadro.zPosition = 10
 
                 let labelTempo = SKLabelNode(text: String("0\(tempo / 60):\(corrigirZeros())"))
-                labelTempo.position = CGPoint(x: 0, y: 343)
+                labelTempo.position = PosProporcional(pos: CGPoint(x: 0, y: 343))
                 labelTempo.fontColor = UIColor.black
                 labelTempo.fontName = "Oswald-Regular"
                 labelTempo.fontSize = 40
+                if frame.maxY * 2 < 670 {
+                    labelTempo.fontSize = 36
+                    labelTempo.position = PosProporcional(pos: CGPoint(x: 0, y: 339))
+                }
                 labelTempo.zPosition = 11
                 
                 let quadrado = SKSpriteNode(color: UIColor.orange, size: tamanhoCofreFechado)
@@ -163,8 +170,8 @@ class GameScene: SKScene {
                     self.backgroundColor = UIColor(named: "Papiro")!
                     
                     let setaBaixo = SKSpriteNode(imageNamed: "buttonBack")
-                    setaBaixo.size = CGSize(width: 50, height: 30)
-                    setaBaixo.position = CGPoint(x: 0, y: -350)
+                    setaBaixo.size = SizeProporcional(size: CGSize(width: 50, height: 30))
+                    setaBaixo.position = PosProporcional(pos: CGPoint(x: 0, y: -350))
                     setaBaixo.name = "SetaVoltar"
                     
                     self.addChild(setaBaixo)
@@ -182,14 +189,14 @@ class GameScene: SKScene {
                     mesa.zPosition = 2
                     
                     let setaDireita = SKSpriteNode(imageNamed: "buttonRight")
-                    setaDireita.size = CGSize(width: 30, height: 50)
-                    setaDireita.position = CGPoint(x: 155, y: 0)
+                    setaDireita.size = SizeProporcional(size: CGSize(width: 30, height: 50))
+                    setaDireita.position = PosProporcional(pos: CGPoint(x: 155, y: 0))
                     setaDireita.zPosition = 5
                     setaDireita.name = "SetaDireita"
                     
                     let setaEsquerda = SKSpriteNode(imageNamed: "buttonLeft")
-                    setaEsquerda.size = CGSize(width: 30, height: 50)
-                    setaEsquerda.position = CGPoint(x: -155, y: 0)
+                    setaEsquerda.size = SizeProporcional(size: CGSize(width: 30, height: 50))
+                    setaEsquerda.position = PosProporcional(pos: CGPoint(x: -155, y: 0))
                     setaEsquerda.zPosition = 5
                     setaEsquerda.name = "SetaEsquerda"
                     
