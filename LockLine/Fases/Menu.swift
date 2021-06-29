@@ -30,6 +30,15 @@ extension GameScene {
         btnManual.alpha = 0.001
         btnManual.zPosition = 5
         
+        let versao = SKLabelNode(text: getVersion())
+        versao.fontSize = 15
+        versao.position = PosProporcional(pos: CGPoint(x: 140, y: -435))
+        versao.zPosition = 5
+        versao.fontColor = UIColor.black
+        versao.fontName = "Oswald-Regular"
+       
+        
+        addChild(versao)
         addChild(Fundo)
         addChild(btnJogar)
         addChild(btnManual)
@@ -49,6 +58,14 @@ extension GameScene {
             default:
                 break
         }
+    }
+    
+    func getVersion() -> String {
+        let versao = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+          
+        let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
+        
+        return "Versão: \(versao)(\(build))"
     }
     
 }
