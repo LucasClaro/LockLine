@@ -231,12 +231,17 @@ extension GameScene {
                     break
             }
             
-            if navegação.Labirinto.vitoria == 4{
-                navegação.ModulosCompletos[navegação.ModuloOlhando] = true
+            if navegação.Labirinto.historico.last?.i == 0 && navegação.Labirinto.historico.last?.j == 3 {
+                if navegação.Labirinto.vitoria == 4 {
+                    navegação.ModulosCompletos[navegação.ModuloOlhando] = true
+                }
+                else {
+                    vibrateHeavy()
+                    navegação.Labirinto.historico = [navegação.Labirinto.nodeStart]
+                    navegação.Labirinto.vitoria = 0
+                }
             }
-            else {
-                //MARK: TODO colocar a vibração forte
-            }
+            
             atualizarTela()
         }
         
