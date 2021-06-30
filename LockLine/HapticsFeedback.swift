@@ -12,9 +12,9 @@ let generatorLight = UIImpactFeedbackGenerator(style: .light)
 let generatorHeavy = UIImpactFeedbackGenerator(style: .heavy)
 
 func vibrateLight() {
-    generatorLight.impactOccurred(intensity: 0.5)
+    generatorLight.impactOccurred(intensity: 1.0)
 }
 
 func vibrateHeavy() {
-    generatorHeavy.impactOccurred(intensity: 0.5)
+    generatorHeavy.impactOccurred(intensity: 2.0)
 }
