@@ -30,6 +30,12 @@ extension GameScene {
         btnManual.alpha = 0.001
         btnManual.zPosition = 5
         
+        let BtnOnboarding = SKSpriteNode(color: UIColor.white, size: CGSize(width: 35, height: 35))
+        BtnOnboarding.position = PosProporcional(pos: CGPoint(x: -165, y: -420))
+        BtnOnboarding.name = "BtnOnboarding"
+        BtnOnboarding.alpha = 0.001
+        BtnOnboarding.zPosition = 5
+        
         let versao = SKLabelNode(text: getVersion())
         versao.fontSize = 15
         versao.position = PosProporcional(pos: CGPoint(x: 140, y: -435))
@@ -42,6 +48,7 @@ extension GameScene {
         addChild(Fundo)
         addChild(btnJogar)
         addChild(btnManual)
+        addChild(BtnOnboarding)
         
     }
     
@@ -55,6 +62,10 @@ extension GameScene {
                 audios["botao"]?.volume = 2
                 audios["botao"]?.play()
                 navegação.Tela = .Manual
+            case "BtnOnboarding":
+                audios["botao"]?.volume = 2
+                audios["botao"]?.play()
+                navegação.Tela = .OnboardingMenu
             default:
                 break
         }

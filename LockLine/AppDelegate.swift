@@ -15,6 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Codigo para resetar o UserDefaults
+//                let domain = Bundle.main.bundleIdentifier!
+//                UserDefaults.standard.removePersistentDomain(forName: domain)
+//                UserDefaults.standard.synchronize()
+        
+        if UserDefaults.standard.value(forKey: "Tutorial") == nil {
+
+            UserDefaults.standard.setValue(true, forKey: "Tutorial")
+        }
         return true
     }
 

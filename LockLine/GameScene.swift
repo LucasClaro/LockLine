@@ -34,6 +34,8 @@ class GameScene: SKScene {
             self.diminuirTempo()
         }
         
+        
+        
         atualizarTela()
     }
     
@@ -42,12 +44,14 @@ class GameScene: SKScene {
         self.removeAllChildren()
         
         switch navegação.Tela {
+            case .OnboardingMenu:
+                DrawOnboardingMenu()
             case .Menu:
                 DrawMenu()
             case .Manual:
                 DrawManual()
             case .Jogo:
-                                                                    //MARK: Geral
+                //MARK: Geral
                 let btnPause = SKSpriteNode(imageNamed: "casinha")
                 btnPause.size = SizeProporcional(size: CGSize(width: 50, height: 47))
                 btnPause.position = PosProporcional(pos: CGPoint(x: 170, y: 380))
@@ -269,6 +273,9 @@ class GameScene: SKScene {
             let pos = touch.location(in: self)
             
             switch navegação.Tela {
+                case .OnboardingMenu:
+                    TouchOnboardingMenu(pos: pos)
+                    atualizarTela()
                 case .Menu:
                     TouchMenu(pos: pos)
                     atualizarTela()
@@ -458,8 +465,8 @@ struct ControleNavegação {
         
     }
     
-    var Tela : EnumTela = .Menu
-    
+    var Tela : EnumTela = (UserDefaults.standard.bool(forKey: "Tutorial")) ? .OnboardingMenu : .Menu
+     
     var ModulosEmJogo : [Int]
     var ModulosCompletos : [Bool]
     var ModuloOlhando : Int
@@ -495,6 +502,7 @@ func SortearModulos() -> [Int] {
 }
 
 enum EnumTela {
+    case OnboardingMenu
     case Menu
     case Manual
     case Jogo

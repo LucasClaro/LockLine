@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B2FEE7C268CEAE300F7A4D3 /* OnboardingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FEE7B268CEAE300F7A4D3 /* OnboardingMenu.swift */; };
 		8BD42D0526601C0B003014E0 /* Interruptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD42D0426601C0B003014E0 /* Interruptor.swift */; };
 		9725694926791CD0004A8395 /* clickMaleta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9725694626791CD0004A8395 /* clickMaleta.mp3 */; };
 		9725694A26791CD0004A8395 /* roda.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9725694726791CD0004A8395 /* roda.mp3 */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B2FEE7B268CEAE300F7A4D3 /* OnboardingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMenu.swift; sourceTree = "<group>"; };
 		8BD42D0426601C0B003014E0 /* Interruptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interruptor.swift; sourceTree = "<group>"; };
 		9725694626791CD0004A8395 /* clickMaleta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clickMaleta.mp3; sourceTree = "<group>"; };
 		9725694726791CD0004A8395 /* roda.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = roda.mp3; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				8BD42D0426601C0B003014E0 /* Interruptor.swift */,
 				B618C1552666C0430046986A /* Menu.swift */,
 				B641141526714313005D2D12 /* Manual.swift */,
+				8B2FEE7B268CEAE300F7A4D3 /* OnboardingMenu.swift */,
 			);
 			path = Fases;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				8BD42D0526601C0B003014E0 /* Interruptor.swift in Sources */,
 				B6F165EE265591FE005F9C03 /* LabirintoScene.swift in Sources */,
 				B62C3816265C387700C08E51 /* Relogio.swift in Sources */,
+				8B2FEE7C268CEAE300F7A4D3 /* OnboardingMenu.swift in Sources */,
 				B62C3819265D92BA00C08E51 /* Rodas.swift in Sources */,
 				B618C1562666C0430046986A /* Menu.swift in Sources */,
 				B6F165DE26544272005F9C03 /* GameViewController.swift in Sources */,
