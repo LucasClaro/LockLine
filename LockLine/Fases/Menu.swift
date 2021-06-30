@@ -55,14 +55,17 @@ extension GameScene {
     func TouchMenu(pos : CGPoint) {
         switch atPoint(pos).name {
             case "BtnJogar":
+                vibrateLight()
                 audios["botao"]?.volume = 2
                 audios["botao"]?.play()
                 navegação.Tela = .Jogo
             case "BtnManual":
+                vibrateLight()
                 audios["botao"]?.volume = 2
                 audios["botao"]?.play()
                 navegação.Tela = .Manual
             case "BtnOnboarding":
+                vibrateLight()
                 audios["botao"]?.volume = 2
                 audios["botao"]?.play()
                 navegação.Tela = .OnboardingMenu

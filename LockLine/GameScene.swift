@@ -297,7 +297,7 @@ class GameScene: SKScene {
                             if !navegação.Pausado && !navegação.Finalizado {
                                 navegação.ModuloOlhando = (navegação.ModuloOlhando + 3) % 4
                                 audios["botao"]?.play()
-                                vibrateHeavy()
+                                vibrateLight()
                                 atualizarTela()
                             }
                             break

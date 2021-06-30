@@ -201,22 +201,27 @@ extension GameScene {
         
         switch atPoint(pos).name {
             case "Dica1":
+                vibrateLight()
                 navegação.Manual.DicaAberta = 1
                 atualizarTela()
                 break
             case "Dica2":
+                vibrateLight()
                 navegação.Manual.DicaAberta = 2
                 atualizarTela()
                 break
             case "Dica3":
+                vibrateLight()
                 navegação.Manual.DicaAberta = 3
                 atualizarTela()
                 break
             case "Monitor":
+                vibrateLight()
                 navegação.Manual.MonitorAberto = true
                 atualizarTela()
                 break
             case "MonitorAberto":
+                vibrateLight()
                 if navegação.Manual.TelaPC == .Desktop {
                     audios["background"]?.volume = 0.4
                     navegação.Manual.MonitorAberto = false
@@ -230,23 +235,28 @@ extension GameScene {
                 atualizarTela()
                 break
             case "Dica4":
+                vibrateLight()
                 navegação.Manual.DicaAberta = 4
                 atualizarTela()
                 break
             case "Gabinete":
+                vibrateLight()
                 navegação.Manual.GabineteAberto = true
                 atualizarTela()
                 break
             case "GabineteAberto":
+                vibrateLight()
                 audios["background"]?.volume = 0.4
                 navegação.Manual.GabineteAberto = false
                 atualizarTela()
                 break
             case "Dica5":
+                vibrateLight()
                 navegação.Manual.DicaAberta = 5
                 atualizarTela()
                 break
             case "Dica6":
+                vibrateLight()
                 navegação.Manual.DicaAberta = 6
                 atualizarTela()
                 break
@@ -260,10 +270,12 @@ extension GameScene {
 //                atualizarTela()
 //                break
             case "BtnIO":
+                vibrateLight()
                 navegação.Manual.PCLigado.toggle()
                 atualizarTela()
                 break
             case "DiretoriosIcon":
+                vibrateLight()
                 navegação.Manual.TelaPC = .Diretorios
                 atualizarTela()
                 break
@@ -272,12 +284,14 @@ extension GameScene {
 //                atualizarTela()
 //                break
             case "DicaPdf":
+                vibrateLight()
                 navegação.Manual.TelaPC = .Dica
                 atualizarTela()
                 break
             case "BtnPrint":
                 break
             case "BtnSair":
+                vibrateLight()
                 navegação.Manual.DicaAberta = 0
                 navegação.Manual.GabineteAberto = false
                 navegação.Manual.ImpressoraAberta = false

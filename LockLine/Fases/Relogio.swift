@@ -223,19 +223,23 @@ extension GameScene {
                     if mod(navegação.Relogio.senha.0, 12) == mod(navegação.Relogio.ponteiroHoras, 12) && mod(navegação.Relogio.senha.1, 60) == mod(navegação.Relogio.ponterioMinutos, 60){
                         audios["tictac"]?.volume = 2
                         audios["tictac"]?.play()
+                        vibrateLight()
                         navegação.ModulosCompletos[navegação.ModuloOlhando] = true
                     }
                     else {
+                        vibrateHeavy()
                         navegação.Relogio.ponterioMinutos = 0
                         navegação.Relogio.ponteiroHoras = 0
                     }
                     atualizarTela()
                 case "BotaoHoras":
+                    vibrateLight()
                     navegação.Relogio.ponteiroHoras += 3
                     audios["tic"]?.volume = 2
                     audios["tic"]?.play()
                     atualizarTela()
                 case "BotaoMinutos":
+                    vibrateLight()
                     navegação.Relogio.ponterioMinutos += 5
                     audios["tic"]?.volume = 2
                     audios["tic"]?.play()

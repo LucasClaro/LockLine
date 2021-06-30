@@ -165,31 +165,37 @@ extension GameScene {
         if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
             switch atPoint(pos).name {
                 case "1":
+                    vibrateLight()
                     audios["botao"]?.play()
                     navegação.Interruptor.switchTela[0] = !navegação.Interruptor.switchTela[0]
                     attLuzes(index: 0, ligado: navegação.Interruptor.switchTela[0])
                     break
                 case "2":
+                    vibrateLight()
                     audios["botao"]?.play()
                     navegação.Interruptor.switchTela[1] = !navegação.Interruptor.switchTela[1]
                     attLuzes(index: 1, ligado: navegação.Interruptor.switchTela[1])
                     break
                 case "3":
+                    vibrateLight()
                     audios["botao"]?.play()
                     navegação.Interruptor.switchTela[2] = !navegação.Interruptor.switchTela[2]
                     attLuzes(index: 2, ligado: navegação.Interruptor.switchTela[2])
                     break
                 case "4":
+                    vibrateLight()
                     audios["botao"]?.play()
                     navegação.Interruptor.switchTela[3] = !navegação.Interruptor.switchTela[3]
                     attLuzes(index: 3, ligado: navegação.Interruptor.switchTela[3])
                     break
                 case "5":
+                    vibrateLight()
                     audios["botao"]?.play()
                     navegação.Interruptor.switchTela[4] = !navegação.Interruptor.switchTela[4]
                     attLuzes(index: 4, ligado: navegação.Interruptor.switchTela[4])
                     break
                 case "6":
+                    vibrateLight()
                     audios["botao"]?.play()
                     navegação.Interruptor.switchTela[5] = !navegação.Interruptor.switchTela[5]
                     attLuzes(index: 5, ligado: navegação.Interruptor.switchTela[5])

@@ -44,6 +44,7 @@ extension GameScene {
     func TouchOnboardingMenu(pos : CGPoint) {
         switch atPoint(pos).name {
             case "BtnProx":
+                vibrateLight()
                 audios["botao"]?.volume = 2
                 audios["botao"]?.play()
                 
@@ -57,6 +58,7 @@ extension GameScene {
                 }
                 //atualizarTela()
             case "BtnVoltar":
+                vibrateLight()
                 audios["botao"]?.volume = 2
                 audios["botao"]?.play()
                 if pag == 2 {

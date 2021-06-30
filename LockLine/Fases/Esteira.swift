@@ -328,6 +328,7 @@ extension GameScene{
         }
     }
     
+    //MARK: Touch
     func TouchedEsteira(pos : CGPoint){
         if !navegação.ModulosCompletos[navegação.ModuloOlhando]{
             switch atPoint(pos).name{
@@ -335,65 +336,79 @@ extension GameScene{
                 case "Ancora":
                     verificaPos(simb: 1, cubo: cuboancora)
                     audios["botao"]?.play()
+                    vibrateLight()
                     atualizarTela()
                 case "Arvore":
                     verificaPos(simb: 2, cubo: cuboarvore)
                     audios["botao"]?.play()
+                    vibrateLight()
                     atualizarTela()
                 case "Aviao":
                     verificaPos(simb: 3, cubo: cuboaviao)
                     audios["botao"]?.play()
+                    vibrateLight()
                     atualizarTela()
                 case "Lanterna":
                     verificaPos(simb: 4, cubo: cubolanterna)
                     audios["botao"]?.play()
+                    vibrateLight()
                     atualizarTela()
                 case "Nuvem":
                     verificaPos(simb: 5, cubo: cubonuvem)
                     audios["botao"]?.play()
+                    vibrateLight()
                     atualizarTela()
                 case "Papel":
                     verificaPos(simb: 6, cubo: cubopapel)
                     audios["botao"]?.play()
+                    vibrateLight()
                     atualizarTela()
                 case "Pincel":
                     verificaPos(simb: 7, cubo: cubopincel)
                     audios["botao"]?.play()
+                    vibrateLight()
                     atualizarTela()
                 case "Ponteiro":
                     verificaPos(simb: 8, cubo: cuboponteiro)
                     audios["botao"]?.play()
+                    vibrateLight()
                     atualizarTela()
             //Toque em lacunas
                 case "L1":
                     cubos[navegação.Esteira.input[0]]?.isHidden = false
                     audios["botao"]?.play()
                     navegação.Esteira.input[0] = 0
+                    vibrateLight()
                     atualizarTela()
                 case "L2":
                     cubos[navegação.Esteira.input[1]]?.isHidden = false
                     audios["botao"]?.play()
                     navegação.Esteira.input[1] = 0
+                    vibrateLight()
                     atualizarTela()
                 case "L3":
                     cubos[navegação.Esteira.input[2]]?.isHidden = false
                     audios["botao"]?.play()
                     navegação.Esteira.input[2] = 0
+                    vibrateLight()
                     atualizarTela()
                 case "L4":
                     cubos[navegação.Esteira.input[3]]?.isHidden = false
                     audios["botao"]?.play()
                     navegação.Esteira.input[3] = 0
+                    vibrateLight()
                     atualizarTela()
                 case "L5":
                     cubos[navegação.Esteira.input[4]]?.isHidden = false
                     audios["botao"]?.play()
                     navegação.Esteira.input[4] = 0
+                    vibrateLight()
                     atualizarTela()
                 case "L6":
                     cubos[navegação.Esteira.input[5]]?.isHidden = false
                     audios["botao"]?.play()
                     navegação.Esteira.input[5] = 0
+                    vibrateLight()
                     atualizarTela()
                 default:
                     break
@@ -416,6 +431,9 @@ extension GameScene{
     func status(){
         if navegação.Esteira.input == navegação.Esteira.lacunasCertas{
             navegação.ModulosCompletos[navegação.ModuloOlhando] = true
+        }
+        else if !navegação.Esteira.input.contains(0) {
+            vibrateHeavy()
         }
     }
     

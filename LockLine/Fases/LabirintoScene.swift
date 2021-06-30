@@ -121,6 +121,7 @@ extension GameScene {
         if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
             switch atPoint(pos).name {
                 case "arrowUp":
+                    vibrateLight()
                     audios["botao"]?.play()
                     if navegação.Labirinto.historico.last!.i > 0{
                         if navegação.Labirinto.historico.count > 2 && navegação.Labirinto.historico.last!.i - 1 == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].i && navegação.Labirinto.historico.last!.j == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].j{
@@ -146,6 +147,7 @@ extension GameScene {
                     }
                     break
                 case "arrowDown":
+                    vibrateLight()
                     audios["botao"]?.play()
                     if navegação.Labirinto.historico.last!.i < 3{
                         if navegação.Labirinto.historico.count > 2 && navegação.Labirinto.historico.last!.i + 1 == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].i && navegação.Labirinto.historico.last!.j == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].j{
@@ -172,6 +174,7 @@ extension GameScene {
                     }
                     break
                 case "arrowLeft":
+                    vibrateLight()
                     audios["botao"]?.play()
                     if navegação.Labirinto.historico.last!.j > 0{
                         if navegação.Labirinto.historico.count > 2 && navegação.Labirinto.historico.last!.j - 1 == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].j && navegação.Labirinto.historico.last!.i == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].i{
@@ -198,6 +201,7 @@ extension GameScene {
                     }
                     break
                 case "arrowRight":
+                    vibrateLight()
                     audios["botao"]?.play()
                     if navegação.Labirinto.historico.last!.j < 3{
                         if navegação.Labirinto.historico.count > 2 && navegação.Labirinto.historico.last!.j + 1 == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].j && navegação.Labirinto.historico.last!.i == navegação.Labirinto.historico[navegação.Labirinto.historico.count - 2].i{
@@ -229,6 +233,9 @@ extension GameScene {
             
             if navegação.Labirinto.vitoria == 4{
                 navegação.ModulosCompletos[navegação.ModuloOlhando] = true
+            }
+            else {
+                //MARK: TODO colocar a vibração forte
             }
             atualizarTela()
         }
