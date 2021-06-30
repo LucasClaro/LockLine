@@ -9,6 +9,7 @@ import SpriteKit
 import GameplayKit
 import Combine
 import AVFoundation
+import AudioToolbox
 
 //MARK: Dicionário de áudios
 var audios: [String: AVAudioPlayer] = ["background": AVAudioPlayer(), "botao": AVAudioPlayer(), "ligado": AVAudioPlayer(), "desligado": AVAudioPlayer(), "tic": AVAudioPlayer(), "tictac": AVAudioPlayer(), "esteira": AVAudioPlayer(), "clickCofre": AVAudioPlayer(), "clickMaleta": AVAudioPlayer(), "roda": AVAudioPlayer()]
@@ -285,14 +286,18 @@ class GameScene: SKScene {
                 case .Jogo:
                     switch atPoint(pos).name {
                         case "SetaDireita":
-                            navegação.ModuloOlhando = (navegação.ModuloOlhando + 1) % 4
-                            audios["botao"]?.play()
-                            atualizarTela()
+                            if !navegação.Pausado && !navegação.Finalizado {
+                                navegação.ModuloOlhando = (navegação.ModuloOlhando + 1) % 4
+                                audios["botao"]?.play()
+                                vibrateLight()
+                                atualizarTela()
+                            }
                             break
                         case "SetaEsquerda":
                             if !navegação.Pausado && !navegação.Finalizado {
                                 navegação.ModuloOlhando = (navegação.ModuloOlhando + 3) % 4
                                 audios["botao"]?.play()
+                                vibrateLight()
                                 atualizarTela()
                             }
                             break
@@ -300,6 +305,7 @@ class GameScene: SKScene {
                             if !navegação.Pausado && !navegação.Finalizado {
                                 navegação.ModuloAberto = true
                                 audios["background"]?.volume = 0.1
+                                vibrateLight()
                                 atualizarTela()
                             }
                             break
@@ -309,6 +315,7 @@ class GameScene: SKScene {
                                 navegação.ModuloAberto = false
                                 audios["botao"]?.play()
                                 audios["background"]?.volume = 0.4
+                                vibrateLight()
                                 atualizarTela()
                             }
                             break
@@ -316,6 +323,7 @@ class GameScene: SKScene {
                             if !navegação.Pausado && !navegação.Finalizado {
                                 navegação.Pausado = true
                                 audios["botao"]?.play()
+                                vibrateLight()
                                 atualizarTela()
                             }
                             break
@@ -323,6 +331,7 @@ class GameScene: SKScene {
                             navegação = ControleNavegação()
                             audios["botao"]?.play()
                             tempo = 300
+                            vibrateLight()
                             atualizarTela()
                             break
                         case "PauseNao":
@@ -335,11 +344,13 @@ class GameScene: SKScene {
                             tempo = 300
                             audios["botao"]?.play()
                             navegação.Tela = .Jogo
+                            vibrateLight()
                             atualizarTela()
                             break
                         case "FimInicio":
                             navegação = ControleNavegação()
                             audios["botao"]?.play()
+                            vibrateLight()
                             atualizarTela()
                             break
                         default:
@@ -406,6 +417,11 @@ class GameScene: SKScene {
     }
     
     func SizeProporcional(size : CGSize) -> CGSize {
+        
+        if size.width == size.height {
+            return CGSize(width: tamanhoCofre.width * size.width/400, height: tamanhoCofre.width * size.width/400)
+        }
+        
         return CGSize(width: tamanhoCofre.width * size.width/400, height: tamanhoCofre.height * size.height/496)
     }
     

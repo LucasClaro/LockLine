@@ -25,6 +25,7 @@
 		B62C3816265C387700C08E51 /* Relogio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3815265C387700C08E51 /* Relogio.swift */; };
 		B62C3819265D92BA00C08E51 /* Rodas.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3818265D92BA00C08E51 /* Rodas.swift */; };
 		B641141626714313005D2D12 /* Manual.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641141526714313005D2D12 /* Manual.swift */; };
+		B67C4BA1268CF24F00B4251C /* HapticsFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C4BA0268CF24F00B4251C /* HapticsFeedback.swift */; };
 		B6F165D626544272005F9C03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F165D526544272005F9C03 /* AppDelegate.swift */; };
 		B6F165D826544272005F9C03 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B6F165D726544272005F9C03 /* GameScene.sks */; };
 		B6F165DA26544272005F9C03 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B6F165D926544272005F9C03 /* Actions.sks */; };
@@ -55,6 +56,7 @@
 		B62C3815265C387700C08E51 /* Relogio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relogio.swift; sourceTree = "<group>"; };
 		B62C3818265D92BA00C08E51 /* Rodas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rodas.swift; sourceTree = "<group>"; };
 		B641141526714313005D2D12 /* Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manual.swift; sourceTree = "<group>"; };
+		B67C4BA0268CF24F00B4251C /* HapticsFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsFeedback.swift; sourceTree = "<group>"; };
 		B6F165D226544272005F9C03 /* LockLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LockLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6F165D526544272005F9C03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6F165D726544272005F9C03 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				B6F165DF26544272005F9C03 /* Main.storyboard */,
 				B6F165E22654427D005F9C03 /* Assets.xcassets */,
 				B6F165E42654427D005F9C03 /* Info.plist */,
+				B67C4BA0268CF24F00B4251C /* HapticsFeedback.swift */,
 			);
 			path = LockLine;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				8B2FEE7C268CEAE300F7A4D3 /* OnboardingMenu.swift in Sources */,
 				B62C3819265D92BA00C08E51 /* Rodas.swift in Sources */,
 				B618C1562666C0430046986A /* Menu.swift in Sources */,
+				B67C4BA1268CF24F00B4251C /* HapticsFeedback.swift in Sources */,
 				B6F165DE26544272005F9C03 /* GameViewController.swift in Sources */,
 				B6F165D626544272005F9C03 /* AppDelegate.swift in Sources */,
 			);
