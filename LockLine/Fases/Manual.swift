@@ -10,6 +10,28 @@ import SpriteKit
 extension GameScene {
     
     func DrawManual() {
+        
+        guard let onbManual = UserDefaults.standard.value(forKey: "OnboardingManual") else {
+            return
+        }
+        
+        if onbManual as! Bool == true {
+            
+            let onboard = SKSpriteNode(imageNamed: "ManualOnboarding")
+            onboard.position = CGPoint(x: 0, y: 0)
+            onboard.size = SizeProporcional(size: CGSize(width: 350, height: 636))
+            onboard.zPosition = 70
+            
+            let xOnb = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+            xOnb.position = PosProporcional(pos: PosProporcional(pos: CGPoint(x: 145, y: 280)))
+            xOnb.zPosition = 75
+            xOnb.alpha = 0.0001
+            xOnb.name = "xOnboard"
+            
+            addChild(onboard)
+            addChild(xOnb)
+            
+        }
 
         let quadrado = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: frame.maxY*2))
         quadrado.position = CGPoint(x: 0, y: 0)
@@ -199,111 +221,127 @@ extension GameScene {
     //MARK: Touched
     func TouchedManual(pos : CGPoint) {
         
-        switch atPoint(pos).name {
-            case "Dica1":
-                vibrateLight()
-                navegação.Manual.DicaAberta = 1
-                atualizarTela()
-                break
-            case "Dica2":
-                vibrateLight()
-                navegação.Manual.DicaAberta = 2
-                atualizarTela()
-                break
-            case "Dica3":
-                vibrateLight()
-                navegação.Manual.DicaAberta = 3
-                atualizarTela()
-                break
-            case "Monitor":
-                vibrateLight()
-                navegação.Manual.MonitorAberto = true
-                atualizarTela()
-                break
-            case "MonitorAberto":
-                vibrateLight()
-                if navegação.Manual.TelaPC == .Desktop {
-                    audios["background"]?.volume = 0.4
-                    navegação.Manual.MonitorAberto = false
-                }
-                else if navegação.Manual.TelaPC == .Dica {
-                    navegação.Manual.TelaPC = .Diretorios
-                }
-                else {
-                    navegação.Manual.TelaPC = .Desktop
-                }
-                atualizarTela()
-                break
-            case "Dica4":
-                vibrateLight()
-                navegação.Manual.DicaAberta = 4
-                atualizarTela()
-                break
-            case "Gabinete":
-                vibrateLight()
-                navegação.Manual.GabineteAberto = true
-                atualizarTela()
-                break
-            case "GabineteAberto":
-                vibrateLight()
-                audios["background"]?.volume = 0.4
-                navegação.Manual.GabineteAberto = false
-                atualizarTela()
-                break
-            case "Dica5":
-                vibrateLight()
-                navegação.Manual.DicaAberta = 5
-                atualizarTela()
-                break
-            case "Dica6":
-                vibrateLight()
-                navegação.Manual.DicaAberta = 6
-                atualizarTela()
-                break
-//            case "Impressora":
-//                navegação.Manual.ImpressoraAberta = true
-//                atualizarTela()
-//                break
-//            case "ImpressoraAberta":
-//                audios["background"]?.volume = 0.4
-//                navegação.Manual.ImpressoraAberta = false
-//                atualizarTela()
-//                break
-            case "BtnIO":
-                vibrateLight()
-                navegação.Manual.PCLigado.toggle()
-                atualizarTela()
-                break
-            case "DiretoriosIcon":
-                vibrateLight()
-                navegação.Manual.TelaPC = .Diretorios
-                atualizarTela()
-                break
-//            case "ImpressoraIcon":
-//                navegação.Manual.TelaPC = .Imprimindo
-//                atualizarTela()
-//                break
-            case "DicaPdf":
-                vibrateLight()
-                navegação.Manual.TelaPC = .Dica
-                atualizarTela()
-                break
-            case "BtnPrint":
-                break
-            case "BtnSair":
-                vibrateLight()
-                navegação.Manual.DicaAberta = 0
-                navegação.Manual.GabineteAberto = false
-                navegação.Manual.ImpressoraAberta = false
-                navegação.Manual.MonitorAberto = false
-                navegação.Manual.PCLigado = false
-                navegação.Manual.TelaPC = .Desktop
-                navegação.Tela = .Menu
-            default:
-                audios["background"]?.volume = 0.4
-                navegação.Manual.DicaAberta = 0
-                atualizarTela()
+        guard let onbManual = UserDefaults.standard.value(forKey: "OnboardingManual") else {
+            return
         }
+        
+        if onbManual as! Bool == true {
+            switch atPoint(pos).name {
+                case "xOnboard":
+                    UserDefaults.standard.setValue(false, forKey: "OnboardingManual")
+                    atualizarTela()
+                default:
+                    break
+            }
+        }
+        else {
+            switch atPoint(pos).name {
+                case "Dica1":
+                    vibrateLight()
+                    navegação.Manual.DicaAberta = 1
+                    atualizarTela()
+                    break
+                case "Dica2":
+                    vibrateLight()
+                    navegação.Manual.DicaAberta = 2
+                    atualizarTela()
+                    break
+                case "Dica3":
+                    vibrateLight()
+                    navegação.Manual.DicaAberta = 3
+                    atualizarTela()
+                    break
+                case "Monitor":
+                    vibrateLight()
+                    navegação.Manual.MonitorAberto = true
+                    atualizarTela()
+                    break
+                case "MonitorAberto":
+                    vibrateLight()
+                    if navegação.Manual.TelaPC == .Desktop {
+                        audios["background"]?.volume = 0.4
+                        navegação.Manual.MonitorAberto = false
+                    }
+                    else if navegação.Manual.TelaPC == .Dica {
+                        navegação.Manual.TelaPC = .Diretorios
+                    }
+                    else {
+                        navegação.Manual.TelaPC = .Desktop
+                    }
+                    atualizarTela()
+                    break
+                case "Dica4":
+                    vibrateLight()
+                    navegação.Manual.DicaAberta = 4
+                    atualizarTela()
+                    break
+                case "Gabinete":
+                    vibrateLight()
+                    navegação.Manual.GabineteAberto = true
+                    atualizarTela()
+                    break
+                case "GabineteAberto":
+                    vibrateLight()
+                    audios["background"]?.volume = 0.4
+                    navegação.Manual.GabineteAberto = false
+                    atualizarTela()
+                    break
+                case "Dica5":
+                    vibrateLight()
+                    navegação.Manual.DicaAberta = 5
+                    atualizarTela()
+                    break
+                case "Dica6":
+                    vibrateLight()
+                    navegação.Manual.DicaAberta = 6
+                    atualizarTela()
+                    break
+    //            case "Impressora":
+    //                navegação.Manual.ImpressoraAberta = true
+    //                atualizarTela()
+    //                break
+    //            case "ImpressoraAberta":
+    //                audios["background"]?.volume = 0.4
+    //                navegação.Manual.ImpressoraAberta = false
+    //                atualizarTela()
+    //                break
+                case "BtnIO":
+                    vibrateLight()
+                    navegação.Manual.PCLigado.toggle()
+                    atualizarTela()
+                    break
+                case "DiretoriosIcon":
+                    vibrateLight()
+                    navegação.Manual.TelaPC = .Diretorios
+                    atualizarTela()
+                    break
+    //            case "ImpressoraIcon":
+    //                navegação.Manual.TelaPC = .Imprimindo
+    //                atualizarTela()
+    //                break
+                case "DicaPdf":
+                    vibrateLight()
+                    navegação.Manual.TelaPC = .Dica
+                    atualizarTela()
+                    break
+                case "BtnPrint":
+                    break
+                case "BtnSair":
+                    vibrateLight()
+                    navegação.Manual.DicaAberta = 0
+                    navegação.Manual.GabineteAberto = false
+                    navegação.Manual.ImpressoraAberta = false
+                    navegação.Manual.MonitorAberto = false
+                    navegação.Manual.PCLigado = false
+                    navegação.Manual.TelaPC = .Desktop
+                    navegação.Tela = .Menu
+                default:
+                    audios["background"]?.volume = 0.4
+                    navegação.Manual.DicaAberta = 0
+                    atualizarTela()
+            }
+        }
+        
     }
     
 }
