@@ -90,24 +90,24 @@ class GameScene: SKScene {
                                                                     //MARK: Pausado
                 if navegação.Pausado {
                     let telaPause = SKSpriteNode(imageNamed: "pausaP")
-                    telaPause.size = SizeProporcional(size: CGSize(width: 400, height: 234))
-                    telaPause.position = CGPoint(x: 0, y: 0)
+                    telaPause.size = SizeProporcional(size: CGSize(width: 350, height: 504))
+                    telaPause.position = PosProporcional(pos: CGPoint(x: 0, y: 200))
                     telaPause.zPosition = 30
                     
-                    let btnPauseSim = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 170, height: 70)))
-                    btnPauseSim.position = PosProporcional(pos: CGPoint(x: -90, y: -55))
+                    let btnPauseSim = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 150, height: 70)))
+                    btnPauseSim.position = PosProporcional(pos: CGPoint(x: -80, y: 0))
                     btnPauseSim.zPosition = 31
                     btnPauseSim.alpha = 0.001
                     btnPauseSim.name = "PauseSim"
                     
-                    let btnPauseNao = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 170, height: 70)))
-                    btnPauseNao.position = PosProporcional(pos: CGPoint(x: 90, y: -55))
+                    let btnPauseNao = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 150, height: 70)))
+                    btnPauseNao.position = PosProporcional(pos: CGPoint(x: 78, y: 0))
                     btnPauseNao.zPosition = 31
                     btnPauseNao.alpha = 0.001
                     btnPauseNao.name = "PauseNao"
                     
-                    let btnX = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
-                    btnX.position = PosProporcional(pos: CGPoint(x: 165, y: 75))
+                    let btnX = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 30, height: 30)))
+                    btnX.position = PosProporcional(pos: CGPoint(x: 140, y: 115))
                     btnX.zPosition = 31
                     btnX.alpha = 0.001
                     btnX.name = "PauseNao"
@@ -121,27 +121,27 @@ class GameScene: SKScene {
                                                                     //MARK: Finalizado
                 if navegação.Finalizado {
                     let TelaFim = SKSpriteNode(imageNamed: "poxaT")
-                    TelaFim.size = SizeProporcional(size: CGSize(width: 400, height: 356))
-                    TelaFim.position = CGPoint(x: 0, y: 0)
+                    TelaFim.size = SizeProporcional(size: CGSize(width: 350, height: 504))
+                    TelaFim.position = CGPoint(x: 0, y: 200)
                     TelaFim.zPosition = 30
                     
-                    let btnRestart = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 230, height: 70)))
-                    btnRestart.position = PosProporcional(pos: CGPoint(x: -63, y: -120))
+                    let btnRestart = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 200, height: 70)))
+                    btnRestart.position = PosProporcional(pos: CGPoint(x: -58, y: 0))
                     btnRestart.alpha = 0.001
                     btnRestart.zPosition = 31
                     btnRestart.name = "FimRestart"
                     
-                    let btnInicio = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 120, height: 70)))
-                    btnInicio.position = PosProporcional(pos: CGPoint(x: 115, y: -120))
+                    let btnInicio = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 105, height: 70)))
+                    btnInicio.position = PosProporcional(pos: CGPoint(x: 100, y: 0))
                     btnInicio.zPosition = 31
                     btnInicio.alpha = 0.001
                     btnInicio.name = "FimInicio"
                     
                     if navegação.ModulosCompletos.allSatisfy({ return $0 }) {
-                        TelaFim.size = SizeProporcional(size: CGSize(width: 400, height: 356))
+                        TelaFim.size = SizeProporcional(size: CGSize(width: 350, height: 578))
                         TelaFim.texture = SKTexture(imageNamed: "ParabensT")
-                        btnRestart.position = PosProporcional(pos: CGPoint(x: -63, y: -115))
-                        btnInicio.position = PosProporcional(pos: CGPoint(x: 115, y: -115))
+                        btnRestart.position = PosProporcional(pos: CGPoint(x: -58, y: -35))
+                        btnInicio.position = PosProporcional(pos: CGPoint(x: 105, y: -35))
                     }
                     
                     addChild(TelaFim)
