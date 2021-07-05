@@ -56,79 +56,20 @@ extension GameScene {
         Dica3.alpha = 0.001
         Dica3.name = "Dica3"
         
-        let Monitor = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 150, height: 150)))
-        Monitor.position = PosProporcional(pos: CGPoint(x: 0, y: -40))
+        let Monitor = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 180, height: 180)))
+        Monitor.position = PosProporcional(pos: CGPoint(x: -70, y: -40))
         Monitor.zPosition = 10
         Monitor.alpha = 0.001
         Monitor.name = "Monitor"
         
+        let Dica4 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+        Dica4.position = PosProporcional(pos: CGPoint(x: -50, y: 20))
+        Dica4.alpha = 0.001
+        Dica4.zPosition = 16
+        Dica4.name = "Dica4"
         if navegação.Manual.MonitorAberto {
-            let Dica4 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 150, height: 100)))
-            Dica4.position = PosProporcional(pos: CGPoint(x: 145, y: 130))
-            Dica4.alpha = 0.001
-            Dica4.zPosition = 16
-            Dica4.name = "Dica4"
-            if navegação.Manual.PCLigado {
-                Dica4.position = PosProporcional(pos: CGPoint(x: 145, y: 250))
-            }
-            
-            addChild(Dica4)
-            
-            if navegação.Manual.PCLigado {
-                
-                switch navegação.Manual.TelaPC {
-                    case .Desktop:
-                        let DiretoriosIcon = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
-                        DiretoriosIcon.position = CGPoint(x: -115, y: 130)
-                        DiretoriosIcon.zPosition = 16
-                        DiretoriosIcon.alpha = 0.001
-                        DiretoriosIcon.name = "DiretoriosIcon"
-                        
-                        let ImpressoraIcon = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
-                        ImpressoraIcon.position = CGPoint(x: -115, y: 70)
-                        ImpressoraIcon.zPosition = 16
-                        ImpressoraIcon.alpha = 0.001
-                        ImpressoraIcon.name = "ImpressoraIcon"
-                        
-                        addChild(DiretoriosIcon)
-                        addChild(ImpressoraIcon)
-                    case .Diretorios:
-//                        let DicaPdf = SKSpriteNode(color: UIColor.purple, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
-//                        DicaPdf.position = CGPoint(x: 0, y: 70)
-//                        DicaPdf.zPosition = 16
-//                        DicaPdf.name = "DicaPdf"
-//
-//                        addChild(DicaPdf)
-                        break
-                    case .Dica:
-                        break
-                    case .Imprimindo:
-                        let BtnPrint = SKSpriteNode(color: UIColor.purple, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
-                        BtnPrint.position = CGPoint(x: 100, y: 70)
-                        BtnPrint.zPosition = 16
-                        BtnPrint.name = "BtnPrint"
-                        
-                        addChild(BtnPrint)
-                }
-                
-            }
-            
-        }
-        
-        let Gabinete = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 90, height: 90)))
-        Gabinete.position = CGPoint(x: -150, y: -20)
-        Gabinete.zPosition = 10
-        Gabinete.alpha = 0.001
-        Gabinete.name = "Gabinete"
-        
-        if navegação.Manual.GabineteAberto {
-            let Dica5 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 150, height: 110)))
-            Dica5.position = PosProporcional(pos: CGPoint(x: 110, y: 175))
-            Dica5.zPosition = 16
-            Dica5.alpha = 0.001
-            Dica5.name = "Dica5"
-            
-            addChild(Dica5)
+            Dica4.position = PosProporcional(pos: CGPoint(x: 40, y: 210))
+            Dica4.size = SizeProporcional(size: CGSize(width: 100, height: 100))
         }
         
         let Dica6 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 130, height: 130)))
@@ -137,41 +78,80 @@ extension GameScene {
         Dica6.zPosition = 10
         Dica6.name = "Dica6"
         
-        let Impressora = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 120, height: 120)))
-        Impressora.position = PosProporcional(pos: CGPoint(x: 150, y: -130))
+        let Impressora = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 170, height: 120)))
+        Impressora.position = PosProporcional(pos: CGPoint(x: 120, y: -130))
         Impressora.alpha = 0.001
         Impressora.zPosition = 10
         Impressora.name = "Impressora"
         
-        
-        addChild(quadrado)
         addChild(Dica1)
         addChild(Dica2)
         addChild(Dica3)
+        addChild(Dica4)
         addChild(Monitor)
-        addChild(Gabinete)
         addChild(Dica6)
         addChild(Impressora)
         
-        if navegação.Manual.DicaAberta != 0 {
-            audios["background"]?.volume = 0.1
-            let dicaAberta = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: frame.maxY*2))
-            dicaAberta.position = CGPoint(x: 0, y: 0)
-            dicaAberta.texture = SKTexture(imageNamed: "Dica\(navegação.Manual.DicaAberta)")
-            dicaAberta.zPosition = 20
+        if navegação.Manual.MonitorAberto {
+            let BtnIO = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+            BtnIO.position = PosProporcional(pos: CGPoint(x: 50, y: -50))
+            BtnIO.zPosition = 16
+            BtnIO.alpha = 0.5
+            BtnIO.name = "BtnIO"
             
-            addChild(dicaAberta)
+            addChild(BtnIO)
         }
         
-        if navegação.Manual.ImpressoraAberta {
-            audios["background"]?.volume = 0.1
-            let impressoraAberta = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: frame.maxY*2))
-            impressoraAberta.position = CGPoint(x: 0, y: 0)
-            impressoraAberta.texture = SKTexture(imageNamed: "Impressora")
-            impressoraAberta.zPosition = 15
-            impressoraAberta.name = "ImpressoraAberta"
+        if navegação.Manual.PCLigado {
             
-            addChild(impressoraAberta)
+            quadrado.texture = SKTexture(imageNamed: "SalaPCLigado")
+            
+            if navegação.Manual.MonitorAberto {
+                
+                let DiretoriosIcon = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+                DiretoriosIcon.position = CGPoint(x: 90, y: 70)
+                DiretoriosIcon.zPosition = 16
+                DiretoriosIcon.alpha = 0.5
+                DiretoriosIcon.name = "Dica5"
+                
+                let ImpressoraIcon = SKSpriteNode(color: UIColor.purple, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+                ImpressoraIcon.position = CGPoint(x: -100, y: 70)
+                ImpressoraIcon.zPosition = 16
+                ImpressoraIcon.alpha = 0.5
+                ImpressoraIcon.name = "ImpressoraIcon"
+                
+                addChild(DiretoriosIcon)
+                addChild(ImpressoraIcon)
+                
+            }
+        }
+        
+        addChild(quadrado)
+        
+        if navegação.Manual.DicaAberta != 0 {
+            audios["background"]?.volume = 0.1
+            var image = SKTexture(imageNamed: "Dica\(navegação.Manual.DicaAberta)")
+            if navegação.Manual.DicaAberta == 7 && !navegação.Manual.Impresso {
+                image = SKTexture(imageNamed: "DicaCorrompida")
+            }
+            let dicaAberta = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: image.size().height/4.5))
+            
+            var calculedY = (-(image.size().height/(2*4.5)) + (frame.maxX*2) + 45)
+            if navegação.Manual.visualizacaoDicaInferior {
+                calculedY = ((image.size().height/(2*4.5)) - (frame.maxX*2) - 45)
+            }
+            dicaAberta.position = CGPoint(x: 0, y: calculedY)
+            dicaAberta.texture = image
+            dicaAberta.zPosition = 20
+            
+            let scroll = SKSpriteNode(imageNamed: "Scroll")
+            scroll.size = SizeProporcional(size: CGSize(width: 50, height: 78))
+            scroll.position = PosProporcional(pos: CGPoint(x: 155, y: 200))
+            scroll.zPosition = 21
+            scroll.name = "Scroll"
+            
+            addChild(scroll)
+            addChild(dicaAberta)
         }
         
         if navegação.Manual.MonitorAberto {
@@ -182,31 +162,10 @@ extension GameScene {
             MonitorAberto.zPosition = 15
             MonitorAberto.name = "MonitorAberto"
             if navegação.Manual.PCLigado {
-                MonitorAberto.texture = SKTexture(imageNamed: navegação.Manual.TelaPC.rawValue)
+                MonitorAberto.texture = SKTexture(imageNamed: "Mesa")
             }
             
             addChild(MonitorAberto)
-        }
-        
-        if navegação.Manual.GabineteAberto {
-            audios["background"]?.volume = 0.1
-            let GabineteAberto = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: frame.maxY*2))
-            GabineteAberto.position = CGPoint(x: 0, y: 0)
-            GabineteAberto.texture = SKTexture(imageNamed: "Gabinete")
-            GabineteAberto.zPosition = 15
-            GabineteAberto.name = "GabineteAberto"
-            
-            let BtnIO = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
-            BtnIO.position = PosProporcional(pos: CGPoint(x: 0, y: -360))
-            BtnIO.zPosition = 16
-            BtnIO.alpha = 0.001
-            BtnIO.name = "BtnIO"
-            if navegação.Manual.PCLigado {
-                GabineteAberto.texture = SKTexture(imageNamed: "GabineteLigado")
-            }
-            
-            addChild(GabineteAberto)
-            addChild(BtnIO)
         }
         
         let BtnSair = SKSpriteNode(imageNamed: "casinha")
@@ -214,6 +173,9 @@ extension GameScene {
         BtnSair.position = PosProporcional(pos: CGPoint(x: 170, y: 390))
         BtnSair.zPosition = 50
         BtnSair.name = "BtnSair"
+        if navegação.Manual.DicaAberta != 0 {
+            BtnSair.alpha = 0.001
+        }
         
         addChild(BtnSair)
     }
@@ -236,6 +198,10 @@ extension GameScene {
         }
         else {
             switch atPoint(pos).name {
+                case "Scroll":
+                    vibrateLight()
+                    navegação.Manual.visualizacaoDicaInferior.toggle()
+                    atualizarTela()
                 case "Dica1":
                     vibrateLight()
                     navegação.Manual.DicaAberta = 1
@@ -258,32 +224,12 @@ extension GameScene {
                     break
                 case "MonitorAberto":
                     vibrateLight()
-                    if navegação.Manual.TelaPC == .Desktop {
-                        audios["background"]?.volume = 0.4
-                        navegação.Manual.MonitorAberto = false
-                    }
-                    else if navegação.Manual.TelaPC == .Dica {
-                        navegação.Manual.TelaPC = .Diretorios
-                    }
-                    else {
-                        navegação.Manual.TelaPC = .Desktop
-                    }
+                    navegação.Manual.MonitorAberto = false
                     atualizarTela()
                     break
                 case "Dica4":
                     vibrateLight()
                     navegação.Manual.DicaAberta = 4
-                    atualizarTela()
-                    break
-                case "Gabinete":
-                    vibrateLight()
-                    navegação.Manual.GabineteAberto = true
-                    atualizarTela()
-                    break
-                case "GabineteAberto":
-                    vibrateLight()
-                    audios["background"]?.volume = 0.4
-                    navegação.Manual.GabineteAberto = false
                     atualizarTela()
                     break
                 case "Dica5":
@@ -296,49 +242,34 @@ extension GameScene {
                     navegação.Manual.DicaAberta = 6
                     atualizarTela()
                     break
-    //            case "Impressora":
-    //                navegação.Manual.ImpressoraAberta = true
-    //                atualizarTela()
-    //                break
-    //            case "ImpressoraAberta":
-    //                audios["background"]?.volume = 0.4
-    //                navegação.Manual.ImpressoraAberta = false
-    //                atualizarTela()
-    //                break
+                case "Impressora":
+                    navegação.Manual.DicaAberta = 7
+                    atualizarTela()
+                    break
                 case "BtnIO":
                     vibrateLight()
                     navegação.Manual.PCLigado.toggle()
                     atualizarTela()
                     break
-                case "DiretoriosIcon":
-                    vibrateLight()
-                    navegação.Manual.TelaPC = .Diretorios
+                case "ImpressoraIcon":
+                    navegação.Manual.Impresso = true
                     atualizarTela()
-                    break
-    //            case "ImpressoraIcon":
-    //                navegação.Manual.TelaPC = .Imprimindo
-    //                atualizarTela()
-    //                break
-                case "DicaPdf":
-                    vibrateLight()
-                    navegação.Manual.TelaPC = .Dica
-                    atualizarTela()
-                    break
-                case "BtnPrint":
                     break
                 case "BtnSair":
                     vibrateLight()
-                    navegação.Manual.DicaAberta = 0
-                    navegação.Manual.GabineteAberto = false
-                    navegação.Manual.ImpressoraAberta = false
-                    navegação.Manual.MonitorAberto = false
-                    navegação.Manual.PCLigado = false
-                    navegação.Manual.TelaPC = .Desktop
-                    navegação.Tela = .Menu
+                    if navegação.Manual.DicaAberta != 0 {
+                        navegação.Manual.DicaAberta = 0
+                        navegação.Manual.visualizacaoDicaInferior = false
+                    }
+                    else {
+                        navegação.Manual.DicaAberta = 0
+                        navegação.Manual.Impresso = false
+                        navegação.Manual.MonitorAberto = false
+                        navegação.Manual.PCLigado = false
+                        navegação.Tela = .Menu
+                    }
                 default:
-                    audios["background"]?.volume = 0.4
-                    navegação.Manual.DicaAberta = 0
-                    atualizarTela()
+                    break
             }
         }
         
@@ -350,16 +281,8 @@ extension GameScene {
 struct ManualController {
     var DicaAberta : Int = 0
     var MonitorAberto : Bool = false
-    var GabineteAberto : Bool = false
-    var ImpressoraAberta : Bool = false
+    var Impresso : Bool = false
+    var visualizacaoDicaInferior = false
     
     var PCLigado : Bool = false
-    var TelaPC : telaPC = .Desktop
-}
-
-enum telaPC : String {
-    case Desktop = "Desktop"
-    case Diretorios = "Finder"
-    case Imprimindo = "Print"
-    case Dica = "Hint"
 }
