@@ -146,7 +146,7 @@ extension GameScene {
             
             let scroll = SKSpriteNode(imageNamed: "Scroll")
             scroll.size = SizeProporcional(size: CGSize(width: 50, height: 78))
-            scroll.position = PosProporcional(pos: CGPoint(x: 155, y: 200))
+            scroll.position = PosProporcional(pos: CGPoint(x: 165, y: 200))
             scroll.zPosition = 21
             scroll.name = "Scroll"
             
@@ -174,7 +174,8 @@ extension GameScene {
         BtnSair.zPosition = 50
         BtnSair.name = "BtnSair"
         if navegação.Manual.DicaAberta != 0 {
-            BtnSair.alpha = 0.001
+            BtnSair.size = SizeProporcional(size: CGSize(width: 30, height: 30))
+            BtnSair.texture = SKTexture(imageNamed: "Fechar")
         }
         
         addChild(BtnSair)
