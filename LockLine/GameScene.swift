@@ -12,7 +12,7 @@ import AVFoundation
 import AudioToolbox
 
 //MARK: Dicionário de áudios
-var audios: [String: AVAudioPlayer] = ["background": AVAudioPlayer(), "botao": AVAudioPlayer(), "ligado": AVAudioPlayer(), "desligado": AVAudioPlayer(), "tic": AVAudioPlayer(), "tictac": AVAudioPlayer(), "esteira": AVAudioPlayer(), "clickCofre": AVAudioPlayer(), "clickMaleta": AVAudioPlayer(), "roda": AVAudioPlayer()]
+    var audios: [String: AVAudioPlayer] = ["background": AVAudioPlayer(), "botao": AVAudioPlayer(), "ligado": AVAudioPlayer(), "desligado": AVAudioPlayer(), "tic": AVAudioPlayer(), "tictac": AVAudioPlayer(), "esteira": AVAudioPlayer(), "clickCofre": AVAudioPlayer(), "clickMaleta": AVAudioPlayer(), "roda": AVAudioPlayer(), "impressora": AVAudioPlayer()]
 
 class GameScene: SKScene {
     

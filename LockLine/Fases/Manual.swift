@@ -84,6 +84,15 @@ extension GameScene {
         Impressora.zPosition = 10
         Impressora.name = "Impressora"
         
+        if navegação.Manual.Imprimindo {
+            let barulho = SKSpriteNode(imageNamed: "Barulho")
+            barulho.position = PosProporcional(pos: CGPoint(x: 110, y: -40))
+            barulho.size = SizeProporcional(size: CGSize(width: 100, height: 88))
+            barulho.zPosition = 11
+            
+            addChild(barulho)
+        }
+        
         addChild(Dica1)
         addChild(Dica2)
         addChild(Dica3)
@@ -93,10 +102,10 @@ extension GameScene {
         addChild(Impressora)
         
         if navegação.Manual.MonitorAberto {
-            let BtnIO = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+            let BtnIO = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
             BtnIO.position = PosProporcional(pos: CGPoint(x: 50, y: -50))
             BtnIO.zPosition = 16
-            BtnIO.alpha = 0.5
+            BtnIO.alpha = 0.001
             BtnIO.name = "BtnIO"
             
             addChild(BtnIO)
@@ -108,16 +117,16 @@ extension GameScene {
             
             if navegação.Manual.MonitorAberto {
                 
-                let DiretoriosIcon = SKSpriteNode(color: UIColor.orange, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+                let DiretoriosIcon = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
                 DiretoriosIcon.position = CGPoint(x: 90, y: 70)
                 DiretoriosIcon.zPosition = 16
-                DiretoriosIcon.alpha = 0.5
+                DiretoriosIcon.alpha = 0.001
                 DiretoriosIcon.name = "Dica5"
                 
-                let ImpressoraIcon = SKSpriteNode(color: UIColor.purple, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
+                let ImpressoraIcon = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
                 ImpressoraIcon.position = CGPoint(x: -100, y: 70)
                 ImpressoraIcon.zPosition = 16
-                ImpressoraIcon.alpha = 0.5
+                ImpressoraIcon.alpha = 0.001
                 ImpressoraIcon.name = "ImpressoraIcon"
                 
                 addChild(DiretoriosIcon)
@@ -253,7 +262,15 @@ extension GameScene {
                     atualizarTela()
                     break
                 case "ImpressoraIcon":
-                    navegação.Manual.Impresso = true
+                    audios["impressora"]?.play()
+                    navegação.Manual.Imprimindo = true
+                    atualizarTela()
+                    let delay = 8 // seconds to wait before firing
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(delay)) {
+                        self.navegação.Manual.Imprimindo = false
+                        self.navegação.Manual.Impresso = true
+                        self.atualizarTela()
+                    }
                     atualizarTela()
                     break
                 case "BtnSair":
@@ -283,6 +300,7 @@ struct ManualController {
     var DicaAberta : Int = 0
     var MonitorAberto : Bool = false
     var Impresso : Bool = false
+    var Imprimindo : Bool = false
     var visualizacaoDicaInferior = false
     
     var PCLigado : Bool = false
