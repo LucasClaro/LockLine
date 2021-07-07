@@ -199,18 +199,22 @@ extension GameScene {
         if !navegação.ModulosCompletos[navegação.ModuloOlhando] {
             switch atPoint(pos).name {
                 case "Letra1":
+                    vibrateLight()
                     audios["clickMaleta"]?.play()
                     navegação.Letras.input[0] = (navegação.Letras.input[0] + 1) % 10
                     atualizarTela()
                 case "Letra2":
+                    vibrateLight()
                     audios["clickMaleta"]?.play()
                     navegação.Letras.input[1] = (navegação.Letras.input[1] + 1) % 10
                     atualizarTela()
                 case "Letra3":
+                    vibrateLight()
                     audios["clickMaleta"]?.play()
                     navegação.Letras.input[2] = (navegação.Letras.input[2] + 1) % 10
                     atualizarTela()
                 case "Letra4":
+                    vibrateLight()
                     audios["clickMaleta"]?.play()
                     navegação.Letras.input[3] = (navegação.Letras.input[3] + 1) % 10
                     atualizarTela()

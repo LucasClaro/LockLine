@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B2FEE7C268CEAE300F7A4D3 /* OnboardingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FEE7B268CEAE300F7A4D3 /* OnboardingMenu.swift */; };
 		8BD42D0526601C0B003014E0 /* Interruptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD42D0426601C0B003014E0 /* Interruptor.swift */; };
 		9725694926791CD0004A8395 /* clickMaleta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9725694626791CD0004A8395 /* clickMaleta.mp3 */; };
 		9725694A26791CD0004A8395 /* roda.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9725694726791CD0004A8395 /* roda.mp3 */; };
@@ -24,6 +25,8 @@
 		B62C3816265C387700C08E51 /* Relogio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3815265C387700C08E51 /* Relogio.swift */; };
 		B62C3819265D92BA00C08E51 /* Rodas.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C3818265D92BA00C08E51 /* Rodas.swift */; };
 		B641141626714313005D2D12 /* Manual.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641141526714313005D2D12 /* Manual.swift */; };
+		B67C4BA1268CF24F00B4251C /* HapticsFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C4BA0268CF24F00B4251C /* HapticsFeedback.swift */; };
+		B67C4BA72693966100B4251C /* impressora.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B67C4BA62693966100B4251C /* impressora.mp3 */; };
 		B6F165D626544272005F9C03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F165D526544272005F9C03 /* AppDelegate.swift */; };
 		B6F165D826544272005F9C03 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B6F165D726544272005F9C03 /* GameScene.sks */; };
 		B6F165DA26544272005F9C03 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B6F165D926544272005F9C03 /* Actions.sks */; };
@@ -36,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B2FEE7B268CEAE300F7A4D3 /* OnboardingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMenu.swift; sourceTree = "<group>"; };
 		8BD42D0426601C0B003014E0 /* Interruptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interruptor.swift; sourceTree = "<group>"; };
 		9725694626791CD0004A8395 /* clickMaleta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clickMaleta.mp3; sourceTree = "<group>"; };
 		9725694726791CD0004A8395 /* roda.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = roda.mp3; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 		B62C3815265C387700C08E51 /* Relogio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relogio.swift; sourceTree = "<group>"; };
 		B62C3818265D92BA00C08E51 /* Rodas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rodas.swift; sourceTree = "<group>"; };
 		B641141526714313005D2D12 /* Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manual.swift; sourceTree = "<group>"; };
+		B67C4BA0268CF24F00B4251C /* HapticsFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsFeedback.swift; sourceTree = "<group>"; };
+		B67C4BA62693966100B4251C /* impressora.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = impressora.mp3; sourceTree = "<group>"; };
 		B6F165D226544272005F9C03 /* LockLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LockLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6F165D526544272005F9C03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6F165D726544272005F9C03 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -80,6 +86,7 @@
 		97B2ABB926714BC80082AE8B /* Sons */ = {
 			isa = PBXGroup;
 			children = (
+				B67C4BA62693966100B4251C /* impressora.mp3 */,
 				97C02AAF2674060100EDEF9E /* botao.mp3 */,
 				97C02AB42674060200EDEF9E /* desligado.mp3 */,
 				97C02AB32674060200EDEF9E /* esteira.mp3 */,
@@ -132,6 +139,7 @@
 				B6F165DF26544272005F9C03 /* Main.storyboard */,
 				B6F165E22654427D005F9C03 /* Assets.xcassets */,
 				B6F165E42654427D005F9C03 /* Info.plist */,
+				B67C4BA0268CF24F00B4251C /* HapticsFeedback.swift */,
 			);
 			path = LockLine;
 			sourceTree = "<group>";
@@ -147,6 +155,7 @@
 				8BD42D0426601C0B003014E0 /* Interruptor.swift */,
 				B618C1552666C0430046986A /* Menu.swift */,
 				B641141526714313005D2D12 /* Manual.swift */,
+				8B2FEE7B268CEAE300F7A4D3 /* OnboardingMenu.swift */,
 			);
 			path = Fases;
 			sourceTree = "<group>";
@@ -209,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9725694A26791CD0004A8395 /* roda.mp3 in Resources */,
+				B67C4BA72693966100B4251C /* impressora.mp3 in Resources */,
 				97C02AB62674060200EDEF9E /* ligado.mp3 in Resources */,
 				97C02AB52674060200EDEF9E /* botao.mp3 in Resources */,
 				B6F165E126544272005F9C03 /* Main.storyboard in Resources */,
@@ -240,8 +250,10 @@
 				8BD42D0526601C0B003014E0 /* Interruptor.swift in Sources */,
 				B6F165EE265591FE005F9C03 /* LabirintoScene.swift in Sources */,
 				B62C3816265C387700C08E51 /* Relogio.swift in Sources */,
+				8B2FEE7C268CEAE300F7A4D3 /* OnboardingMenu.swift in Sources */,
 				B62C3819265D92BA00C08E51 /* Rodas.swift in Sources */,
 				B618C1562666C0430046986A /* Menu.swift in Sources */,
+				B67C4BA1268CF24F00B4251C /* HapticsFeedback.swift in Sources */,
 				B6F165DE26544272005F9C03 /* GameViewController.swift in Sources */,
 				B6F165D626544272005F9C03 /* AppDelegate.swift in Sources */,
 			);
@@ -383,7 +395,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = TW79TC69P4;
 				INFOPLIST_FILE = LockLine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
@@ -404,7 +416,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = TW79TC69P4;
 				INFOPLIST_FILE = LockLine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;

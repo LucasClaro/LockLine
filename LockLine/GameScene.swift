@@ -9,9 +9,10 @@ import SpriteKit
 import GameplayKit
 import Combine
 import AVFoundation
+import AudioToolbox
 
 //MARK: Dicionário de áudios
-var audios: [String: AVAudioPlayer] = ["background": AVAudioPlayer(), "botao": AVAudioPlayer(), "ligado": AVAudioPlayer(), "desligado": AVAudioPlayer(), "tic": AVAudioPlayer(), "tictac": AVAudioPlayer(), "esteira": AVAudioPlayer(), "clickCofre": AVAudioPlayer(), "clickMaleta": AVAudioPlayer(), "roda": AVAudioPlayer()]
+    var audios: [String: AVAudioPlayer] = ["background": AVAudioPlayer(), "botao": AVAudioPlayer(), "ligado": AVAudioPlayer(), "desligado": AVAudioPlayer(), "tic": AVAudioPlayer(), "tictac": AVAudioPlayer(), "esteira": AVAudioPlayer(), "clickCofre": AVAudioPlayer(), "clickMaleta": AVAudioPlayer(), "roda": AVAudioPlayer(), "impressora": AVAudioPlayer()]
 
 class GameScene: SKScene {
     
@@ -27,9 +28,14 @@ class GameScene: SKScene {
         
         importarAudios()
         
+        tamanhoCofre = CGSize(width: frame.maxX*2*0.975, height: frame.maxY*2/1.8)
+        tamanhoCofreFechado = SizeProporcional(size: CGSize(width: 252, height: 310))
+        
         cancelable = publisher.autoconnect().sink { _ in
             self.diminuirTempo()
         }
+        
+        
         
         atualizarTela()
     }
@@ -39,12 +45,14 @@ class GameScene: SKScene {
         self.removeAllChildren()
         
         switch navegação.Tela {
+            case .OnboardingMenu:
+                DrawOnboardingMenu()
             case .Menu:
                 DrawMenu()
             case .Manual:
                 DrawManual()
             case .Jogo:
-                                                                    //MARK: Geral
+                //MARK: Geral
                 let btnPause = SKSpriteNode(imageNamed: "casinha")
                 btnPause.size = SizeProporcional(size: CGSize(width: 50, height: 47))
                 btnPause.position = PosProporcional(pos: CGPoint(x: 170, y: 380))
@@ -60,10 +68,14 @@ class GameScene: SKScene {
                 timerQuadro.zPosition = 10
 
                 let labelTempo = SKLabelNode(text: String("0\(tempo / 60):\(corrigirZeros())"))
-                labelTempo.position = CGPoint(x: 0, y: 343)
+                labelTempo.position = PosProporcional(pos: CGPoint(x: 0, y: 343))
                 labelTempo.fontColor = UIColor.black
                 labelTempo.fontName = "Oswald-Regular"
                 labelTempo.fontSize = 40
+                if frame.maxY * 2 < 670 {
+                    labelTempo.fontSize = 36
+                    labelTempo.position = PosProporcional(pos: CGPoint(x: 0, y: 339))
+                }
                 labelTempo.zPosition = 11
                 
                 let quadrado = SKSpriteNode(color: UIColor.orange, size: tamanhoCofreFechado)
@@ -78,24 +90,24 @@ class GameScene: SKScene {
                                                                     //MARK: Pausado
                 if navegação.Pausado {
                     let telaPause = SKSpriteNode(imageNamed: "pausaP")
-                    telaPause.size = SizeProporcional(size: CGSize(width: 400, height: 234))
-                    telaPause.position = CGPoint(x: 0, y: 0)
+                    telaPause.size = SizeProporcional(size: CGSize(width: 350, height: 504))
+                    telaPause.position = PosProporcional(pos: CGPoint(x: 0, y: 200))
                     telaPause.zPosition = 30
                     
-                    let btnPauseSim = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 170, height: 70)))
-                    btnPauseSim.position = PosProporcional(pos: CGPoint(x: -90, y: -55))
+                    let btnPauseSim = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 150, height: 70)))
+                    btnPauseSim.position = PosProporcional(pos: CGPoint(x: -80, y: 0))
                     btnPauseSim.zPosition = 31
                     btnPauseSim.alpha = 0.001
                     btnPauseSim.name = "PauseSim"
                     
-                    let btnPauseNao = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 170, height: 70)))
-                    btnPauseNao.position = PosProporcional(pos: CGPoint(x: 90, y: -55))
+                    let btnPauseNao = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 150, height: 70)))
+                    btnPauseNao.position = PosProporcional(pos: CGPoint(x: 78, y: 0))
                     btnPauseNao.zPosition = 31
                     btnPauseNao.alpha = 0.001
                     btnPauseNao.name = "PauseNao"
                     
-                    let btnX = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 50, height: 50)))
-                    btnX.position = PosProporcional(pos: CGPoint(x: 165, y: 75))
+                    let btnX = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 30, height: 30)))
+                    btnX.position = PosProporcional(pos: CGPoint(x: 140, y: 115))
                     btnX.zPosition = 31
                     btnX.alpha = 0.001
                     btnX.name = "PauseNao"
@@ -109,27 +121,27 @@ class GameScene: SKScene {
                                                                     //MARK: Finalizado
                 if navegação.Finalizado {
                     let TelaFim = SKSpriteNode(imageNamed: "poxaT")
-                    TelaFim.size = SizeProporcional(size: CGSize(width: 400, height: 356))
-                    TelaFim.position = CGPoint(x: 0, y: 0)
+                    TelaFim.size = SizeProporcional(size: CGSize(width: 350, height: 504))
+                    TelaFim.position = CGPoint(x: 0, y: 200)
                     TelaFim.zPosition = 30
                     
-                    let btnRestart = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 230, height: 70)))
-                    btnRestart.position = PosProporcional(pos: CGPoint(x: -63, y: -120))
+                    let btnRestart = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 200, height: 70)))
+                    btnRestart.position = PosProporcional(pos: CGPoint(x: -58, y: 0))
                     btnRestart.alpha = 0.001
                     btnRestart.zPosition = 31
                     btnRestart.name = "FimRestart"
                     
-                    let btnInicio = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 120, height: 70)))
-                    btnInicio.position = PosProporcional(pos: CGPoint(x: 115, y: -120))
+                    let btnInicio = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 105, height: 70)))
+                    btnInicio.position = PosProporcional(pos: CGPoint(x: 100, y: 0))
                     btnInicio.zPosition = 31
                     btnInicio.alpha = 0.001
                     btnInicio.name = "FimInicio"
                     
                     if navegação.ModulosCompletos.allSatisfy({ return $0 }) {
-                        TelaFim.size = SizeProporcional(size: CGSize(width: 400, height: 356))
+                        TelaFim.size = SizeProporcional(size: CGSize(width: 350, height: 578))
                         TelaFim.texture = SKTexture(imageNamed: "ParabensT")
-                        btnRestart.position = PosProporcional(pos: CGPoint(x: -63, y: -115))
-                        btnInicio.position = PosProporcional(pos: CGPoint(x: 115, y: -115))
+                        btnRestart.position = PosProporcional(pos: CGPoint(x: -58, y: -35))
+                        btnInicio.position = PosProporcional(pos: CGPoint(x: 105, y: -35))
                     }
                     
                     addChild(TelaFim)
@@ -163,8 +175,8 @@ class GameScene: SKScene {
                     self.backgroundColor = UIColor(named: "Papiro")!
                     
                     let setaBaixo = SKSpriteNode(imageNamed: "buttonBack")
-                    setaBaixo.size = CGSize(width: 50, height: 30)
-                    setaBaixo.position = CGPoint(x: 0, y: -350)
+                    setaBaixo.size = SizeProporcional(size: CGSize(width: 50, height: 30))
+                    setaBaixo.position = PosProporcional(pos: CGPoint(x: 0, y: -350))
                     setaBaixo.name = "SetaVoltar"
                     
                     self.addChild(setaBaixo)
@@ -182,14 +194,14 @@ class GameScene: SKScene {
                     mesa.zPosition = 2
                     
                     let setaDireita = SKSpriteNode(imageNamed: "buttonRight")
-                    setaDireita.size = CGSize(width: 30, height: 50)
-                    setaDireita.position = CGPoint(x: 155, y: 0)
+                    setaDireita.size = SizeProporcional(size: CGSize(width: 30, height: 50))
+                    setaDireita.position = PosProporcional(pos: CGPoint(x: 155, y: 0))
                     setaDireita.zPosition = 5
                     setaDireita.name = "SetaDireita"
                     
                     let setaEsquerda = SKSpriteNode(imageNamed: "buttonLeft")
-                    setaEsquerda.size = CGSize(width: 30, height: 50)
-                    setaEsquerda.position = CGPoint(x: -155, y: 0)
+                    setaEsquerda.size = SizeProporcional(size: CGSize(width: 30, height: 50))
+                    setaEsquerda.position = PosProporcional(pos: CGPoint(x: -155, y: 0))
                     setaEsquerda.zPosition = 5
                     setaEsquerda.name = "SetaEsquerda"
                     
@@ -262,6 +274,9 @@ class GameScene: SKScene {
             let pos = touch.location(in: self)
             
             switch navegação.Tela {
+                case .OnboardingMenu:
+                    TouchOnboardingMenu(pos: pos)
+                    atualizarTela()
                 case .Menu:
                     TouchMenu(pos: pos)
                     atualizarTela()
@@ -271,14 +286,18 @@ class GameScene: SKScene {
                 case .Jogo:
                     switch atPoint(pos).name {
                         case "SetaDireita":
-                            navegação.ModuloOlhando = (navegação.ModuloOlhando + 1) % 4
-                            audios["botao"]?.play()
-                            atualizarTela()
+                            if !navegação.Pausado && !navegação.Finalizado {
+                                navegação.ModuloOlhando = (navegação.ModuloOlhando + 1) % 4
+                                audios["botao"]?.play()
+                                vibrateLight()
+                                atualizarTela()
+                            }
                             break
                         case "SetaEsquerda":
                             if !navegação.Pausado && !navegação.Finalizado {
                                 navegação.ModuloOlhando = (navegação.ModuloOlhando + 3) % 4
                                 audios["botao"]?.play()
+                                vibrateLight()
                                 atualizarTela()
                             }
                             break
@@ -286,6 +305,7 @@ class GameScene: SKScene {
                             if !navegação.Pausado && !navegação.Finalizado {
                                 navegação.ModuloAberto = true
                                 audios["background"]?.volume = 0.1
+                                vibrateLight()
                                 atualizarTela()
                             }
                             break
@@ -295,6 +315,7 @@ class GameScene: SKScene {
                                 navegação.ModuloAberto = false
                                 audios["botao"]?.play()
                                 audios["background"]?.volume = 0.4
+                                vibrateLight()
                                 atualizarTela()
                             }
                             break
@@ -302,6 +323,7 @@ class GameScene: SKScene {
                             if !navegação.Pausado && !navegação.Finalizado {
                                 navegação.Pausado = true
                                 audios["botao"]?.play()
+                                vibrateLight()
                                 atualizarTela()
                             }
                             break
@@ -309,6 +331,7 @@ class GameScene: SKScene {
                             navegação = ControleNavegação()
                             audios["botao"]?.play()
                             tempo = 300
+                            vibrateLight()
                             atualizarTela()
                             break
                         case "PauseNao":
@@ -321,11 +344,13 @@ class GameScene: SKScene {
                             tempo = 300
                             audios["botao"]?.play()
                             navegação.Tela = .Jogo
+                            vibrateLight()
                             atualizarTela()
                             break
                         case "FimInicio":
                             navegação = ControleNavegação()
                             audios["botao"]?.play()
+                            vibrateLight()
                             atualizarTela()
                             break
                         default:
@@ -392,6 +417,11 @@ class GameScene: SKScene {
     }
     
     func SizeProporcional(size : CGSize) -> CGSize {
+        
+        if size.width == size.height {
+            return CGSize(width: tamanhoCofre.width * size.width/400, height: tamanhoCofre.width * size.width/400)
+        }
+        
         return CGSize(width: tamanhoCofre.width * size.width/400, height: tamanhoCofre.height * size.height/496)
     }
     
@@ -451,8 +481,8 @@ struct ControleNavegação {
         
     }
     
-    var Tela : EnumTela = .Menu
-    
+    var Tela : EnumTela = (UserDefaults.standard.bool(forKey: "Tutorial")) ? .OnboardingMenu : .Menu
+     
     var ModulosEmJogo : [Int]
     var ModulosCompletos : [Bool]
     var ModuloOlhando : Int
@@ -488,6 +518,7 @@ func SortearModulos() -> [Int] {
 }
 
 enum EnumTela {
+    case OnboardingMenu
     case Menu
     case Manual
     case Jogo

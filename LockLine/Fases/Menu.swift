@@ -30,25 +30,56 @@ extension GameScene {
         btnManual.alpha = 0.001
         btnManual.zPosition = 5
         
+        let BtnOnboarding = SKSpriteNode(color: UIColor.white, size: CGSize(width: 35, height: 35))
+        BtnOnboarding.position = PosProporcional(pos: CGPoint(x: -165, y: -420))
+        BtnOnboarding.name = "BtnOnboarding"
+        BtnOnboarding.alpha = 0.001
+        BtnOnboarding.zPosition = 5
+        
+        let versao = SKLabelNode(text: getVersion())
+        versao.fontSize = 15
+        versao.position = PosProporcional(pos: CGPoint(x: 140, y: -435))
+        versao.zPosition = 5
+        versao.fontColor = UIColor.black
+        versao.fontName = "Oswald-Regular"
+       
+        
+        addChild(versao)
         addChild(Fundo)
         addChild(btnJogar)
         addChild(btnManual)
+        addChild(BtnOnboarding)
         
     }
     
     func TouchMenu(pos : CGPoint) {
         switch atPoint(pos).name {
             case "BtnJogar":
+                vibrateLight()
                 audios["botao"]?.volume = 2
                 audios["botao"]?.play()
                 navegação.Tela = .Jogo
             case "BtnManual":
+                vibrateLight()
                 audios["botao"]?.volume = 2
                 audios["botao"]?.play()
                 navegação.Tela = .Manual
+            case "BtnOnboarding":
+                vibrateLight()
+                audios["botao"]?.volume = 2
+                audios["botao"]?.play()
+                navegação.Tela = .OnboardingMenu
             default:
                 break
         }
+    }
+    
+    func getVersion() -> String {
+        let versao = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+          
+        let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
+        
+        return "Versão: \(versao)(\(build))"
     }
     
 }
