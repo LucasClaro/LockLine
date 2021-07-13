@@ -449,7 +449,7 @@ extension GameScene{
                 navegação.Esteira.posCubos[n-1] = -240
             }
         }
-        atualizarTela()
+        //atualizarTela()
     }
 }
 

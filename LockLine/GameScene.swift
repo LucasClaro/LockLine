@@ -349,6 +349,7 @@ class GameScene: SKScene {
                             break
                         case "FimInicio":
                             navegação = ControleNavegação()
+                            tempo = 300
                             audios["botao"]?.play()
                             vibrateLight()
                             atualizarTela()
