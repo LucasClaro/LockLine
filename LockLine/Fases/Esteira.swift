@@ -421,7 +421,8 @@ extension GameScene{
         for n in 0...5{
             if (navegação.Esteira.input[n] == 0){
                 navegação.Esteira.input[n] = simb
-                cubo.isHidden = true
+                navegação.Esteira.hiddenCubos[n] = true
+                cubo.isHidden = navegação.Esteira.hiddenCubos[n]
                 break
             }
         }
@@ -471,6 +472,7 @@ struct EsteiraController {
     var simbolo: String = ""
     var lacunasCertas: [Int] = []
     var input = [0,0,0,0,0,0]
+    var hiddenCubos = [false, false, false, false, false, false, false, false]
     
     init(){
         let placas = [1,2,3].randomElement()!
@@ -522,6 +524,10 @@ struct EsteiraController {
             } else{
                 lacunasCertas = [7,4,6,1,3,5]
             }
+        }
+        
+        for n in 1...8 {
+            cubos[n]?.isHidden = hiddenCubos[n-1]
         }
     }
 }
