@@ -17,7 +17,7 @@ import AudioToolbox
 class GameScene: SKScene {
     
     let publisher = Timer.publish(every: 1, on: .current, in: .common)
-    private var tempo : Int = 300
+    private var tempo : Int = 600
     private var tamanhoCofre : CGSize = CGSize(width: 400, height: 496)
     private var tamanhoCofreFechado : CGSize = CGSize(width: 252, height: 310)
     private var cancelable : Combine.Cancellable?
@@ -330,7 +330,7 @@ class GameScene: SKScene {
                         case "PauseSim":
                             navegação = ControleNavegação()
                             audios["botao"]?.play()
-                            tempo = 300
+                            tempo = 600
                             vibrateLight()
                             atualizarTela()
                             break
@@ -341,7 +341,7 @@ class GameScene: SKScene {
                             break
                         case "FimRestart":
                             navegação = ControleNavegação()
-                            tempo = 300
+                            tempo = 600
                             audios["botao"]?.play()
                             navegação.Tela = .Jogo
                             vibrateLight()
@@ -349,7 +349,7 @@ class GameScene: SKScene {
                             break
                         case "FimInicio":
                             navegação = ControleNavegação()
-                            tempo = 300
+                            tempo = 600
                             audios["botao"]?.play()
                             vibrateLight()
                             atualizarTela()
