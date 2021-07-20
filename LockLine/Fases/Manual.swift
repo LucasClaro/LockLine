@@ -253,6 +253,7 @@ extension GameScene {
                     atualizarTela()
                     break
                 case "Impressora":
+                    vibrateLight()
                     navegação.Manual.DicaAberta = 7
                     atualizarTela()
                     break
