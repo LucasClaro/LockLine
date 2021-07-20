@@ -322,13 +322,15 @@ class GameScene: SKScene {
                         case "Pause":
                             if !navegação.Pausado && !navegação.Finalizado {
                                 navegação.Pausado = true
-                                audios["botao"]?.play()
                                 vibrateLight()
                                 atualizarTela()
+                                verificacaoAudios()
+                                audios["botao"]?.play()
                             }
                             break
                         case "PauseSim":
                             navegação = ControleNavegação()
+                            verificacaoAudios()
                             audios["botao"]?.play()
                             tempo = 600
                             vibrateLight()
@@ -398,7 +400,7 @@ class GameScene: SKScene {
     
     //MARK: Update
     override func update(_ currentTime: TimeInterval) {
-        if navegação.ModuloAberto {
+        if navegação.ModuloAberto && !navegação.Pausado {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                 case 3:
                     updateRelogio()

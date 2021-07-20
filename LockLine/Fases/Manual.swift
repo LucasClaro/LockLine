@@ -264,6 +264,7 @@ extension GameScene {
                     break
                 case "ImpressoraIcon":
                     audios["impressora"]?.play()
+                    vibrateLight()
                     navegação.Manual.Imprimindo = true
                     atualizarTela()
                     let delay = 8 // seconds to wait before firing
