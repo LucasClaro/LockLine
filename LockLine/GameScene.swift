@@ -68,6 +68,9 @@ class GameScene: SKScene {
                 timerQuadro.zPosition = 10
 
                 let labelTempo = SKLabelNode(text: String("0\(tempo / 60):\(corrigirZeros())"))
+                if tempo == 600 {
+                    labelTempo.text = String("\(tempo / 60):\(corrigirZeros())")
+                }
                 labelTempo.position = PosProporcional(pos: CGPoint(x: 0, y: 343))
                 labelTempo.fontColor = UIColor.black
                 labelTempo.fontName = "Oswald-Regular"

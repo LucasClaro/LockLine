@@ -127,7 +127,6 @@ extension GameScene {
         roda1.position = PosProporcional(pos: CGPoint(x: -92, y: 18))
         roda1.size = SizeProporcional(size: CGSize(width: 100, height: 100))
         roda1.zPosition = 10
-        roda1.name = "Roda1"
         
         let rodaFuro1 = SKSpriteNode(imageNamed: "RodaFuro")
         rodaFuro1.position = PosProporcional(pos: CGPoint(x: -92, y: 18))
@@ -150,7 +149,6 @@ extension GameScene {
         roda2.position = PosProporcional(pos: CGPoint(x: 90, y: 18))
         roda2.size = SizeProporcional(size: CGSize(width: 100, height: 100))
         roda2.zPosition = 10
-        roda2.name = "Roda2"
         
         let rodaFuro2 = SKSpriteNode(imageNamed: "RodaFuro")
         rodaFuro2.position = PosProporcional(pos: CGPoint(x: 90, y: 18))
@@ -173,7 +171,6 @@ extension GameScene {
         roda3.position = PosProporcional(pos: CGPoint(x: -92, y: -138))
         roda3.size = SizeProporcional(size: CGSize(width: 100, height: 100))
         roda3.zPosition = 10
-        roda3.name = "Roda3"
         
         let rodaFuro3 = SKSpriteNode(imageNamed: "RodaFuro")
         rodaFuro3.position = PosProporcional(pos: CGPoint(x: -92, y: -138))
@@ -196,7 +193,6 @@ extension GameScene {
         roda4.position = PosProporcional(pos: CGPoint(x: 90, y: -138))
         roda4.size = SizeProporcional(size: CGSize(width: 100, height: 100))
         roda4.zPosition = 10
-        roda4.name = "Roda4"
         
         let rodaFuro4 = SKSpriteNode(imageNamed: "RodaFuro")
         rodaFuro4.position = PosProporcional(pos: CGPoint(x: 90, y: -138))
@@ -297,7 +293,53 @@ extension GameScene {
     //MARK: Update
     func UpdateRodas() {
         navegação.Rodas.angulo += 2
-        atualizarTela()
+//        atualizarTela()
+        
+        if let r1 = self.childNode(withName: "Roda1") as? SKSpriteNode {
+            r1.removeFromParent()
+        }
+        if let r2 = self.childNode(withName: "Roda2") as? SKSpriteNode {
+            r2.removeFromParent()
+        }
+        if let r3 = self.childNode(withName: "Roda3") as? SKSpriteNode {
+            r3.removeFromParent()
+        }
+        if let r4 = self.childNode(withName: "Roda4") as? SKSpriteNode {
+            r4.removeFromParent()
+        }
+        
+        let rodaFuro1 = SKSpriteNode(imageNamed: "RodaFuro")
+        rodaFuro1.position = PosProporcional(pos: CGPoint(x: -92, y: 18))
+        rodaFuro1.size = SizeProporcional(size: CGSize(width: 100, height: 100))
+        rodaFuro1.zPosition = 11
+        rodaFuro1.zRotation = CGFloat(navegação.Rodas.angulo) * CGFloat.pi/180
+        rodaFuro1.name = "Roda1"
+        
+        let rodaFuro2 = SKSpriteNode(imageNamed: "RodaFuro")
+        rodaFuro2.position = PosProporcional(pos: CGPoint(x: 90, y: 18))
+        rodaFuro2.size = SizeProporcional(size: CGSize(width: 100, height: 100))
+        rodaFuro2.zPosition = 11
+        rodaFuro2.zRotation = CGFloat(navegação.Rodas.angulo) * CGFloat.pi/180
+        rodaFuro2.name = "Roda2"
+        
+        let rodaFuro3 = SKSpriteNode(imageNamed: "RodaFuro")
+        rodaFuro3.position = PosProporcional(pos: CGPoint(x: -92, y: -138))
+        rodaFuro3.size = SizeProporcional(size: CGSize(width: 100, height: 100))
+        rodaFuro3.zPosition = 11
+        rodaFuro3.zRotation = CGFloat(navegação.Rodas.angulo) * CGFloat.pi/180
+        rodaFuro3.name = "Roda3"
+        
+        let rodaFuro4 = SKSpriteNode(imageNamed: "RodaFuro")
+        rodaFuro4.position = PosProporcional(pos: CGPoint(x: 90, y: -138))
+        rodaFuro4.size = SizeProporcional(size: CGSize(width: 100, height: 100))
+        rodaFuro4.zPosition = 11
+        rodaFuro4.zRotation = CGFloat(navegação.Rodas.angulo) * CGFloat.pi/180
+        rodaFuro4.name = "Roda4"
+        
+        addChild(rodaFuro1)
+        addChild(rodaFuro2)
+        addChild(rodaFuro3)
+        addChild(rodaFuro4)
     }
     
 }
