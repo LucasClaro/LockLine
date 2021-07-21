@@ -305,7 +305,7 @@ class GameScene: SKScene {
                             }
                             break
                         case "Cofre":
-                            if !navegação.Pausado && !navegação.Finalizado {
+                            if !navegação.Pausado && !navegação.Finalizado && !navegação.ModuloAberto {
                                 navegação.ModuloAberto = true
                                 audios["background"]?.volume = 0.1
                                 vibrateLight()
