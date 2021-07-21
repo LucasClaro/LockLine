@@ -153,7 +153,12 @@ extension GameScene {
         Letra1.fontColor = UIColor.black
         Letra1.fontName = "Oswald-Regular"
         Letra1.zPosition = 10
-        Letra1.name = "Letra1"
+        
+        let hitLetra1 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 65, height: 60)))
+        hitLetra1.position = PosProporcional(pos: CGPoint(x: Letra1.position.x, y: Letra1.position.y + 15))
+        hitLetra1.zPosition = 16
+        hitLetra1.alpha = 0.001
+        hitLetra1.name = "Letra1"
         
         let Letra2 = SKLabelNode(text: String(navegação.Letras.letras[navegação.Letras.input[1]]))
         Letra2.fontSize = 36
@@ -161,7 +166,12 @@ extension GameScene {
         Letra2.fontColor = UIColor.black
         Letra2.fontName = "Oswald-Regular"
         Letra2.zPosition = 10
-        Letra2.name = "Letra2"
+        
+        let hitLetra2 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 65, height: 60)))
+        hitLetra2.position = PosProporcional(pos: CGPoint(x: Letra2.position.x, y: Letra2.position.y + 15))
+        hitLetra2.zPosition = 16
+        hitLetra2.alpha = 0.001
+        hitLetra2.name = "Letra2"
         
         let Letra3 = SKLabelNode(text: String(navegação.Letras.letras[navegação.Letras.input[2]]))
         Letra3.fontSize = 36
@@ -169,7 +179,12 @@ extension GameScene {
         Letra3.fontColor = UIColor.black
         Letra3.fontName = "Oswald-Regular"
         Letra3.zPosition = 10
-        Letra3.name = "Letra3"
+        
+        let hitLetra3 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 65, height: 60)))
+        hitLetra3.position = PosProporcional(pos: CGPoint(x: Letra3.position.x, y: Letra3.position.y + 15))
+        hitLetra3.zPosition = 16
+        hitLetra3.alpha = 0.001
+        hitLetra3.name = "Letra3"
         
         let Letra4 = SKLabelNode(text: String(navegação.Letras.letras[navegação.Letras.input[3]]))
         Letra4.fontSize = 36
@@ -178,6 +193,12 @@ extension GameScene {
         Letra4.fontName = "Oswald-Regular"
         Letra4.zPosition = 10
         Letra4.name = "Letra4"
+        
+        let hitLetra4 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 65, height: 60)))
+        hitLetra4.position = PosProporcional(pos: CGPoint(x: Letra4.position.x, y: Letra4.position.y + 15))
+        hitLetra4.zPosition = 16
+        hitLetra4.alpha = 0.001
+        hitLetra4.name = "Letra4"
         
         self.addChild(palavra1)
         self.addChild(palavra2)
@@ -190,6 +211,11 @@ extension GameScene {
         self.addChild(Letra2)
         self.addChild(Letra3)
         self.addChild(Letra4)
+        
+        self.addChild(hitLetra1)
+        self.addChild(hitLetra2)
+        self.addChild(hitLetra3)
+        self.addChild(hitLetra4)
     }
     
     //MARK: Touched

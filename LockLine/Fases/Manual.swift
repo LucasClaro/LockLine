@@ -183,7 +183,7 @@ extension GameScene {
         BtnSair.zPosition = 50
         BtnSair.name = "BtnSair"
         if navegação.Manual.DicaAberta != 0 {
-            BtnSair.size = SizeProporcional(size: CGSize(width: 30, height: 30))
+            BtnSair.size = SizeProporcional(size: CGSize(width: 40, height: 40))
             BtnSair.texture = SKTexture(imageNamed: "Fechar")
         }
         
