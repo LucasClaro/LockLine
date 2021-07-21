@@ -249,6 +249,7 @@ extension GameScene {
                     if !navegação.Rodas.input.contains(1) {
                         audios["botao"]?.play()
                         navegação.Rodas.input.append(1)
+                        vibrateLight()
                     }
                     checarSenha()
                     atualizarTela()
@@ -256,6 +257,7 @@ extension GameScene {
                     if !navegação.Rodas.input.contains(2) {
                         audios["botao"]?.play()
                         navegação.Rodas.input.append(2)
+                        vibrateLight()
                     }
                     checarSenha()
                     atualizarTela()
@@ -263,6 +265,7 @@ extension GameScene {
                     if !navegação.Rodas.input.contains(3) {
                         audios["botao"]?.play()
                         navegação.Rodas.input.append(3)
+                        vibrateLight()
                     }
                     checarSenha()
                     atualizarTela()
@@ -270,6 +273,7 @@ extension GameScene {
                     if !navegação.Rodas.input.contains(4) {
                         audios["botao"]?.play()
                         navegação.Rodas.input.append(4)
+                        vibrateLight()
                     }
                     checarSenha()
                     atualizarTela()
@@ -286,6 +290,7 @@ extension GameScene {
         else {
             if navegação.Rodas.input.count >= 4 {
                 navegação.Rodas.input.removeAll()
+                vibrateHeavy()
             }
         }
     }
@@ -315,12 +320,20 @@ extension GameScene {
         rodaFuro1.zRotation = CGFloat(navegação.Rodas.angulo) * CGFloat.pi/180
         rodaFuro1.name = "Roda1"
         
+        if navegação.Rodas.input.contains(1) {
+            rodaFuro1.position = PosProporcional(pos: CGPoint(x: -92, y: 24))
+        }
+        
         let rodaFuro2 = SKSpriteNode(imageNamed: "RodaFuro")
         rodaFuro2.position = PosProporcional(pos: CGPoint(x: 90, y: 18))
         rodaFuro2.size = SizeProporcional(size: CGSize(width: 100, height: 100))
         rodaFuro2.zPosition = 11
         rodaFuro2.zRotation = CGFloat(navegação.Rodas.angulo) * CGFloat.pi/180
         rodaFuro2.name = "Roda2"
+        
+        if navegação.Rodas.input.contains(2) {
+            rodaFuro2.position = PosProporcional(pos: CGPoint(x: 90, y: 24))
+        }
         
         let rodaFuro3 = SKSpriteNode(imageNamed: "RodaFuro")
         rodaFuro3.position = PosProporcional(pos: CGPoint(x: -92, y: -138))
@@ -329,12 +342,20 @@ extension GameScene {
         rodaFuro3.zRotation = CGFloat(navegação.Rodas.angulo) * CGFloat.pi/180
         rodaFuro3.name = "Roda3"
         
+        if navegação.Rodas.input.contains(3) {
+            rodaFuro3.position = PosProporcional(pos: CGPoint(x: -92, y: -132))
+        }
+        
         let rodaFuro4 = SKSpriteNode(imageNamed: "RodaFuro")
         rodaFuro4.position = PosProporcional(pos: CGPoint(x: 90, y: -138))
         rodaFuro4.size = SizeProporcional(size: CGSize(width: 100, height: 100))
         rodaFuro4.zPosition = 11
         rodaFuro4.zRotation = CGFloat(navegação.Rodas.angulo) * CGFloat.pi/180
         rodaFuro4.name = "Roda4"
+        
+        if navegação.Rodas.input.contains(4) {
+            rodaFuro4.position = PosProporcional(pos: CGPoint(x: 90, y: -132))
+        }
         
         addChild(rodaFuro1)
         addChild(rodaFuro2)
