@@ -205,9 +205,9 @@ extension GameScene {
                 image = SKTexture(imageNamed: "DicaCorrompida")
             }
             
-            print("LastY \(navegação.Manual.PagelastY)")
-            print("PageY \(page.position.y)")
-            print("dif \(dif)")
+//            print("LastY \(navegação.Manual.PagelastY)")
+//            print("PageY \(page.position.y)")
+//            print("dif \(dif)")
             
             page.removeFromParent()
             
@@ -217,8 +217,8 @@ extension GameScene {
             dicaAberta.zPosition = 20
             dicaAberta.name = "DicaPagina"
             
-            print("DicaNovaYAntes \(dicaAberta.position.y)")
-            print()
+//            print("DicaNovaYAntes \(dicaAberta.position.y)")
+//            print()
             
             if dicaAberta.position.y < (-(image.size().height/(2*4.5)) + (frame.maxX*2) + 45) {
                 dicaAberta.position.y = (-(image.size().height/(2*4.5)) + (frame.maxX*2) + 45)
