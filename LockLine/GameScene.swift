@@ -273,6 +273,9 @@ class GameScene: SKScene {
     
     //MARK: touchesBegan
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        navegação.Manual.PagelastY = (touches.first?.location(in: self).y) ?? CGFloat(0)
+        
         if let touch = touches.first {
             let pos = touch.location(in: self)
             
@@ -285,7 +288,7 @@ class GameScene: SKScene {
                     atualizarTela()
                 case .Manual:
                     TouchedManual(pos: pos)
-                    atualizarTela()
+//                    atualizarTela()
                 case .Jogo:
                     switch atPoint(pos).name {
                         case "SetaDireita":
@@ -386,15 +389,6 @@ class GameScene: SKScene {
                 atualizarTela()
             }
         }
-    }
-        
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {

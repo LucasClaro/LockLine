@@ -146,20 +146,21 @@ extension GameScene {
             let dicaAberta = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: image.size().height/4.5))
             
             var calculedY = (-(image.size().height/(2*4.5)) + (frame.maxX*2) + 45)
-            if navegação.Manual.visualizacaoDicaInferior {
-                calculedY = ((image.size().height/(2*4.5)) - (frame.maxX*2) - 45)
-            }
+//            if navegação.Manual.visualizacaoDicaInferior {
+//                calculedY = ((image.size().height/(2*4.5)) - (frame.maxX*2) - 45)
+//            }
             dicaAberta.position = CGPoint(x: 0, y: calculedY)
             dicaAberta.texture = image
             dicaAberta.zPosition = 20
+            dicaAberta.name = "DicaPagina"
             
-            let scroll = SKSpriteNode(imageNamed: "Scroll")
-            scroll.size = SizeProporcional(size: CGSize(width: 50, height: 78))
-            scroll.position = PosProporcional(pos: CGPoint(x: 165, y: 200))
-            scroll.zPosition = 21
-            scroll.name = "Scroll"
-            
-            addChild(scroll)
+//            let scroll = SKSpriteNode(imageNamed: "Scroll")
+//            scroll.size = SizeProporcional(size: CGSize(width: 50, height: 78))
+//            scroll.position = PosProporcional(pos: CGPoint(x: 165, y: 200))
+//            scroll.zPosition = 21
+//            scroll.name = "Scroll"
+//
+//            addChild(scroll)
             addChild(dicaAberta)
         }
         
@@ -188,6 +189,51 @@ extension GameScene {
         }
         
         addChild(BtnSair)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if navegação.Manual.DicaAberta != 0 {
+            guard let page = self.childNode(withName: "DicaPagina") as? SKSpriteNode else {
+                return
+            }
+            
+            let dif = (touches.first?.location(in: self).y ?? 0) - navegação.Manual.PagelastY
+            
+            var image = SKTexture(imageNamed: "Dica\(navegação.Manual.DicaAberta)")
+            if navegação.Manual.DicaAberta == 7 && !navegação.Manual.Impresso {
+                image = SKTexture(imageNamed: "DicaCorrompida")
+            }
+            
+            print("LastY \(navegação.Manual.PagelastY)")
+            print("PageY \(page.position.y)")
+            print("dif \(dif)")
+            
+            page.removeFromParent()
+            
+            let dicaAberta = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: image.size().height/4.5))
+            dicaAberta.position = CGPoint(x: 0, y: page.position.y + dif)
+            dicaAberta.texture = image
+            dicaAberta.zPosition = 20
+            dicaAberta.name = "DicaPagina"
+            
+            print("DicaNovaYAntes \(dicaAberta.position.y)")
+            print()
+            
+            if dicaAberta.position.y < (-(image.size().height/(2*4.5)) + (frame.maxX*2) + 45) {
+                dicaAberta.position.y = (-(image.size().height/(2*4.5)) + (frame.maxX*2) + 45)
+            }
+            if dicaAberta.position.y > ((image.size().height/(2*4.5)) - (frame.maxX*2) - 45) {
+                dicaAberta.position.y = ((image.size().height/(2*4.5)) - (frame.maxX*2) - 45)
+            }
+            
+            print("DicaNovaYDepois \(dicaAberta.position.y)")
+            
+            addChild(dicaAberta)
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        navegação.Manual.PagelastY = 0
     }
     
     //MARK: Touched
@@ -266,7 +312,6 @@ extension GameScene {
                     audios["impressora"]?.play()
                     vibrateLight()
                     navegação.Manual.Imprimindo = true
-                    atualizarTela()
                     let delay = 8 // seconds to wait before firing
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(delay)) {
                         self.navegação.Manual.Imprimindo = false
@@ -288,6 +333,7 @@ extension GameScene {
                         navegação.Manual.PCLigado = false
                         navegação.Tela = .Menu
                     }
+                    atualizarTela()
                 default:
                     break
             }
@@ -304,6 +350,7 @@ struct ManualController {
     var Impresso : Bool = false
     var Imprimindo : Bool = false
     var visualizacaoDicaInferior = false
+    var PagelastY : CGFloat = 0
     
     var PCLigado : Bool = false
 }
