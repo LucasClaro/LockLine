@@ -145,7 +145,7 @@ extension GameScene {
             }
             let dicaAberta = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: image.size().height/4.5))
             
-            var calculedY = (-(image.size().height/(2*4.5)) + (frame.maxX*2) + 45)
+            let calculedY = (-(image.size().height/(2*4.5)) + (frame.maxX*2) + 45)
 //            if navegação.Manual.visualizacaoDicaInferior {
 //                calculedY = ((image.size().height/(2*4.5)) - (frame.maxX*2) - 45)
 //            }
@@ -197,7 +197,7 @@ extension GameScene {
                 return
             }
             
-            var dif = (touches.first?.location(in: self).y ?? 0) - navegação.Manual.PagelastY
+            let dif = (touches.first?.location(in: self).y ?? 0) - navegação.Manual.PagelastY
             navegação.Manual.PagelastY = (touches.first?.location(in: self).y ?? 0)
             
             var image = SKTexture(imageNamed: "Dica\(navegação.Manual.DicaAberta)")
