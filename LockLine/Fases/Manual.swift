@@ -197,7 +197,8 @@ extension GameScene {
                 return
             }
             
-            let dif = (touches.first?.location(in: self).y ?? 0) - navegação.Manual.PagelastY
+            var dif = (touches.first?.location(in: self).y ?? 0) - navegação.Manual.PagelastY
+            navegação.Manual.PagelastY = (touches.first?.location(in: self).y ?? 0)
             
             var image = SKTexture(imageNamed: "Dica\(navegação.Manual.DicaAberta)")
             if navegação.Manual.DicaAberta == 7 && !navegação.Manual.Impresso {
