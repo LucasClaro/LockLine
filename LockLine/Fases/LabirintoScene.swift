@@ -129,12 +129,14 @@ extension GameScene {
                                     navegação.Labirinto.vitoria -= 1
                             }
                             navegação.Labirinto.historico.removeLast()
+                            navegação.Labirinto.qtdSetas["d"]! += 1
                         }
                         else if navegação.Labirinto.historico.count > 1 && navegação.Labirinto.historico.last!.i - 1 == navegação.Labirinto.historico[0].i && navegação.Labirinto.historico.last!.j == navegação.Labirinto.historico[0].j {
                             if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
                                 navegação.Labirinto.vitoria -= 1
                             }
                             navegação.Labirinto.historico.removeLast()
+                            navegação.Labirinto.qtdSetas["d"]! += 1
                         }
                         else {
                             if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i - 1 ,j:navegação.Labirinto.historico.last!.j)}){
@@ -143,6 +145,7 @@ extension GameScene {
                                     navegação.Labirinto.vitoria += 1
                                 }
                             }
+                            navegação.Labirinto.qtdSetas["u"]! -= 1
                         }
                     }
                     break
@@ -155,12 +158,14 @@ extension GameScene {
                                 navegação.Labirinto.vitoria -= 1
                             }
                             navegação.Labirinto.historico.removeLast()
+                            navegação.Labirinto.qtdSetas["u"]! += 1
                         }
                         else if navegação.Labirinto.historico.count > 1 && navegação.Labirinto.historico.last!.i + 1 == navegação.Labirinto.historico[0].i && navegação.Labirinto.historico.last!.j == navegação.Labirinto.historico[0].j {
                             if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
                                 navegação.Labirinto.vitoria -= 1
                             }
                             navegação.Labirinto.historico.removeLast()
+                            navegação.Labirinto.qtdSetas["u"]! += 1
                         }
                         else {
                             if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i + 1 ,j:navegação.Labirinto.historico.last!.j)}){
@@ -170,6 +175,7 @@ extension GameScene {
                                     navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].1 = true
                                 }
                             }
+                            navegação.Labirinto.qtdSetas["d"]! -= 1
                         }
                     }
                     break
@@ -182,12 +188,14 @@ extension GameScene {
                                 navegação.Labirinto.vitoria -= 1
                             }
                             navegação.Labirinto.historico.removeLast()
+                            navegação.Labirinto.qtdSetas["r"]! += 1
                         }
                         else if navegação.Labirinto.historico.count > 1 && navegação.Labirinto.historico.last!.j - 1 == navegação.Labirinto.historico[0].j && navegação.Labirinto.historico.last!.i == navegação.Labirinto.historico[0].i {
                             if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
                                 navegação.Labirinto.vitoria -= 1
                             }
                             navegação.Labirinto.historico.removeLast()
+                            navegação.Labirinto.qtdSetas["r"]! += 1
                         }
                         else {
                             if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i ,j:navegação.Labirinto.historico.last!.j - 1)}){
@@ -197,6 +205,7 @@ extension GameScene {
                                     navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].1 = true
                                 }
                             }
+                            navegação.Labirinto.qtdSetas["l"]! -= 1
                         }
                     }
                     break
@@ -209,12 +218,14 @@ extension GameScene {
                                 navegação.Labirinto.vitoria -= 1
                             }
                             navegação.Labirinto.historico.removeLast()
+                            navegação.Labirinto.qtdSetas["l"]! += 1
                         }
                         else if navegação.Labirinto.historico.count > 1 && navegação.Labirinto.historico.last!.j + 1 == navegação.Labirinto.historico[0].j && navegação.Labirinto.historico.last!.i == navegação.Labirinto.historico[0].i {
                             if navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].0{
                                 navegação.Labirinto.vitoria -= 1
                             }
                             navegação.Labirinto.historico.removeLast()
+                            navegação.Labirinto.qtdSetas["l"]! += 1
                         }
                         else {
                             if !navegação.Labirinto.historico.contains(where: {$0 == (i: navegação.Labirinto.historico.last!.i ,j:navegação.Labirinto.historico.last!.j + 1)}){
@@ -224,15 +235,16 @@ extension GameScene {
                                     navegação.Labirinto.pos[navegação.Labirinto.historico.last!.i][navegação.Labirinto.historico.last!.j].1 = true
                                 }
                             }
+                            navegação.Labirinto.qtdSetas["r"]! -= 1
                         }
                     }
                     break
                 default:
                     break
             }
-            
+            print(navegação.Labirinto.qtdSetas.allSatisfy({$0.value >= 0}))
             if navegação.Labirinto.historico.last?.i == 0 && navegação.Labirinto.historico.last?.j == 3 {
-                if navegação.Labirinto.vitoria == 4 {
+                if navegação.Labirinto.vitoria == 4 && navegação.Labirinto.qtdSetas.allSatisfy({$0.value >= 0}) {
                     navegação.ModulosCompletos[navegação.ModuloOlhando] = true
                 }
                 else {
@@ -241,7 +253,6 @@ extension GameScene {
                     navegação.Labirinto.vitoria = 0
                 }
             }
-            
             atualizarTela()
         }
         
@@ -289,6 +300,7 @@ extension GameScene {
 //MARK: Struct
 struct LabirintoControler {
     var config : Bool = false
+    var qtdSetas = ["r": 10, "l": 10, "u": 10, "d": 10]
     var vitoria = 0
     var nodeStart = (i:0, j:0)
     var line = (local: [-1, -1], pos: CGPoint(x: 0, y: 0))
@@ -304,19 +316,24 @@ struct LabirintoControler {
     init() {
         switch numRandom {
             case 0:
+                qtdSetas["r"] = 2
+                qtdSetas["d"] = 1
                 pos[0][0].0 = true
                 pos[2][1].0 = true
                 pos[1][3].0 = true
                 nodeStart = (i: 3, j:0)
                 break
             case 1:
+                qtdSetas["l"] = 3
+                qtdSetas["u"] = 3
                 pos[1][1].0 = true
                 pos[0][2].0 = true
                 pos[2][3].0 = true
                 nodeStart = (i: 3, j: 3)
-
                 break
             case 2:
+                qtdSetas["r"] = 3
+                qtdSetas["d"] = 3
                 pos[3][0].0 = true
                 pos[2][2].0 = true
                 pos[3][3].0 = true
@@ -324,6 +341,8 @@ struct LabirintoControler {
 
                 break
             case 3:
+                qtdSetas["u"] = 4
+                qtdSetas["d"] = 2
                 pos[3][0].0 = true
                 pos[1][2].0 = true
                 pos[2][2].0 = true
@@ -331,6 +350,8 @@ struct LabirintoControler {
 
                 break
             case 4:
+                qtdSetas["l"] = 1
+                qtdSetas["d"] = 2
                 pos[1][0].0 = true
                 pos[3][1].0 = true
                 pos[0][2].0 = true
