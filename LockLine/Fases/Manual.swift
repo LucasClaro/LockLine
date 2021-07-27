@@ -78,6 +78,12 @@ extension GameScene {
         Dica6.zPosition = 10
         Dica6.name = "Dica6"
         
+        let Dica8 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 130, height: 130)))
+        Dica8.position = PosProporcional(pos: CGPoint(x: 125, y: -370))
+        Dica8.alpha = 0.001
+        Dica8.zPosition = 10
+        Dica8.name = "Dica8"
+        
         let Impressora = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 170, height: 120)))
         Impressora.position = PosProporcional(pos: CGPoint(x: 120, y: -130))
         Impressora.alpha = 0.001
@@ -99,6 +105,7 @@ extension GameScene {
         addChild(Dica4)
         addChild(Monitor)
         addChild(Dica6)
+        addChild(Dica8)
         addChild(Impressora)
         
         if navegação.Manual.MonitorAberto {
@@ -227,7 +234,7 @@ extension GameScene {
                 dicaAberta.position.y = ((image.size().height/(2*4.5)) - (frame.maxX*2) - 45)
             }
             
-            print("DicaNovaYDepois \(dicaAberta.position.y)")
+            //print("DicaNovaYDepois \(dicaAberta.position.y)")
             
             addChild(dicaAberta)
         }
@@ -302,6 +309,11 @@ extension GameScene {
                 case "Impressora":
                     vibrateLight()
                     navegação.Manual.DicaAberta = 7
+                    atualizarTela()
+                    break
+                case "Dica8":
+                    vibrateLight()
+                    navegação.Manual.DicaAberta = 8
                     atualizarTela()
                     break
                 case "BtnIO":
