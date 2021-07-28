@@ -187,12 +187,12 @@ extension GameScene {
         
         let BtnSair = SKSpriteNode(imageNamed: "casinha")
         BtnSair.size = SizeProporcional(size: CGSize(width: 50, height: 47))
-        BtnSair.position = PosProporcional(pos: CGPoint(x: 170, y: 390))
+        BtnSair.position = PosProporcional(pos: CGPoint(x: -160, y: 390))
         BtnSair.zPosition = 50
         BtnSair.name = "BtnSair"
         if navegação.Manual.DicaAberta != 0 || navegação.Manual.MonitorAberto {
-            BtnSair.position = PosProporcional(pos: CGPoint(x: -170, y: 390))
-            BtnSair.size = SizeProporcional(size: CGSize(width: 40, height: 40))
+            BtnSair.position = PosProporcional(pos: CGPoint(x: 160, y: 390))
+            BtnSair.size = SizeProporcional(size: CGSize(width: 35, height: 35))
             BtnSair.texture = SKTexture(imageNamed: "Fechar")
         }
         

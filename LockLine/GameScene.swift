@@ -55,7 +55,7 @@ class GameScene: SKScene {
                 //MARK: Geral
                 let btnPause = SKSpriteNode(imageNamed: "casinha")
                 btnPause.size = SizeProporcional(size: CGSize(width: 50, height: 47))
-                btnPause.position = PosProporcional(pos: CGPoint(x: 170, y: 380))
+                btnPause.position = PosProporcional(pos: CGPoint(x: -160, y: 390))
                 btnPause.zPosition = 10
                 btnPause.name = "Pause"
                 if navegação.Pausado {
