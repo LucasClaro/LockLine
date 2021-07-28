@@ -190,7 +190,8 @@ extension GameScene {
         BtnSair.position = PosProporcional(pos: CGPoint(x: 170, y: 390))
         BtnSair.zPosition = 50
         BtnSair.name = "BtnSair"
-        if navegação.Manual.DicaAberta != 0 {
+        if navegação.Manual.DicaAberta != 0 || navegação.Manual.MonitorAberto {
+            BtnSair.position = PosProporcional(pos: CGPoint(x: -170, y: 390))
             BtnSair.size = SizeProporcional(size: CGSize(width: 40, height: 40))
             BtnSair.texture = SKTexture(imageNamed: "Fechar")
         }
@@ -287,9 +288,9 @@ extension GameScene {
                     atualizarTela()
                     break
                 case "MonitorAberto":
-                    vibrateLight()
-                    navegação.Manual.MonitorAberto = false
-                    atualizarTela()
+//                    vibrateLight()
+//                    navegação.Manual.MonitorAberto = false
+//                    atualizarTela()
                     break
                 case "Dica4":
                     vibrateLight()
@@ -338,6 +339,9 @@ extension GameScene {
                     if navegação.Manual.DicaAberta != 0 {
                         navegação.Manual.DicaAberta = 0
                         navegação.Manual.visualizacaoDicaInferior = false
+                    }
+                    else if navegação.Manual.MonitorAberto {
+                        navegação.Manual.MonitorAberto = false
                     }
                     else {
                         navegação.Manual.DicaAberta = 0
