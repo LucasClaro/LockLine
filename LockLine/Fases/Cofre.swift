@@ -160,36 +160,47 @@ extension GameScene{
     }
     
     func TouchedCofre(pos : CGPoint){
+        audios["clickMaleta"]?.volume = 2
         if !navegação.ModulosCompletos[navegação.ModuloOlhando]{
             switch atPoint(pos).name {
             case "Tecla1":
                 verificaInput(x: 1)
+                audios["clickMaleta"]?.play()
                 atualizarTela()
             case "Tecla2":
                 verificaInput(x: 2)
+                audios["clickMaleta"]?.play()
                 atualizarTela()
             case "Tecla3":
                 verificaInput(x: 3)
+                audios["clickMaleta"]?.play()
                 atualizarTela()
             case "Tecla4":
                 verificaInput(x: 4)
+                audios["clickMaleta"]?.play()
                 atualizarTela()
             case "Tecla5":
                 verificaInput(x: 5)
+                audios["clickMaleta"]?.play()
                 atualizarTela()
             case "Tecla6":
                 verificaInput(x: 6)
+                audios["clickMaleta"]?.play()
                 atualizarTela()
             case "Tecla7":
                 verificaInput(x: 7)
+                audios["clickMaleta"]?.play()
                 atualizarTela()
             case "Tecla8":
                 verificaInput(x: 8)
+                audios["clickMaleta"]?.play()
                 atualizarTela()
             case "Tecla9":
                 verificaInput(x: 9)
+                audios["clickMaleta"]?.play()
                 atualizarTela()
             case "Abrir":
+                audios["clickMaleta"]?.play()
                 verificaResposta()
                 atualizarTela()
             default:
