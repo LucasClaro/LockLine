@@ -19,6 +19,7 @@
 		97C02AB82674060200EDEF9E /* tictac.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C02AB22674060100EDEF9E /* tictac.mp3 */; };
 		97C02AB92674060200EDEF9E /* esteira.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C02AB32674060200EDEF9E /* esteira.mp3 */; };
 		97C02ABA2674060200EDEF9E /* desligado.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C02AB42674060200EDEF9E /* desligado.mp3 */; };
+		97C0524D26B1C40000FDC81E /* Cofre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C0524C26B1C40000FDC81E /* Cofre.swift */; };
 		97C56DD026728EB70071E727 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97C56DCF26728EB70071E727 /* background.mp3 */; };
 		B618C1562666C0430046986A /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B618C1552666C0430046986A /* Menu.swift */; };
 		B62C380A265833C900C08E51 /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */; };
@@ -51,6 +52,7 @@
 		97C02AB22674060100EDEF9E /* tictac.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tictac.mp3; sourceTree = "<group>"; };
 		97C02AB32674060200EDEF9E /* esteira.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = esteira.mp3; sourceTree = "<group>"; };
 		97C02AB42674060200EDEF9E /* desligado.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = desligado.mp3; sourceTree = "<group>"; };
+		97C0524C26B1C40000FDC81E /* Cofre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cofre.swift; sourceTree = "<group>"; };
 		97C56DCF26728EB70071E727 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		B618C1552666C0430046986A /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		B62C3808265828D200C08E51 /* Oswald-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Oswald-VariableFont_wght.ttf"; path = "Tipografia/Oswald-VariableFont_wght.ttf"; sourceTree = SOURCE_ROOT; };
@@ -149,6 +151,7 @@
 			children = (
 				977FD89B265C1C73009FCC76 /* Esteira.swift */,
 				B6F165ED265591FD005F9C03 /* LabirintoScene.swift */,
+				97C0524C26B1C40000FDC81E /* Cofre.swift */,
 				B6F165F22656D9F9005F9C03 /* Letras.swift */,
 				B62C3815265C387700C08E51 /* Relogio.swift */,
 				B62C3818265D92BA00C08E51 /* Rodas.swift */,
@@ -248,6 +251,7 @@
 				977FD89C265C1C73009FCC76 /* Esteira.swift in Sources */,
 				B6F165DC26544272005F9C03 /* GameScene.swift in Sources */,
 				8BD42D0526601C0B003014E0 /* Interruptor.swift in Sources */,
+				97C0524D26B1C40000FDC81E /* Cofre.swift in Sources */,
 				B6F165EE265591FE005F9C03 /* LabirintoScene.swift in Sources */,
 				B62C3816265C387700C08E51 /* Relogio.swift in Sources */,
 				8B2FEE7C268CEAE300F7A4D3 /* OnboardingMenu.swift in Sources */,
@@ -396,7 +400,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = TW79TC69P4;
+				DEVELOPMENT_TEAM = 9X475P5993;
 				INFOPLIST_FILE = LockLine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -417,7 +421,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = TW79TC69P4;
+				DEVELOPMENT_TEAM = 9X475P5993;
 				INFOPLIST_FILE = LockLine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (

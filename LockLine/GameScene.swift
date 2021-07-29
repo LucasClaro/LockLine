@@ -163,6 +163,8 @@ class GameScene: SKScene {
                         quadrado.texture = SKTexture(imageNamed: "CofreRodas")
                     case 7:
                         quadrado.texture = SKTexture(imageNamed: "CofreInterruptor")
+                    case 8:
+                        quadrado.texture = SKTexture(imageNamed: "PuzzleCofre")
                     default:
                         break
                 }
@@ -226,6 +228,8 @@ class GameScene: SKScene {
                             DrawRodasAberto()
                         case 7:
                             DrawInterruptorAberto()
+                        case 8:
+                            DrawCofreAberto()
                         default:
                             break
                     }
@@ -245,6 +249,8 @@ class GameScene: SKScene {
                             DrawRodasFechado()
                         case 7:
                             DrawInterruptorFechado()
+                        case 8:
+                            DrawCofreFechado()
                         default:
                             break
                     }
@@ -368,6 +374,8 @@ class GameScene: SKScene {
                                         TouchedRodas(pos: pos)
                                     case 7:
                                         TouchedInterruptor(pos: pos)
+                                    case 8:
+                                        TouchedCofre(pos: pos)
                                     default:
                                         break
                                 }
@@ -496,6 +504,7 @@ struct ControleNavegação {
     var Esteira : EsteiraController = EsteiraController()
     var Rodas : RodasController = RodasController()
     var Interruptor: InterruptorController = InterruptorController()
+    var Cofre : CofreController = CofreController()
     
     var Manual : ManualController = ManualController()
     
@@ -508,7 +517,7 @@ func SortearModulos() -> [Int] {
 //    modulos = [4,5,3]
 
     while modulos.count < 4 {
-        let n = [1,2,3,4,5,7].randomElement()! //MARK: TODO return 6
+        let n = [1,2,3,4,5,7,8].randomElement()! //MARK: TODO return 6
         if modulos.firstIndex(of: n) == nil {
             modulos.append(n)
         }
