@@ -166,41 +166,51 @@ extension GameScene{
             case "Tecla1":
                 verificaInput(x: 1)
                 audios["clickMaleta"]?.play()
+                vibrateLight()
                 atualizarTela()
             case "Tecla2":
                 verificaInput(x: 2)
                 audios["clickMaleta"]?.play()
+                vibrateLight()
                 atualizarTela()
             case "Tecla3":
                 verificaInput(x: 3)
                 audios["clickMaleta"]?.play()
+                vibrateLight()
                 atualizarTela()
             case "Tecla4":
                 verificaInput(x: 4)
                 audios["clickMaleta"]?.play()
+                vibrateLight()
                 atualizarTela()
             case "Tecla5":
                 verificaInput(x: 5)
                 audios["clickMaleta"]?.play()
+                vibrateLight()
                 atualizarTela()
             case "Tecla6":
                 verificaInput(x: 6)
                 audios["clickMaleta"]?.play()
+                vibrateLight()
                 atualizarTela()
             case "Tecla7":
                 verificaInput(x: 7)
                 audios["clickMaleta"]?.play()
+                vibrateLight()
                 atualizarTela()
             case "Tecla8":
                 verificaInput(x: 8)
                 audios["clickMaleta"]?.play()
+                vibrateLight()
                 atualizarTela()
             case "Tecla9":
                 verificaInput(x: 9)
                 audios["clickMaleta"]?.play()
+                vibrateLight()
                 atualizarTela()
             case "Abrir":
                 audios["clickMaleta"]?.play()
+                vibrateLight()
                 verificaResposta()
                 atualizarTela()
             default:
