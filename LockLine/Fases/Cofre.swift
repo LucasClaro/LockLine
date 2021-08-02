@@ -280,9 +280,9 @@ struct CofreController {
         case "Yellow":
             resposta[2] = 4
         case "Blue":
-            resposta[2] = 5
+            resposta[2] = 9
         case "Red":
-            resposta[2] = 3
+            resposta[2] = 5
         default:
             break
         }
