@@ -222,6 +222,7 @@ extension GameScene{
     func verificaResposta(){
         if navegação.Cofre.input == navegação.Cofre.resposta{
             navegação.ModulosCompletos[navegação.ModuloOlhando] = true
+            navegação.Cofre.ordemLuzes = ["Green", "Green", "Green"]
         }
         else{
             navegação.Cofre.input = [0,0,0]
