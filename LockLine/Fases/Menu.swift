@@ -79,7 +79,7 @@ extension GameScene {
           
         let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
         
-        return "Versão: \(versao)(\(build))"
+        return "Versão: \(versao) (\(build))"
     }
     
 }
