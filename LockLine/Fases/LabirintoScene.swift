@@ -242,13 +242,13 @@ extension GameScene {
                 default:
                     break
             }
-            print(navegação.Labirinto.qtdSetas.allSatisfy({$0.value >= 0}))
             if navegação.Labirinto.historico.last?.i == 0 && navegação.Labirinto.historico.last?.j == 3 {
                 if navegação.Labirinto.vitoria == 4 && navegação.Labirinto.qtdSetas.allSatisfy({$0.value >= 0}) {
                     navegação.ModulosCompletos[navegação.ModuloOlhando] = true
                 }
                 else {
                     vibrateHeavy()
+                    navegação.Labirinto.qtdSetas = navegação.Labirinto.qtdSetasIniciais
                     navegação.Labirinto.historico = [navegação.Labirinto.nodeStart]
                     navegação.Labirinto.vitoria = 0
                 }
@@ -301,6 +301,7 @@ extension GameScene {
 struct LabirintoControler {
     var config : Bool = false
     var qtdSetas = ["r": 10, "l": 10, "u": 10, "d": 10]
+    var qtdSetasIniciais = ["r": 10, "l": 10, "u": 10, "d": 10]
     var vitoria = 0
     var nodeStart = (i:0, j:0)
     var line = (local: [-1, -1], pos: CGPoint(x: 0, y: 0))
@@ -316,24 +317,24 @@ struct LabirintoControler {
     init() {
         switch numRandom {
             case 0:
-                qtdSetas["r"] = 2
-                qtdSetas["d"] = 1
+                qtdSetasIniciais["r"] = 3
+                qtdSetasIniciais["d"] = 2
                 pos[0][0].0 = true
                 pos[2][1].0 = true
                 pos[1][3].0 = true
                 nodeStart = (i: 3, j:0)
                 break
             case 1:
-                qtdSetas["l"] = 3
-                qtdSetas["u"] = 3
+                qtdSetasIniciais["l"] = 3
+                qtdSetasIniciais["u"] = 3
                 pos[1][1].0 = true
                 pos[0][2].0 = true
                 pos[2][3].0 = true
                 nodeStart = (i: 3, j: 3)
                 break
             case 2:
-                qtdSetas["r"] = 3
-                qtdSetas["d"] = 3
+                qtdSetasIniciais["r"] = 3
+                qtdSetasIniciais["d"] = 3
                 pos[3][0].0 = true
                 pos[2][2].0 = true
                 pos[3][3].0 = true
@@ -341,8 +342,8 @@ struct LabirintoControler {
 
                 break
             case 3:
-                qtdSetas["u"] = 4
-                qtdSetas["d"] = 2
+                qtdSetasIniciais["u"] = 4
+                qtdSetasIniciais["d"] = 2
                 pos[3][0].0 = true
                 pos[1][2].0 = true
                 pos[2][2].0 = true
@@ -350,8 +351,8 @@ struct LabirintoControler {
 
                 break
             case 4:
-                qtdSetas["l"] = 1
-                qtdSetas["d"] = 2
+                qtdSetasIniciais["l"] = 2
+                qtdSetasIniciais["d"] = 2
                 pos[1][0].0 = true
                 pos[3][1].0 = true
                 pos[0][2].0 = true
@@ -362,6 +363,7 @@ struct LabirintoControler {
                 break
         }
         historico = [nodeStart]
+        qtdSetas = qtdSetasIniciais
     }
     
 }
@@ -371,3 +373,4 @@ fileprivate var dictX: [Int:CGFloat] = [0: -130, 1: -44, 2: 42, 3:129]
 fileprivate var dictY: [Int:CGFloat] = [0: 76, 1: -10, 2: -97, 3: -183]
 fileprivate var dictXFec: [Int: CGFloat] = [0: -82, 1: -28, 2: 27, 3: 81]
 fileprivate var dictYFec: [Int: CGFloat] = [0: 47.5, 1: -6.5, 2: -60.5, 3: -114.5]
+

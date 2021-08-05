@@ -236,6 +236,8 @@ extension GameScene{
         }
         else{
             navegação.Cofre.input = [0,0,0]
+            navegação.Cofre.ordemLuzes = sortearOrdem()
+            navegação.Cofre.respostasCorretas()
             vibrateHeavy()
         }
     }
@@ -251,7 +253,6 @@ func sortearOrdem() -> [String] {
             luzes.append(n)
         }
     }
-    
     return luzes
 }
 
@@ -263,7 +264,10 @@ struct CofreController {
     
     init(){
         ordemLuzes = sortearOrdem()
-        
+        respostasCorretas()
+    }
+    
+    mutating func respostasCorretas(){
         switch ordemLuzes[0]{
         case "Yellow":
             resposta[0] = 9
