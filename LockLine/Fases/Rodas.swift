@@ -371,7 +371,7 @@ struct RodasController {
     init() {
         let rodasSorteadas = SortearRodas()
         rodas = rodasSorteadas
-        senha = rodasSorteadas.sorted(by: >).map({ n in
+        senha = rodasSorteadas.sorted(by: <).map({ n in
             return rodasSorteadas.firstIndex(of: n)! + 1
         })
     }
@@ -395,6 +395,7 @@ fileprivate func SortearRodas() -> [Int] {
         }
     }
     
+    print(rodas)
     return rodas
     
 }
