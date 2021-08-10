@@ -66,6 +66,12 @@ extension GameScene {
         l6.zPosition = CGFloat(15)
         l6.name = "l6"
         
+        (verificacao.texture, verificacao.size, verificacao.position) = verificacaoGetImg()
+        verificacao.size = SizeProporcional(size: verificacao.size)
+        verificacao.position = PosProporcional(pos: verificacao.position)
+        verificacao.zPosition = CGFloat(15)
+        verificacao.name = "verificacao"
+        
         self.addChild(s1)
         self.addChild(s2)
         self.addChild(s3)
@@ -79,6 +85,8 @@ extension GameScene {
         self.addChild(l4)
         self.addChild(l5)
         self.addChild(l6)
+        
+        self.addChild(verificacao)
     }
     
     func DrawInterruptorFechado() {
@@ -143,6 +151,13 @@ extension GameScene {
         l6.zPosition = CGFloat(15)
         l6.name = "Cofre"
         
+        
+        (verificacao.texture, verificacao.size, verificacao.position) = verificacaoGetImg()
+        verificacao.size = SizeProporcional(size: CGSize(width: verificacao.size.width * 0.5, height: verificacao.size.height * 0.5))
+        verificacao.position = PosProporcional(pos: CGPoint(x: 0, y: verificacao.position.y + 15))
+        verificacao.zPosition = CGFloat(15)
+        verificacao.name = "Cofre"
+        
         self.addChild(s1)
         self.addChild(s2)
         self.addChild(s3)
@@ -156,6 +171,7 @@ extension GameScene {
         self.addChild(l4)
         self.addChild(l5)
         self.addChild(l6)
+        self.addChild(verificacao)
     }
     
     
@@ -166,51 +182,87 @@ extension GameScene {
             switch atPoint(pos).name {
                 case "1":
                     vibrateLight()
-                    audios["botao"]?.play()
+                    _ = (!navegação.Interruptor.switchTela[0]) ? audios["ligado"]?.play() : audios["desligado"]?.play()
                     navegação.Interruptor.switchTela[0] = !navegação.Interruptor.switchTela[0]
                     attLuzes(index: 0, ligado: navegação.Interruptor.switchTela[0])
                     break
                 case "2":
                     vibrateLight()
-                    audios["botao"]?.play()
+                    _ = (!navegação.Interruptor.switchTela[1]) ? audios["ligado"]?.play() : audios["desligado"]?.play()
                     navegação.Interruptor.switchTela[1] = !navegação.Interruptor.switchTela[1]
                     attLuzes(index: 1, ligado: navegação.Interruptor.switchTela[1])
                     break
                 case "3":
                     vibrateLight()
-                    audios["botao"]?.play()
+                    _ = (!navegação.Interruptor.switchTela[2]) ? audios["ligado"]?.play() : audios["desligado"]?.play()
                     navegação.Interruptor.switchTela[2] = !navegação.Interruptor.switchTela[2]
                     attLuzes(index: 2, ligado: navegação.Interruptor.switchTela[2])
                     break
                 case "4":
                     vibrateLight()
-                    audios["botao"]?.play()
+                    _ = (!navegação.Interruptor.switchTela[3]) ? audios["ligado"]?.play() : audios["desligado"]?.play()
                     navegação.Interruptor.switchTela[3] = !navegação.Interruptor.switchTela[3]
                     attLuzes(index: 3, ligado: navegação.Interruptor.switchTela[3])
                     break
                 case "5":
                     vibrateLight()
-                    audios["botao"]?.play()
+                    _ = (!navegação.Interruptor.switchTela[4]) ? audios["ligado"]?.play() : audios["desligado"]?.play()
                     navegação.Interruptor.switchTela[4] = !navegação.Interruptor.switchTela[4]
                     attLuzes(index: 4, ligado: navegação.Interruptor.switchTela[4])
                     break
                 case "6":
                     vibrateLight()
-                    audios["botao"]?.play()
+                    _ = (!navegação.Interruptor.switchTela[5]) ? audios["ligado"]?.play() : audios["desligado"]?.play()
                     navegação.Interruptor.switchTela[5] = !navegação.Interruptor.switchTela[5]
                     attLuzes(index: 5, ligado: navegação.Interruptor.switchTela[5])
                     break
+                case "verificacao":
+                    vibrateLight()
+                    audios["ligado"]?.play()
+                    navegação.Interruptor.teste = true
                 default:
                     break
             }
             
-            if navegação.Interruptor.senha == navegação.Interruptor.switchTela {
-                navegação.ModulosCompletos[navegação.ModuloOlhando] = true
-            }
-            
             atualizarTela()
+            
+            if navegação.Interruptor.teste {
+                verificacaoVitoria()
+            }
         }
         
+    }
+    
+    fileprivate func verificacaoGetImg() -> (SKTexture, CGSize, CGPoint){
+        if navegação.ModulosCompletos[navegação.ModuloOlhando] {
+            return verificacaoImgs["on"]!
+        }
+        else if navegação.Interruptor.teste {
+            return verificacaoImgs["test"]!
+        }
+        else {
+            return verificacaoImgs["off"]!
+        }
+    }
+    
+    fileprivate func verificacaoVitoria(){
+        if navegação.Interruptor.senha == navegação.Interruptor.switchTela {
+            navegação.ModulosCompletos[navegação.ModuloOlhando] = true
+            audios["ligado"]?.play()
+        }
+        else {
+            vibrateHeavy()
+            resetSwitchs()
+        }
+        navegação.Interruptor.teste = false
+    }
+    fileprivate func resetSwitchs(){
+        for i in 0...5 {
+            if navegação.Interruptor.switchTela[i]{
+                navegação.Interruptor.switchTela[i] = !navegação.Interruptor.switchTela[i]
+            }
+            attLuzes(index: i, ligado: navegação.Interruptor.switchTela[i])
+        }
     }
     
     fileprivate func getImg(index: Int, isSwicth: Bool) -> SKTexture{
@@ -266,7 +318,10 @@ extension GameScene {
 //MARK: Vars
 fileprivate let luzesImgs = ["green": SKTexture(imageNamed: "lightGreen"), "off": SKTexture(imageNamed: "lightOff"), "red": SKTexture(imageNamed: "lightRed"), "yellow": SKTexture(imageNamed: "lightYellow")]
 fileprivate let switchsImgs = ["off": SKTexture(imageNamed: "InterOff"), "OffTex": SKTexture(imageNamed: "InterOffTex"), "OnTex": SKTexture(imageNamed: "InterOnTex"), "on": SKTexture(imageNamed: "InterOn")]
+fileprivate let verificacaoImgs = ["on": (img: SKTexture(imageNamed: "on"), size: CGSize(width: 50, height: 59), pos: CGPoint(x: 0, y: -36
+)), "off": (img: SKTexture(imageNamed: "off"), size: CGSize(width: 50, height: 65), pos: CGPoint(x: 0, y: -50)), "test": (img: SKTexture(imageNamed: "test"), size: CGSize(width: 50, height: 47.6), pos: CGPoint(x: 0, y: -41))]
 
+fileprivate var verificacao: SKSpriteNode = SKSpriteNode()
 
 fileprivate func sortlamps() -> [Bool]{
     var aux = [Bool]()
@@ -319,7 +374,7 @@ fileprivate func geradorSenha(lamps: [Int], corSwitch: [Bool], lampsSwitch: [[Bo
 //MARK: Struct
 struct InterruptorController {
     var terminado : Bool = false
-    
+    var teste: Bool = false
     var lamps:[Int]
     var senha:[Bool]
     var corSwitch:[Bool]

@@ -229,16 +229,6 @@ extension GameScene{
         self.addChild(simbolo)
         
         //CUBOS
-        cubopincel.size = CGSize(width: 40, height: 46)
-        cubopincel.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[0], y: -161))
-        cubopincel.zPosition = 10
-        cubopincel.name = "Pincel"
-        
-        cubopapel.size = CGSize(width: 40, height: 46)
-        cubopapel.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[1], y: -161))
-        cubopapel.zPosition = 10
-        cubopapel.name = "Papel"
-        
         cuboancora.size = CGSize(width: 40, height: 46)
         cuboancora.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[2], y: -161))
         cuboancora.zPosition = 10
@@ -263,6 +253,16 @@ extension GameScene{
         cubonuvem.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[6], y: -161))
         cubonuvem.zPosition = 10
         cubonuvem.name = "Nuvem"
+        
+        cubopapel.size = CGSize(width: 40, height: 46)
+        cubopapel.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[1], y: -161))
+        cubopapel.zPosition = 10
+        cubopapel.name = "Papel"
+        
+        cubopincel.size = CGSize(width: 40, height: 46)
+        cubopincel.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[0], y: -161))
+        cubopincel.zPosition = 10
+        cubopincel.name = "Pincel"
         
         cuboponteiro.size = CGSize(width: 40, height: 46)
         cuboponteiro.position = PosProporcional(pos:CGPoint(x: navegação.Esteira.posCubos[7], y: -161))
@@ -430,11 +430,18 @@ extension GameScene{
     
     //MARK: Verificar se o puzzle está correto
     func status(){
-        if navegação.Esteira.input == navegação.Esteira.lacunasCertas{
-            navegação.ModulosCompletos[navegação.ModuloOlhando] = true
-        }
-        else if !navegação.Esteira.input.contains(0) {
-            vibrateHeavy()
+        if navegação.Esteira.input.allSatisfy({$0 != 0}){
+            if navegação.Esteira.input == navegação.Esteira.lacunasCertas{
+                navegação.ModulosCompletos[navegação.ModuloOlhando] = true
+            }
+            else if !navegação.Esteira.input.contains(0) {
+                navegação.Esteira.input = [0,0,0,0,0,0]
+                navegação.Esteira.hiddenCubos = [false, false, false, false, false, false, false, false]
+                for n in 1...8{
+                    cubos[n]?.isHidden = false
+                }
+                vibrateHeavy()
+            }
         }
     }
     

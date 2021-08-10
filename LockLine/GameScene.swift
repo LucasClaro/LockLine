@@ -55,7 +55,7 @@ class GameScene: SKScene {
                 //MARK: Geral
                 let btnPause = SKSpriteNode(imageNamed: "casinha")
                 btnPause.size = SizeProporcional(size: CGSize(width: 50, height: 47))
-                btnPause.position = PosProporcional(pos: CGPoint(x: 170, y: 380))
+                btnPause.position = PosProporcional(pos: CGPoint(x: -160, y: 390))
                 btnPause.zPosition = 10
                 btnPause.name = "Pause"
                 if navegação.Pausado {
@@ -68,6 +68,9 @@ class GameScene: SKScene {
                 timerQuadro.zPosition = 10
 
                 let labelTempo = SKLabelNode(text: String("0\(tempo / 60):\(corrigirZeros())"))
+                if tempo == 600 {
+                    labelTempo.text = String("\(tempo / 60):\(corrigirZeros())")
+                }
                 labelTempo.position = PosProporcional(pos: CGPoint(x: 0, y: 343))
                 labelTempo.fontColor = UIColor.black
                 labelTempo.fontName = "Oswald-Regular"
@@ -163,6 +166,8 @@ class GameScene: SKScene {
                         quadrado.texture = SKTexture(imageNamed: "CofreRodas")
                     case 7:
                         quadrado.texture = SKTexture(imageNamed: "CofreInterruptor")
+                    case 8:
+                        quadrado.texture = SKTexture(imageNamed: "PuzzleCofre")
                     default:
                         break
                 }
@@ -226,6 +231,8 @@ class GameScene: SKScene {
                             DrawRodasAberto()
                         case 7:
                             DrawInterruptorAberto()
+                        case 8:
+                            DrawCofreAberto()
                         default:
                             break
                     }
@@ -245,6 +252,8 @@ class GameScene: SKScene {
                             DrawRodasFechado()
                         case 7:
                             DrawInterruptorFechado()
+                        case 8:
+                            DrawCofreFechado()
                         default:
                             break
                     }
@@ -270,6 +279,9 @@ class GameScene: SKScene {
     
     //MARK: touchesBegan
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        navegação.Manual.PagelastY = (touches.first?.location(in: self).y) ?? CGFloat(0)
+        
         if let touch = touches.first {
             let pos = touch.location(in: self)
             
@@ -282,7 +294,7 @@ class GameScene: SKScene {
                     atualizarTela()
                 case .Manual:
                     TouchedManual(pos: pos)
-                    atualizarTela()
+//                    atualizarTela()
                 case .Jogo:
                     switch atPoint(pos).name {
                         case "SetaDireita":
@@ -302,7 +314,7 @@ class GameScene: SKScene {
                             }
                             break
                         case "Cofre":
-                            if !navegação.Pausado && !navegação.Finalizado {
+                            if !navegação.Pausado && !navegação.Finalizado && !navegação.ModuloAberto {
                                 navegação.ModuloAberto = true
                                 audios["background"]?.volume = 0.1
                                 vibrateLight()
@@ -322,13 +334,15 @@ class GameScene: SKScene {
                         case "Pause":
                             if !navegação.Pausado && !navegação.Finalizado {
                                 navegação.Pausado = true
-                                audios["botao"]?.play()
                                 vibrateLight()
                                 atualizarTela()
+                                verificacaoAudios()
+                                audios["botao"]?.play()
                             }
                             break
                         case "PauseSim":
                             navegação = ControleNavegação()
+                            verificacaoAudios()
                             audios["botao"]?.play()
                             tempo = 600
                             vibrateLight()
@@ -369,6 +383,8 @@ class GameScene: SKScene {
                                         TouchedRodas(pos: pos)
                                     case 7:
                                         TouchedInterruptor(pos: pos)
+                                    case 8:
+                                        TouchedCofre(pos: pos)
                                     default:
                                         break
                                 }
@@ -382,15 +398,6 @@ class GameScene: SKScene {
             }
         }
     }
-        
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -398,7 +405,7 @@ class GameScene: SKScene {
     
     //MARK: Update
     override func update(_ currentTime: TimeInterval) {
-        if navegação.ModuloAberto {
+        if navegação.ModuloAberto && !navegação.Pausado {
             switch navegação.ModulosEmJogo[navegação.ModuloOlhando] {
                 case 3:
                     updateRelogio()
@@ -497,6 +504,7 @@ struct ControleNavegação {
     var Esteira : EsteiraController = EsteiraController()
     var Rodas : RodasController = RodasController()
     var Interruptor: InterruptorController = InterruptorController()
+    var Cofre : CofreController = CofreController()
     
     var Manual : ManualController = ManualController()
     
@@ -509,7 +517,7 @@ func SortearModulos() -> [Int] {
 //    modulos = [4,5,3]
 
     while modulos.count < 4 {
-        let n = [1,2,3,4,5,7].randomElement()! //MARK: TODO return 6
+        let n = [1,2,3,4,5,7,8].randomElement()! //MARK: TODO return 6
         if modulos.firstIndex(of: n) == nil {
             modulos.append(n)
         }

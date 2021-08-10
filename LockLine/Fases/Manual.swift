@@ -78,6 +78,12 @@ extension GameScene {
         Dica6.zPosition = 10
         Dica6.name = "Dica6"
         
+        let Dica8 = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 130, height: 130)))
+        Dica8.position = PosProporcional(pos: CGPoint(x: 125, y: -370))
+        Dica8.alpha = 0.001
+        Dica8.zPosition = 10
+        Dica8.name = "Dica8"
+        
         let Impressora = SKSpriteNode(color: UIColor.white, size: SizeProporcional(size: CGSize(width: 170, height: 120)))
         Impressora.position = PosProporcional(pos: CGPoint(x: 120, y: -130))
         Impressora.alpha = 0.001
@@ -99,6 +105,7 @@ extension GameScene {
         addChild(Dica4)
         addChild(Monitor)
         addChild(Dica6)
+        addChild(Dica8)
         addChild(Impressora)
         
         if navegação.Manual.MonitorAberto {
@@ -145,21 +152,22 @@ extension GameScene {
             }
             let dicaAberta = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: image.size().height/4.5))
             
-            var calculedY = (-(image.size().height/(2*4.5)) + (frame.maxX*2) + 45)
-            if navegação.Manual.visualizacaoDicaInferior {
-                calculedY = ((image.size().height/(2*4.5)) - (frame.maxX*2) - 45)
-            }
+            let calculedY = (-(image.size().height/(2*4.5)) + (frame.maxX*2) + 45)
+//            if navegação.Manual.visualizacaoDicaInferior {
+//                calculedY = ((image.size().height/(2*4.5)) - (frame.maxX*2) - 45)
+//            }
             dicaAberta.position = CGPoint(x: 0, y: calculedY)
             dicaAberta.texture = image
             dicaAberta.zPosition = 20
+            dicaAberta.name = "DicaPagina"
             
-            let scroll = SKSpriteNode(imageNamed: "Scroll")
-            scroll.size = SizeProporcional(size: CGSize(width: 50, height: 78))
-            scroll.position = PosProporcional(pos: CGPoint(x: 165, y: 200))
-            scroll.zPosition = 21
-            scroll.name = "Scroll"
-            
-            addChild(scroll)
+//            let scroll = SKSpriteNode(imageNamed: "Scroll")
+//            scroll.size = SizeProporcional(size: CGSize(width: 50, height: 78))
+//            scroll.position = PosProporcional(pos: CGPoint(x: 165, y: 200))
+//            scroll.zPosition = 21
+//            scroll.name = "Scroll"
+//
+//            addChild(scroll)
             addChild(dicaAberta)
         }
         
@@ -179,15 +187,62 @@ extension GameScene {
         
         let BtnSair = SKSpriteNode(imageNamed: "casinha")
         BtnSair.size = SizeProporcional(size: CGSize(width: 50, height: 47))
-        BtnSair.position = PosProporcional(pos: CGPoint(x: 170, y: 390))
+        BtnSair.position = PosProporcional(pos: CGPoint(x: -160, y: 390))
         BtnSair.zPosition = 50
         BtnSair.name = "BtnSair"
-        if navegação.Manual.DicaAberta != 0 {
-            BtnSair.size = SizeProporcional(size: CGSize(width: 30, height: 30))
+        if navegação.Manual.DicaAberta != 0 || navegação.Manual.MonitorAberto {
+            BtnSair.position = PosProporcional(pos: CGPoint(x: 160, y: 390))
+            BtnSair.size = SizeProporcional(size: CGSize(width: 35, height: 35))
             BtnSair.texture = SKTexture(imageNamed: "Fechar")
         }
         
         addChild(BtnSair)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if navegação.Manual.DicaAberta != 0 {
+            guard let page = self.childNode(withName: "DicaPagina") as? SKSpriteNode else {
+                return
+            }
+            
+            let dif = (touches.first?.location(in: self).y ?? 0) - navegação.Manual.PagelastY
+            navegação.Manual.PagelastY = (touches.first?.location(in: self).y ?? 0)
+            
+            var image = SKTexture(imageNamed: "Dica\(navegação.Manual.DicaAberta)")
+            if navegação.Manual.DicaAberta == 7 && !navegação.Manual.Impresso {
+                image = SKTexture(imageNamed: "DicaCorrompida")
+            }
+            
+//            print("LastY \(navegação.Manual.PagelastY)")
+//            print("PageY \(page.position.y)")
+//            print("dif \(dif)")
+            
+            page.removeFromParent()
+            
+            let dicaAberta = SKSpriteNode(color: UIColor.orange, size: CGSize(width: frame.maxX*2, height: image.size().height/4.5))
+            dicaAberta.position = CGPoint(x: 0, y: page.position.y + dif)
+            dicaAberta.texture = image
+            dicaAberta.zPosition = 20
+            dicaAberta.name = "DicaPagina"
+            
+//            print("DicaNovaYAntes \(dicaAberta.position.y)")
+//            print()
+            
+            if dicaAberta.position.y < (-(image.size().height/(2*4.5)) + (frame.maxX*2) + 45) {
+                dicaAberta.position.y = (-(image.size().height/(2*4.5)) + (frame.maxX*2) + 45)
+            }
+            if dicaAberta.position.y > ((image.size().height/(2*4.5)) - (frame.maxX*2) - 45) {
+                dicaAberta.position.y = ((image.size().height/(2*4.5)) - (frame.maxX*2) - 45)
+            }
+            
+            //print("DicaNovaYDepois \(dicaAberta.position.y)")
+            
+            addChild(dicaAberta)
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        navegação.Manual.PagelastY = 0
     }
     
     //MARK: Touched
@@ -233,9 +288,9 @@ extension GameScene {
                     atualizarTela()
                     break
                 case "MonitorAberto":
-                    vibrateLight()
-                    navegação.Manual.MonitorAberto = false
-                    atualizarTela()
+//                    vibrateLight()
+//                    navegação.Manual.MonitorAberto = false
+//                    atualizarTela()
                     break
                 case "Dica4":
                     vibrateLight()
@@ -253,7 +308,13 @@ extension GameScene {
                     atualizarTela()
                     break
                 case "Impressora":
+                    vibrateLight()
                     navegação.Manual.DicaAberta = 7
+                    atualizarTela()
+                    break
+                case "Dica8":
+                    vibrateLight()
+                    navegação.Manual.DicaAberta = 8
                     atualizarTela()
                     break
                 case "BtnIO":
@@ -263,8 +324,8 @@ extension GameScene {
                     break
                 case "ImpressoraIcon":
                     audios["impressora"]?.play()
+                    vibrateLight()
                     navegação.Manual.Imprimindo = true
-                    atualizarTela()
                     let delay = 8 // seconds to wait before firing
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(delay)) {
                         self.navegação.Manual.Imprimindo = false
@@ -279,6 +340,9 @@ extension GameScene {
                         navegação.Manual.DicaAberta = 0
                         navegação.Manual.visualizacaoDicaInferior = false
                     }
+                    else if navegação.Manual.MonitorAberto {
+                        navegação.Manual.MonitorAberto = false
+                    }
                     else {
                         navegação.Manual.DicaAberta = 0
                         navegação.Manual.Impresso = false
@@ -286,6 +350,7 @@ extension GameScene {
                         navegação.Manual.PCLigado = false
                         navegação.Tela = .Menu
                     }
+                    atualizarTela()
                 default:
                     break
             }
@@ -302,6 +367,7 @@ struct ManualController {
     var Impresso : Bool = false
     var Imprimindo : Bool = false
     var visualizacaoDicaInferior = false
+    var PagelastY : CGFloat = 0
     
     var PCLigado : Bool = false
 }

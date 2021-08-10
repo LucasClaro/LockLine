@@ -30,10 +30,10 @@ extension GameScene {
         btnManual.alpha = 0.001
         btnManual.zPosition = 5
         
-        let BtnOnboarding = SKSpriteNode(color: UIColor.white, size: CGSize(width: 35, height: 35))
+        let BtnOnboarding = SKSpriteNode(color: UIColor.white, size: CGSize(width: 50, height: 50))
         BtnOnboarding.position = PosProporcional(pos: CGPoint(x: -165, y: -420))
         BtnOnboarding.name = "BtnOnboarding"
-        BtnOnboarding.alpha = 0.001
+        BtnOnboarding.alpha = 0.0001
         BtnOnboarding.zPosition = 5
         
         let versao = SKLabelNode(text: getVersion())
@@ -79,7 +79,7 @@ extension GameScene {
           
         let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
         
-        return "Versão: \(versao)(\(build))"
+        return "Versão: \(versao) (\(build))"
     }
     
 }
